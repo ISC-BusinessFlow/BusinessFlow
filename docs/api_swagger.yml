@@ -11,6 +11,10 @@ tags:
   description: "pathに関するAPI"
 - name: "actors"
   description: "actorに関するAPI"
+- name: "task_types"
+  description: "task_typeに関するAPI"
+- name: "path_types"
+  description: "path_typeに関するAPI"
 
 paths:
   /flows:
@@ -347,6 +351,28 @@ paths:
           description: OK
           schema:
             $ref: "#/definitions/Path"
+  /task_types:
+    get:
+      tags:
+      - "task_types"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/definitions/TaskType"
+  /path_types:
+    get:
+      tags:
+      - "path_types"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/definitions/PathType"
 
 definitions:
   Flow:
@@ -438,7 +464,7 @@ definitions:
         format: "date"
     xml:
       name: "Actor"
-  Task_type:
+  TaskType:
     type: "object"
     properties:
       id:
@@ -454,8 +480,8 @@ definitions:
         type: "string"
         format: "date"
     xml:
-      name: "Task_type"
-  Path_type:
+      name: "TaskType"
+  PathType:
     type: "object"
     properties:
       id:
@@ -471,4 +497,4 @@ definitions:
         type: "string"
         format: "date"
     xml:
-      name: "Path_type"
+      name: "PathType"
