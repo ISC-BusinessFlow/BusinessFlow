@@ -1,6 +1,6 @@
 # BusinessFlow
 
-## インストール
+## 初期設定
 
 ```bash
 yarn install
