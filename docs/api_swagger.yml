@@ -121,12 +121,12 @@ paths:
         description: "新規taskのname"
         required: true
         type: "string"
-      - name: "type"
+      - name: "type_id"
         in: "formData"
-        description: "新規taskのtype"
+        description: "新規taskのtypeのid"
         required: true
-        type: "string"
-      - name: "actor"
+        type: "number"
+      - name: "actor_id"
         in: "formData"
         description: "新規taskのactorのid"
         required: true
@@ -178,11 +178,11 @@ paths:
         description: "更新後のtaskのname"
         required: true
         type: "string"
-      - name: "type"
+      - name: "type_id"
         in: "formData"
-        description: "更新後のtaskのtype"
+        description: "更新後のtaskのtypeのid"
         required: true
-        type: "string"
+        type: "number"
       - name: "actor_id"
         in: "formData"
         description: "更新後のtaskのactorのid"
@@ -205,9 +205,9 @@ paths:
         description: "新規pathが所属しているflowのid"
         required: true
         type: "number"
-      - name: "type"
+      - name: "type_id"
         in: "formData"
-        description: "新規pathのタイプ"
+        description: "新規pathのタイプのid"
         required: true
         type: "string"
       - name: "from_task_id"
@@ -262,11 +262,11 @@ paths:
         description: "更新するpathのid"
         required: true
         type: "number"
-      - name: "type"
+      - name: "type_id"
         in: "formData"
-        description: "更新後のpathの名前"
+        description: "更新後のtypeのid"
         required: true
-        type: "string"
+        type: "number"
       - name: "from_task_id"
         in: "formData"
         description: "更新後のpathの元になるtaskのid"
@@ -407,7 +407,7 @@ definitions:
       type_id:
         type: "integer"
         format: "int64"
-      actor:
+      actor_id:
         type: "integer"
         format: "int64"
       created_at:
