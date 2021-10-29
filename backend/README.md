@@ -3,6 +3,7 @@
 ## 初期設定
 
 ```bash
+cp .env.local .env
 yarn install
 ```
 
