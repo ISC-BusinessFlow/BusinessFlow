@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  flow      Flow     @relation(fields: [flowId], references: [id])
+  flowId    Int
+  name      String   @db.VarChar(30)
+  type      TaskType @relation(fields: [typeId], references: [id])
+  typeId    Int
+  actor     Actor    @relation(fields: [actorId], references: [id])
+  actorId   Int
+
+  fromTasks Path[] @relation("FromTasks")
+  toTasks   Path[] @relation("ToTasks")
+}
+
+model Path {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  fromTasks  Task     @relation(name: "FromTasks", fields: [fromTaskId], references: [id])
+  fromTaskId Int
+  toTasks    Task     @relation(name: "ToTasks", fields: [toTaskId], references: [id])
+  toTaskId   Int
+  pathType   PathType @relation(fields: [pathTypeId], references: [id])
+  pathTypeId Int
+}
+
+model Actor {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique @db.VarChar(30)
+  tasks     Task[]
+  flow      Flow     @relation(fields: [flowId], references: [id])
+  flowId    Int
+}
+
+model Flow {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tasks     Task[]
+  actors    Actor[]
+}
+
+model TaskType {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique @db.VarChar(30)
+  tasks     Task[]
+}
+
+model PathType {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique @db.VarChar(30)
+  paths     Path[]
+}
