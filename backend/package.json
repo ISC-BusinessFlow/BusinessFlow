@@ -2,17 +2,21 @@
   "name": "backend",
   "version": "1.0.0",
   "dependencies": {
+    "@prisma/client": "^3.3.0",
     "express": "^4.17.1"
   },
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "prisma:format": "prisma format",
+    "prisma:migrate": "prisma migrate dev"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
     "@types/express": "^4.17.13",
     "nodemon": "^2.0.14",
+    "prisma": "^3.3.0",
     "ts-node": "^10.3.0"
   },
   "engines": {
