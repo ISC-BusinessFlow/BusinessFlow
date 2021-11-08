@@ -11,6 +11,6 @@ app.get("/", (req, res) => {
   res.end("hello express\n");
 });
 
-app.use("/users", flowController);
+app.use("/flows", flowController);
 
 export default app;
