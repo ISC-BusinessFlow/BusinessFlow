@@ -86,11 +86,13 @@ async function main() {
   await prisma.path.createMany({
     data: [
       {
+        flowId: flow1.id,
         pathTypeId: path_types[0].id,
         fromTaskId: tasks[0].id,
         toTaskId: tasks[1].id,
       },
       {
+        flowId: flow1.id,
         pathTypeId: path_types[1].id,
         fromTaskId: tasks[1].id,
         toTaskId: tasks[2].id,

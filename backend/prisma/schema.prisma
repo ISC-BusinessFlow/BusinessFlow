@@ -21,9 +21,8 @@ model Task {
   typeId    Int
   actor     Actor    @relation(fields: [actorId], references: [id])
   actorId   Int
-
-  fromTasks Path[] @relation("FromTasks")
-  toTasks   Path[] @relation("ToTasks")
+  fromTasks Path[]   @relation("FromTasks")
+  toTasks   Path[]   @relation("ToTasks")
 }
 
 model Path {
@@ -36,6 +35,8 @@ model Path {
   toTaskId   Int
   pathType   PathType @relation(fields: [pathTypeId], references: [id])
   pathTypeId Int
+  flow       Flow     @relation(fields: [flowId], references: [id])
+  flowId     Int
 }
 
 model Actor {
@@ -55,6 +56,7 @@ model Flow {
   updatedAt DateTime @updatedAt
   tasks     Task[]
   actors    Actor[]
+  paths     Path[]
 }
 
 model TaskType {
