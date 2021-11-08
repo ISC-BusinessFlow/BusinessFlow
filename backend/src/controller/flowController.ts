@@ -67,11 +67,52 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 // GET /flows/{flow_id}/tasks
+router.get("/:id/tasks", async (req: Request, res: Response) => {
+  const flow = await prisma.flow.findUnique({
+    where: { id: parseInt(req.params?.id) },
+  });
+  if (!flow) {
+    throw new Error("flow is empty")
+  }
+  const tasks = await prisma.task.findMany({
+    where: {
+      flowId: flow.id,
+    }
+  });
+  res.json({ tasks });
+});
 
 // GET /flows/{flow_id}/paths
+router.get("/:id/paths", async (req: Request, res: Response) => {
+  const flow = await prisma.flow.findUnique({
+    where: { id: parseInt(req.params?.id) },
+  });
+  if (!flow) {
+    throw new Error("flow is empty")
+  }
+  const paths = await prisma.path.findMany({
+    where: {
+      flowId: flow.id,
+    }
+  });
+  res.json({ paths });
+});
 
 // GET /flows/{flow_id}/actors
-
+router.get("/:id/actors", async (req: Request, res: Response) => {
+  const flow = await prisma.flow.findUnique({
+    where: { id: parseInt(req.params?.id) },
+  });
+  if (!flow) {
+    throw new Error("flow is empty")
+  }
+  const actors = await prisma.actor.findMany({
+    where: {
+      flowId: flow.id,
+    }
+  });
+  res.json({ actors });
+});
 
 
 export default router
