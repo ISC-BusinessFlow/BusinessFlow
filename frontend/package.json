@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
+    "lint:eslint":"eslint --fix 'src/**/*.ts' 'src/**/*.tsx'",
+    "lint:next": "next lint"
   },
   "dependencies": {
     "next": "12.0.1",
