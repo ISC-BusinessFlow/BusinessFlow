@@ -1,5 +1,6 @@
 {
   "name": "backend",
+  "private": true,
   "version": "1.0.0",
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -24,5 +25,11 @@
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "workspaces": {
+    "nohoist": [
+      "@prisma/client",
+      "prisma"
+    ]
   }
 }
