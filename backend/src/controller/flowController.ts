@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Path, PrismaClient } from "@prisma/client";
 import { Request, Response,Router } from "express";
 
 const prisma = new PrismaClient();
@@ -7,7 +7,7 @@ const router = Router();
 // GET /flows
 router.get("/", async (req: Request, res: Response) => {
   const flows = await prisma.flow.findMany();
-  res.json({ flows });
+  res.status(200).json(flows);
 });
 
 // POST /flows
@@ -19,10 +19,9 @@ router.post("/", async (req: Request, res: Response) => {
     }
   });
   if (flow) {
-    console.log("temp");
-    res.status(200).send(`success create ${flow.name}`);
+    res.status(201).json(flow);
   } else {
-    res.status(500).send("error create flow");
+    res.status(500).send();
   }
 })
 
@@ -32,9 +31,9 @@ router.delete("/:id", async (req: Request, res: Response) => {
     where: { id: parseInt(req.params?.id) },
   });
   if (flow) {
-    res.status(200).send(`success delete ${flow.name}`)
+    res.status(200).json(flow);
   } else {
-    res.status(500).send("error delete todo");
+    res.status(500).send();
   }
 })
 
@@ -61,7 +60,7 @@ router.put("/:id", async (req: Request, res: Response) => {
   if (updated_flow) {
     res.status(200).json({ updated_flow })
   } else {
-    res.status(500).send("error check todo");
+    res.status(500).send();
   }
 
 });
@@ -79,7 +78,7 @@ router.get("/:id/tasks", async (req: Request, res: Response) => {
       flowId: flow.id,
     }
   });
-  res.json({ tasks });
+  res.status(200).json(tasks);
 });
 
 // GET /flows/{flow_id}/paths
@@ -90,12 +89,25 @@ router.get("/:id/paths", async (req: Request, res: Response) => {
   if (!flow) {
     throw new Error("flow is empty")
   }
-  const paths = await prisma.path.findMany({
+
+  const paths = await prisma.path.findMany();
+  const tasks = await prisma.task.findMany({
     where: {
       flowId: flow.id,
     }
   });
-  res.json({ paths });
+
+  (async () => {
+    const related_paths: Path[] = [];
+    for (const task of tasks) {
+      for (const path of paths) {
+        if (task.id === path.fromTaskId) {
+          related_paths.push(path)
+        }
+      }
+    }
+    res.status(200).json( related_paths );
+  })()
 });
 
 // GET /flows/{flow_id}/actors
@@ -111,7 +123,7 @@ router.get("/:id/actors", async (req: Request, res: Response) => {
       flowId: flow.id,
     }
   });
-  res.json({ actors });
+  res.status(200).json(actors);
 });
 
 
