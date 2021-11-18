@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:eslint": "eslint --fix 'src/**/*.ts' 'src/**/*.tsx'",
+    "lint": "run-s lint:**",
+    "lint-fix": "run-s lint-fix:**",
+    "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint-fix:eslint": "yarn run lint:eslint --fix",
     "lint:next": "next lint"
   },
   "dependencies": {

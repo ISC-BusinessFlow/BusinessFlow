@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "lint": "yarn workspaces run lint",
-    "lint:fix": "yarn workspaces run lint:fix"
+    "lint-fix": "yarn workspaces run lint-fix"
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
