@@ -19,6 +19,7 @@ CREATE TABLE `Path` (
     `fromTaskId` INTEGER NOT NULL,
     `toTaskId` INTEGER NOT NULL,
     `pathTypeId` INTEGER NOT NULL,
+    `flowId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -84,6 +85,9 @@ ALTER TABLE `Path` ADD CONSTRAINT `Path_toTaskId_fkey` FOREIGN KEY (`toTaskId`) 
 
 -- AddForeignKey
 ALTER TABLE `Path` ADD CONSTRAINT `Path_pathTypeId_fkey` FOREIGN KEY (`pathTypeId`) REFERENCES `PathType`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Path` ADD CONSTRAINT `Path_flowId_fkey` FOREIGN KEY (`flowId`) REFERENCES `Flow`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Actor` ADD CONSTRAINT `Actor_flowId_fkey` FOREIGN KEY (`flowId`) REFERENCES `Flow`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
