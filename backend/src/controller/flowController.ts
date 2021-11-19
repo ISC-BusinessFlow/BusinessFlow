@@ -15,7 +15,7 @@ router.get('/', async (req: Request, res: Response) => {
   }
 });
 
-// GET /flows/:id
+// GET /flows/{flow_id}
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const flow = await prisma.flow.findUnique({
@@ -75,7 +75,7 @@ router.put('/:id', async (req: Request, res: Response) => {
       return;
     }
 
-    const updated_flow = await prisma.flow.update({
+    const updatedFlow = await prisma.flow.update({
       where: {
         id: parseInt(req.params?.id),
       },
@@ -84,7 +84,7 @@ router.put('/:id', async (req: Request, res: Response) => {
       },
     });
 
-    res.status(200).json(updated_flow);
+    res.status(200).json(updatedFlow);
   } catch (e) {
     console.log(e);
     res.status(500).send();
