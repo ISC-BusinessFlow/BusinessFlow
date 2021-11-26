@@ -51,6 +51,19 @@ router.get('/:id', async (req: Request, res: Response) => {
 // DELETE /tasks/{task_id}
 router.delete('/:id', async (req: Request, res: Response) => {
   try {
+    await prisma.path.deleteMany({
+      where: {
+        OR: [
+          {
+            fromTaskId: parseInt(req.params?.id),
+          },
+          {
+            toTaskId: parseInt(req.params?.id),
+          },
+        ],
+      },
+    });
+
     const task = await prisma.task.delete({
       where: { id: parseInt(req.params?.id) },
     });
