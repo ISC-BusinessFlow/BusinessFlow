@@ -82,7 +82,7 @@ paths:
           type: 'number'
         - name: 'name'
           in: 'formData'
-          description: '更新後のflownのname'
+          description: '更新後のflowのname'
           required: true
           type: 'string'
       responses:
@@ -130,6 +130,11 @@ paths:
       produces:
         - 'application/json'
       parameters:
+        - name: 'flow_id'
+          in: 'formData'
+          description: '新規taskのflowのid'
+          required: true
+          type: 'number'
         - name: 'name'
           in: 'formData'
           description: '新規taskのname'
@@ -149,7 +154,7 @@ paths:
         '201':
           description: OK
           schema:
-            $ref: '#/definitions/Flow'
+            $ref: '#/definitions/Task'
   /tasks/{task_id}:
     get:
       tags:
