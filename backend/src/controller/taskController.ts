@@ -22,7 +22,7 @@ router.post('/', async (req: Request, res: Response) => {
         actorId,
       },
     });
-    res.status(200).send(tasks);
+    res.status(201).send(tasks);
   } catch (e) {
     console.log(e);
     res.status(500).send();
