@@ -10,7 +10,7 @@ router.post('/', async (req: Request, res: Response) => {
     const {
       flow_id: flowId,
       name,
-      task_id: typeId,
+      type_id: typeId,
       actor_id: actorId,
     } = req.body;
 
@@ -78,7 +78,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
 // PUT /tasks/{task_id}
 router.put('/:id', async (req: Request, res: Response) => {
   try {
-    const { name, task_id: typeId, actor_id: actorId } = req.body;
+    const { name, type_id: typeId, actor_id: actorId } = req.body;
     const task = await prisma.task.findUnique({
       where: { id: parseInt(req.params?.id) },
     });
