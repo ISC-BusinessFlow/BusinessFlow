@@ -11,7 +11,7 @@ export class PathAggregate implements Aggregate<Path> {
     this.paths.push(path);
   }
   public find(id: number) {
-    return this.paths.find((path) => path.getId() === id);
+    return this.paths.find((path) => path.id === id);
   }
 }
 
@@ -22,30 +22,14 @@ type PathType = {
 };
 
 export class Path {
-  private id: number;
-  private from: number;
-  private to: number | null = null;
-  private type: string;
+  id: number;
+  from: number;
+  to: number | null = null;
+  type: string;
 
   constructor({ id, from, type }: PathType) {
     this.id = id;
     this.from = from;
     this.type = type;
-  }
-
-  public getId() {
-    return this.id;
-  }
-  public getFrom() {
-    return this.from;
-  }
-  public getTo() {
-    return this.to;
-  }
-  public getType() {
-    return this.type;
-  }
-  public setToTask(taskId: number) {
-    this.to = taskId;
   }
 }

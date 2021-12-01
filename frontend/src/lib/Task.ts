@@ -11,7 +11,7 @@ export class TaskAggregate implements Aggregate<Task> {
     this.tasks.push(task);
   }
   public find(id: number) {
-    return this.tasks.find((task) => task.getId() === id);
+    return this.tasks.find((task) => task.id === id);
   }
 }
 
@@ -23,27 +23,15 @@ type TaskType = {
 };
 
 export class Task {
-  private id: number;
-  private type: string;
-  private label: string;
-  private description: string;
+  id: number;
+  type: string;
+  label: string;
+  description: string;
 
   constructor({ id, type, label, description }: TaskType) {
     this.id = id;
     this.type = type;
     this.label = label;
     this.description = description;
-  }
-
-  public getId() {
-    return this.id;
-  }
-
-  public getLabel() {
-    return this.label;
-  }
-
-  public getDescription() {
-    return this.description;
   }
 }

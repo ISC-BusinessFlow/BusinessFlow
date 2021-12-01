@@ -12,7 +12,7 @@ export class ActorAggregate implements Aggregate<Actor> {
     this.actors.push(actor);
   }
   public find(id: number) {
-    return this.actors.find((actor) => actor.getId() === id);
+    return this.actors.find((actor) => actor.id === id);
   }
 }
 
@@ -24,11 +24,11 @@ type ActorType = {
 };
 
 export class Actor {
-  private id: number;
-  private name: string;
-  public taskAggregate: TaskAggregate;
-  private createdAt: string;
-  private updatedAt: string;
+  readonly id: number;
+  readonly name: string;
+  readonly taskAggregate: TaskAggregate;
+  readonly createdAt: string;
+  readonly updatedAt: string;
 
   constructor({ id, name, createdAt, updatedAt }: ActorType) {
     this.id = id;
@@ -38,12 +38,6 @@ export class Actor {
     this.updatedAt = updatedAt;
   }
 
-  public getId() {
-    return this.id;
-  }
-  public getName() {
-    return this.name;
-  }
   public createTask(task: Task) {
     this.taskAggregate.add(task);
   }
