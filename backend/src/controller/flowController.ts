@@ -1,7 +1,7 @@
-import { PrismaClient } from '@prisma/client';
 import { Request, Response, Router } from 'express';
 
-const prisma = new PrismaClient();
+import { prisma } from '../app';
+
 const router = Router();
 
 // GET /flows
