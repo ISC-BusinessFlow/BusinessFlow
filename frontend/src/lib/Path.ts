@@ -15,13 +15,19 @@ export class PathAggregate implements Aggregate<Path> {
   }
 }
 
+type PathType = {
+  id: number;
+  from: number;
+  type: string;
+};
+
 export class Path {
   private id: number;
   private from: number;
   private to: number | null = null;
   private type: string;
 
-  constructor(id: number, from: number, type: string) {
+  constructor({ id, from, type }: PathType) {
     this.id = id;
     this.from = from;
     this.type = type;

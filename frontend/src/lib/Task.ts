@@ -15,13 +15,20 @@ export class TaskAggregate implements Aggregate<Task> {
   }
 }
 
+type TaskType = {
+  id: number;
+  type: string;
+  label: string;
+  description: string;
+};
+
 export class Task {
   private id: number;
   private type: string;
   private label: string;
   private description: string;
 
-  constructor(id: number, type: string, label: string, description: string) {
+  constructor({ id, type, label, description }: TaskType) {
     this.id = id;
     this.type = type;
     this.label = label;

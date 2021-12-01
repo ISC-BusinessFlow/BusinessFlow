@@ -16,6 +16,13 @@ export class ActorAggregate implements Aggregate<Actor> {
   }
 }
 
+type ActorType = {
+  id: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export class Actor {
   private id: number;
   private name: string;
@@ -23,7 +30,7 @@ export class Actor {
   private createdAt: string;
   private updatedAt: string;
 
-  constructor(id: number, name: string, createdAt: string, updatedAt: string) {
+  constructor({ id, name, createdAt, updatedAt }: ActorType) {
     this.id = id;
     this.name = name;
     this.taskAggregate = new TaskAggregate();
