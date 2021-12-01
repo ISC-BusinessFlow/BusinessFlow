@@ -1,5 +1,5 @@
 import { Aggregate } from './Aggregate';
-import { TaskAggregate } from './Task';
+import { Task, TaskAggregate } from './Task';
 
 export class ActorAggregate implements Aggregate<Actor> {
   public actors: Actor[];
@@ -20,14 +20,14 @@ export class Actor {
   private id: number;
   private name: string;
   public taskAggregate: TaskAggregate;
-  private createadAt: string;
+  private createdAt: string;
   private updatedAt: string;
 
   constructor(id: number, name: string, createdAt: string, updatedAt: string) {
     this.id = id;
     this.name = name;
     this.taskAggregate = new TaskAggregate();
-    this.createadAt = createdAt;
+    this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
 

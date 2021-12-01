@@ -1,5 +1,5 @@
-import { ActorAggregate } from './Actor';
-import { PathAggregate } from './Path';
+import { Actor, ActorAggregate } from './Actor';
+import { Path, PathAggregate } from './Path';
 
 export class Flow {
   public name: string;
@@ -10,10 +10,10 @@ export class Flow {
     this.actorAggregate = new ActorAggregate();
     this.pathAggregate = new PathAggregate();
   }
-  public createActor(actor: any) {
+  public createActor(actor: Actor) {
     this.actorAggregate.add(actor);
   }
-  public createPath(path: any) {
+  public createPath(path: Path) {
     this.pathAggregate.add(path);
   }
 }
