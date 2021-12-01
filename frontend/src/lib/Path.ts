@@ -22,10 +22,10 @@ type PathType = {
 };
 
 export class Path {
-  id: number;
-  from: number;
-  to: number | null = null;
-  type: string;
+  readonly id: number;
+  readonly from: number;
+  readonly to: number | null = null;
+  readonly type: string;
 
   constructor({ id, from, type }: PathType) {
     this.id = id;
