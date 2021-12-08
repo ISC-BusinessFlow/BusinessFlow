@@ -322,7 +322,7 @@ paths:
         '201':
           description: OK
           schema:
-            $ref: '#/definitions/Path'
+            $ref: '#/definitions/Actor'
   /actors/{actor_id}:
     get:
       tags:
@@ -369,7 +369,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Path'
+            $ref: '#/definitions/Actor'
   /task_types:
     get:
       tags:
