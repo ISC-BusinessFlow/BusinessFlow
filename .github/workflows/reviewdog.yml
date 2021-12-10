@@ -21,5 +21,3 @@ jobs:
         with:
           reporter: github-pr-review
           eslint_flags: './**/*.{ts,tsx}'
-      - name: eslint
-        run: yarn lint
