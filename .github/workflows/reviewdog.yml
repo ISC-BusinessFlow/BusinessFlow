@@ -2,6 +2,10 @@ name: reviewdog
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - '**/**.ts'
+      - '**/**.tsx'
+      - '.github/workflows/reviewdog.yml'
 
 jobs:
   eslint:
