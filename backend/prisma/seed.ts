@@ -2,99 +2,107 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+const seedData = {
+  taskTypes: [
+    {
+      id: 1,
+      name: 'task_type1',
+    },
+    {
+      id: 2,
+      name: 'task_type2',
+    },
+  ],
+  pathTypes: [
+    {
+      id: 1,
+      name: 'task_type1',
+    },
+    {
+      id: 2,
+      name: 'task_type2',
+    },
+  ],
+  flows: [
+    {
+      id: 1,
+      name: 'flow1',
+    },
+  ],
+  actors: [
+    {
+      name: 'actor1',
+      flowId: 1,
+    },
+    {
+      name: 'actor2',
+      flowId: 1,
+    },
+  ],
+  tasks: [
+    {
+      flowId: 1,
+      name: 'task1',
+      typeId: 1,
+      actorId: 1,
+    },
+    {
+      flowId: 1,
+      name: 'task2',
+      typeId: 1,
+      actorId: 1,
+    },
+    {
+      flowId: 1,
+      name: 'task3',
+      typeId: 2,
+      actorId: 2,
+    },
+  ],
+  paths: [
+    {
+      flowId: 1,
+      pathTypeId: 1,
+      fromTaskId: 1,
+      toTaskId: 2,
+    },
+    {
+      flowId: 1,
+      pathTypeId: 2,
+      fromTaskId: 2,
+      toTaskId: 3,
+    },
+  ],
+};
+
 async function main() {
   await prisma.taskType.createMany({
-    data: [
-      {
-        name: 'task_type1',
-      },
-      {
-        name: 'task_type2',
-      },
-    ],
+    data: seedData['taskTypes'],
     skipDuplicates: true,
   });
 
   await prisma.pathType.createMany({
-    data: [
-      {
-        name: 'path_type1',
-      },
-      {
-        name: 'path_type2',
-      },
-    ],
+    data: seedData['pathTypes'],
     skipDuplicates: true,
   });
 
-  const task_types = await prisma.taskType.findMany();
-  const path_types = await prisma.pathType.findMany();
-
-  const flow1 = await prisma.flow.upsert({
-    where: { id: 1 },
-    update: {},
-    create: {
-      name: 'flow1',
-    },
+  await prisma.flow.createMany({
+    data: seedData['flows'],
+    skipDuplicates: true,
   });
 
   await prisma.actor.createMany({
-    data: [
-      {
-        name: 'actor1',
-        flowId: flow1.id,
-      },
-      {
-        name: 'actor2',
-        flowId: flow1.id,
-      },
-    ],
+    data: seedData['actors'],
     skipDuplicates: true,
   });
-
-  const actors = await prisma.actor.findMany();
 
   await prisma.task.createMany({
-    data: [
-      {
-        flowId: flow1.id,
-        name: 'task1',
-        typeId: task_types[0].id,
-        actorId: actors[0].id,
-      },
-      {
-        flowId: flow1.id,
-        name: 'task2',
-        typeId: task_types[1].id,
-        actorId: actors[1].id,
-      },
-      {
-        flowId: flow1.id,
-        name: 'task3',
-        typeId: task_types[1].id,
-        actorId: actors[1].id,
-      },
-    ],
+    data: seedData['tasks'],
     skipDuplicates: true,
   });
 
-  const tasks = await prisma.task.findMany();
-
   await prisma.path.createMany({
-    data: [
-      {
-        flowId: flow1.id,
-        pathTypeId: path_types[0].id,
-        fromTaskId: tasks[0].id,
-        toTaskId: tasks[1].id,
-      },
-      {
-        flowId: flow1.id,
-        pathTypeId: path_types[1].id,
-        fromTaskId: tasks[1].id,
-        toTaskId: tasks[2].id,
-      },
-    ],
+    data: seedData['paths'],
     skipDuplicates: true,
   });
 }
