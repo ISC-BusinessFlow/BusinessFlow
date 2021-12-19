@@ -7,7 +7,6 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
-    'next/core-web-vitals',
     '../.eslintrc.js',
   ],
   rules: {
