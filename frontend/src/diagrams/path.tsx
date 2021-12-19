@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react';
-import { useDiagramCanvas } from '.';
 
 import { useDiagramNodes } from './hook';
 import { IPath } from './type';

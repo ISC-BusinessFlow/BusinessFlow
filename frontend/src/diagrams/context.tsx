@@ -25,8 +25,8 @@ export const DiagramContextCanvas = React.createContext<
 });
 
 export const SetDiagramContext = React.createContext<ISetDiagramContext>({
-  registerNode: () => { },
-  registerPath: () => { },
+  registerNode: () => {},
+  registerPath: () => {},
 });
 
 export const DiagramProvider: React.FC = ({ children }) => {

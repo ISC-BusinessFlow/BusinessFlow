@@ -1,13 +1,14 @@
 import {
   Box,
   Center,
-  Text,
-  VStack,
   HStack,
   StackDivider,
+  Text,
+  VStack,
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { useEffect, useMemo, useRef, useState } from 'react';
+
 import {
   DiagramPaths,
   DiagramProvider,
