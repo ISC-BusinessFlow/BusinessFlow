@@ -1,7 +1,9 @@
+export type ID = number;
+
 export type IPath = {
-  id: string;
-  from: string;
-  to: string;
+  id: ID;
+  from: number;
+  to: number;
 };
 
 export type ICanvas = {
@@ -19,12 +21,12 @@ export type ICanvas = {
 };
 
 export type IDiagramContext = {
-  nodes: Record<string, DOMRect>;
-  paths: Record<string, DOMRect>;
+  nodes: Record<ID, DOMRect>;
+  paths: Record<ID, DOMRect>;
   canvas: ICanvas;
 };
 
 export type ISetDiagramContext = {
-  registerNode: (position: DOMRect, id: string) => void;
-  registerPath: (position: DOMRect, id: string) => void;
+  registerNode: (position: DOMRect, id: ID) => void;
+  registerPath: (position: DOMRect, id: ID) => void;
 };
