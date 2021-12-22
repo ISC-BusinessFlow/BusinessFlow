@@ -1,15 +1,14 @@
 import { Box, Flex } from '@chakra-ui/react';
 
+import Toolbar from '../components/new/ToolbarComponent';
+
 const New = () => {
   return (
     <>
       <Box bg="tomato" w="100%" p={4} color="white">
         Header
       </Box>
-      <div>
-        <button>new</button>
-        <input type="text" placeholder="search" />
-      </div>
+      <Toolbar></Toolbar>
       <Flex>
         <div>
           <div>
