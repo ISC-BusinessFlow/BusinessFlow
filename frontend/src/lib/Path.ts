@@ -24,19 +24,21 @@ export class PathAggregate implements Aggregate<Path> {
 type PathType = {
   id: number;
   from: number;
+  to: number | null;
   type: string;
 };
 
 export class Path {
-  readonly id: number;
-  readonly from: number;
-  readonly to: number | null = null;
-  readonly type: string;
+  readonly id: PathType['id'];
+  readonly from: PathType['from'];
+  readonly to: PathType['to'] = null;
+  readonly type: PathType['type'];
 
-  constructor({ id, from, type }: PathType) {
+  constructor({ id, from, to = null, type }: PathType) {
     makeAutoObservable(this);
     this.id = id;
     this.from = from;
+    this.to = to;
     this.type = type;
   }
 }

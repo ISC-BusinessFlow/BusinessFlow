@@ -23,19 +23,25 @@ export class TaskAggregate implements Aggregate<Task> {
 
 type TaskType = {
   id: number;
+  x: number;
+  y: number;
   type: string;
   label: string;
   description: string;
 };
 
 export class Task {
-  id: number;
-  type: string;
-  label: string;
-  description: string;
+  readonly id: TaskType['id'];
+  readonly x: TaskType['x'];
+  readonly y: TaskType['y'];
+  readonly type: TaskType['type'];
+  readonly label: TaskType['label'];
+  readonly description: TaskType['description'];
 
-  constructor({ id, type, label, description }: TaskType) {
+  constructor({ id, x, y, type, label, description }: TaskType) {
     this.id = id;
+    this.x = x;
+    this.y = y;
     this.type = type;
     this.label = label;
     this.description = description;

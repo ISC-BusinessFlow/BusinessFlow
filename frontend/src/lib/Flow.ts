@@ -3,11 +3,16 @@ import { makeAutoObservable } from 'mobx';
 import { Actor, ActorAggregate } from './Actor';
 import { Path, PathAggregate } from './Path';
 
+export type FlowType = {
+  id: string;
+  name: string;
+};
+
 export class Flow {
-  readonly name: string;
+  readonly name: FlowType['name'];
   readonly actorAggregate: ActorAggregate;
   readonly pathAggregate: PathAggregate;
-  constructor(name: string) {
+  constructor({ name }: FlowType) {
     this.name = name;
     this.actorAggregate = new ActorAggregate();
     this.pathAggregate = new PathAggregate();

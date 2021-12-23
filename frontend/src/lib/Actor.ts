@@ -30,11 +30,11 @@ type ActorType = {
 };
 
 export class Actor {
-  readonly id: number;
-  readonly name: string;
+  readonly id: ActorType['id'];
+  readonly name: ActorType['name'];
   readonly taskAggregate: TaskAggregate;
-  readonly createdAt: string;
-  readonly updatedAt: string;
+  readonly createdAt: ActorType['createdAt'];
+  readonly updatedAt: ActorType['updatedAt'];
 
   constructor({ id, name, createdAt, updatedAt }: ActorType) {
     this.id = id;
