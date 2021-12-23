@@ -4,15 +4,17 @@ import { Actor, ActorAggregate } from './Actor';
 import { Path, PathAggregate } from './Path';
 
 export type FlowType = {
-  id: string;
+  id: number;
   name: string;
 };
 
 export class Flow {
+  readonly id: FlowType['id'];
   readonly name: FlowType['name'];
   readonly actorAggregate: ActorAggregate;
   readonly pathAggregate: PathAggregate;
-  constructor({ name }: FlowType) {
+  constructor({ id, name }: FlowType) {
+    this.id = id;
     this.name = name;
     this.actorAggregate = new ActorAggregate();
     this.pathAggregate = new PathAggregate();
