@@ -1,3 +1,5 @@
+import { makeAutoObservable } from 'mobx';
+
 import { Aggregate } from './Aggregate';
 import { Task, TaskAggregate } from './Task';
 
@@ -6,6 +8,7 @@ export class ActorAggregate implements Aggregate<Actor> {
 
   constructor() {
     this.actors = [];
+    makeAutoObservable(this);
   }
 
   public add(actor: Actor) {
@@ -36,6 +39,7 @@ export class Actor {
     this.taskAggregate = new TaskAggregate();
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
+    makeAutoObservable(this);
   }
 
   public createTask(task: Task) {

@@ -1,3 +1,5 @@
+import { makeAutoObservable } from 'mobx';
+
 import { Aggregate } from './Aggregate';
 
 export class PathAggregate implements Aggregate<Path> {
@@ -5,6 +7,7 @@ export class PathAggregate implements Aggregate<Path> {
 
   constructor() {
     this.paths = [];
+    makeAutoObservable(this);
   }
 
   public add(path: Path) {
@@ -28,6 +31,7 @@ export class Path {
   readonly type: string;
 
   constructor({ id, from, type }: PathType) {
+    makeAutoObservable(this);
     this.id = id;
     this.from = from;
     this.type = type;

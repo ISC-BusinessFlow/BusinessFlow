@@ -1,3 +1,5 @@
+import { makeAutoObservable } from 'mobx';
+
 import { Actor, ActorAggregate } from './Actor';
 import { Path, PathAggregate } from './Path';
 
@@ -9,6 +11,7 @@ export class Flow {
     this.name = name;
     this.actorAggregate = new ActorAggregate();
     this.pathAggregate = new PathAggregate();
+    makeAutoObservable(this);
   }
   public createActor(actor: Actor) {
     this.actorAggregate.add(actor);

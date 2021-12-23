@@ -1,3 +1,5 @@
+import { makeAutoObservable } from 'mobx';
+
 import { Aggregate } from './Aggregate';
 
 export class TaskAggregate implements Aggregate<Task> {
@@ -5,6 +7,7 @@ export class TaskAggregate implements Aggregate<Task> {
 
   constructor() {
     this.tasks = [];
+    makeAutoObservable(this);
   }
 
   public add(task: Task) {
@@ -33,5 +36,6 @@ export class Task {
     this.type = type;
     this.label = label;
     this.description = description;
+    makeAutoObservable(this);
   }
 }
