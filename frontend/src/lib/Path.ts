@@ -11,6 +11,9 @@ export class PathAggregate implements Aggregate<Path> {
   }
 
   public add(path: Path) {
+    if (this.find(path.id)) {
+      return;
+    }
     this.paths.push(path);
   }
   public find(id: number) {

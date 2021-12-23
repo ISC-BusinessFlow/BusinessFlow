@@ -11,6 +11,9 @@ export class TaskAggregate implements Aggregate<Task> {
   }
 
   public add(task: Task) {
+    if (this.find(task.id)) {
+      return;
+    }
     this.tasks.push(task);
   }
   public find(id: number) {

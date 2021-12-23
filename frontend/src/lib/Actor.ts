@@ -12,6 +12,9 @@ export class ActorAggregate implements Aggregate<Actor> {
   }
 
   public add(actor: Actor) {
+    if (this.find(actor.id)) {
+      return;
+    }
     this.actors.push(actor);
   }
   public find(id: number) {
