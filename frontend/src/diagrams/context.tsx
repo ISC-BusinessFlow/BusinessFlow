@@ -45,14 +45,14 @@ export const DiagramProvider: React.FC = ({ children }) => {
     updated: false,
   });
 
-  const registerNode = useCallback((position: DOMRect, id: string) => {
+  const registerNode = useCallback((position: DOMRect, id: number) => {
     setNodes((cur) => ({
       ...cur,
       [id]: position,
     }));
   }, []);
 
-  const registerPath = useCallback((position: DOMRect, id: string) => {
+  const registerPath = useCallback((position: DOMRect, id: number) => {
     setPaths((cur) => ({
       ...cur,
       [id]: position,

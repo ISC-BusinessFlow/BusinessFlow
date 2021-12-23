@@ -6,7 +6,7 @@ import {
   DiagramContextPaths,
   SetDiagramContext,
 } from './context';
-import { ID, IDiagramContext, ISetDiagramContext } from './type';
+import { IDiagramContext, ISetDiagramContext } from './type';
 
 export const useDiagramNodes = (): IDiagramContext['nodes'] => {
   return useContext(DiagramContextNodes);
@@ -26,7 +26,7 @@ export const useSetDiagram = (): ISetDiagramContext => {
 
 export const useRegisterNode = (
   ref: React.RefObject<Element>,
-  id: ID
+  id: number
 ): ISetDiagramContext['registerNode'] => {
   const { registerNode } = useSetDiagram();
   const canvas = useDiagramCanvas();
@@ -53,7 +53,7 @@ export const useRegisterNode = (
 
 export const useRegisterPath = (
   ref: React.RefObject<Element>,
-  id: ID
+  id: number
 ): void => {
   const { registerPath } = useSetDiagram();
 
