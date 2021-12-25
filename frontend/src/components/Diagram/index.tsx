@@ -1,4 +1,5 @@
 import { StackDivider, VStack } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import { observer } from 'mobx-react-lite';
 
 import { Actor } from '@/components/Actor';
@@ -23,6 +24,19 @@ const ArrowMarker = () => {
   );
 };
 
+const StyledSvg = styled.svg<{ width: number; height: number }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  pointer-events: none;
+`;
+
+const StyledG = styled.g`
+  pointer-events: all;
+`;
+
 const DiagramPathsContainer: React.FC = ({ children }) => {
   const canvas = useDiagramCanvas();
 
@@ -31,19 +45,9 @@ const DiagramPathsContainer: React.FC = ({ children }) => {
   } = canvas;
 
   return (
-    <svg
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: width,
-        height,
-        pointerEvents: 'none',
-      }}
-      viewBox={`0 0 ${width} ${height}`}
-    >
-      <g style={{ pointerEvents: 'all' }}>{children}</g>
-    </svg>
+    <StyledSvg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
+      <StyledG>{children}</StyledG>
+    </StyledSvg>
   );
 };
 
