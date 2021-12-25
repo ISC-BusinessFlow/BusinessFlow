@@ -26,6 +26,8 @@ export const Actor: React.VFC<{ actor: ActorType }> = observer(({ actor }) => {
     handleSetSize();
 
     window.addEventListener('resize', handleSetSize);
+
+    return () => window.removeEventListener('resize', handleSetSize);
   }, []);
 
   return (
