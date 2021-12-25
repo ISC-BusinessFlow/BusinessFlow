@@ -24,6 +24,8 @@ module.exports = {
         depth: 25,
       },
     ],
+
+    'import/no-relative-parent-imports': 'error',
   },
   settings: {
     react: {
