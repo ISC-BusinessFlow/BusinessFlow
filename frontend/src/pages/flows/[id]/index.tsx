@@ -2,10 +2,10 @@ import { Box } from '@chakra-ui/react';
 
 import { Diagram } from '@/components/Diagram';
 import { DiagramProvider } from '@/diagrams';
-import { Actor } from '@/lib/Actor';
-import { Flow } from '@/lib/Flow';
-import { Path } from '@/lib/Path';
-import { Task } from '@/lib/Task';
+import { Actor } from '@/lib/models/Actor';
+import { Flow } from '@/lib/models/Flow';
+import { Path } from '@/lib/models/Path';
+import { Task } from '@/lib/models/Task';
 
 const flow = new Flow({ id: 1, name: 'sample', createdAt: '', updatedAt: '' });
 const actor1 = new Actor({

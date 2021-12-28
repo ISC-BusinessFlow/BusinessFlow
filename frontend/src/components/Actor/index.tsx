@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useRef, useState } from 'react';
 
 import { Task } from '@/components/Task';
-import { Actor as ActorType } from '@/lib/Actor';
+import { Actor as ActorType } from '@/lib/models/Actor';
 
 const StyledSvg = styled.svg`
   width: 100%;

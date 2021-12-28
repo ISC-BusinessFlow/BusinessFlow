@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { Actor } from '@/components/Actor';
 import { Paths } from '@/components/Paths';
 import { useDiagramCanvas } from '@/diagrams';
-import { Flow } from '@/lib/Flow';
+import { Flow } from '@/lib/models/Flow';
 
 const ArrowMarker = () => {
   return (
