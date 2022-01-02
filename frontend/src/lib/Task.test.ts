@@ -1,15 +1,24 @@
-import { Actor } from './Actor';
-import { Flow } from './Flow';
-import { Path } from './Path';
-import { Task } from './Task';
+import { Actor, ActorType } from './Actor';
+import { Flow, FlowType } from './Flow';
+import { Path, PathType } from './Path';
+import { Task, TaskType } from './Task';
 
-const mockData = {
-  flow: {
-    id: 1,
-    name: 'sample flow',
-    createdAt: '',
-    updatedAt: '',
-  },
+type Mock = {
+  flow: FlowType[];
+  actors: ActorType[];
+  paths: PathType[];
+  tasks: TaskType[];
+};
+
+const mockData: Mock = {
+  flow: [
+    {
+      id: 1,
+      name: 'sample flow',
+      createdAt: '',
+      updatedAt: '',
+    },
+  ],
   actors: [
     {
       id: 1,
@@ -27,13 +36,19 @@ const mockData = {
   paths: [
     {
       id: 1,
+      to: 2,
       from: 1,
       type: 'sample path type',
+      createdAt: '',
+      updatedAt: '',
     },
     {
       id: 2,
+      to: 3,
       from: 2,
       type: 'sample path type2',
+      createdAt: '',
+      updatedAt: '',
     },
   ],
   tasks: [
@@ -41,20 +56,28 @@ const mockData = {
       id: 1,
       type: 'sample type',
       label: 'label',
+      x: 0,
+      y: 0,
       description: 'description',
+      createdAt: '',
+      updatedAt: '',
     },
     {
       id: 2,
       type: 'sample type2',
       label: 'label2',
+      x: 0,
+      y: 0,
       description: 'description2',
+      createdAt: '',
+      updatedAt: '',
     },
   ],
 };
 
 describe('Taskのテスト', () => {
   it('createActorのテスト', () => {
-    const flow = new Flow(mockData.flow.name);
+    const flow = new Flow(mockData.flow[0]);
 
     const actors = mockData.actors.map((actor) => {
       const a = new Actor(actor);
@@ -68,7 +91,7 @@ describe('Taskのテスト', () => {
   });
 
   it('createPathのテスト', () => {
-    const flow = new Flow(mockData.flow.name);
+    const flow = new Flow(mockData.flow[0]);
     const paths = mockData.paths.map((path) => {
       const p = new Path(path);
       flow.createPath(p);
