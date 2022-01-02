@@ -22,7 +22,7 @@ export class ActorAggregate implements Aggregate<Actor> {
   }
 }
 
-type ActorType = {
+export type ActorType = {
   id: number;
   name: string;
   createdAt: string;

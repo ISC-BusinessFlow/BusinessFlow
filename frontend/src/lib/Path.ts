@@ -21,11 +21,13 @@ export class PathAggregate implements Aggregate<Path> {
   }
 }
 
-type PathType = {
+export type PathType = {
   id: number;
   from: number;
   to: number | null;
   type: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export class Path {
@@ -33,12 +35,16 @@ export class Path {
   readonly from: PathType['from'];
   readonly to: PathType['to'] = null;
   readonly type: PathType['type'];
+  readonly createdAt: PathType['createdAt'];
+  readonly updatedAt: PathType['updatedAt'];
 
-  constructor({ id, from, to = null, type }: PathType) {
-    makeAutoObservable(this);
+  constructor({ id, from, to = null, type, createdAt, updatedAt }: PathType) {
     this.id = id;
     this.from = from;
     this.to = to;
     this.type = type;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    makeAutoObservable(this);
   }
 }

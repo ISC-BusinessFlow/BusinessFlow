@@ -7,7 +7,7 @@ import { Flow } from '@/lib/Flow';
 import { Path } from '@/lib/Path';
 import { Task } from '@/lib/Task';
 
-const flow = new Flow({ id: 1, name: 'sample' });
+const flow = new Flow({ id: 1, name: 'sample', createdAt: '', updatedAt: '' });
 const actor1 = new Actor({
   id: 1,
   name: 'test1',
@@ -28,6 +28,8 @@ const task1 = new Task({
   type: '',
   label: '',
   description: '',
+  createdAt: '',
+  updatedAt: '',
 });
 const task2 = new Task({
   id: 2,
@@ -36,9 +38,18 @@ const task2 = new Task({
   type: '',
   label: '',
   description: '',
+  createdAt: '',
+  updatedAt: '',
 });
 
-const path1 = new Path({ id: 1, from: 1, to: 2, type: '' });
+const path1 = new Path({
+  id: 1,
+  from: 1,
+  to: 2,
+  type: '',
+  createdAt: '',
+  updatedAt: '',
+});
 
 flow.createActor(actor1);
 flow.createActor(actor2);
