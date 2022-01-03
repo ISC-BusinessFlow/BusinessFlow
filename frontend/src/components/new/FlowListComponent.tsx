@@ -10,7 +10,11 @@ import {
 } from '@chakra-ui/react';
 
 const FlowList = () => (
-  <SimpleGrid columns={2} w="100%" margin="0 50px">
+  <SimpleGrid columns={2} spacing={5} w="100%" m="0 50px">
+    <FlowCard />
+    <FlowCard />
+    <FlowCard />
+    <FlowCard />
     <FlowCard />
     <FlowCard />
     <FlowCard />
@@ -18,7 +22,7 @@ const FlowList = () => (
   </SimpleGrid>
 );
 const FlowCard = () => (
-  <Box borderWidth="1px" w="100%" h="100px" p="10px" margin="auto">
+  <Box borderWidth="1px" w="100%" h="100px" p="10px">
     <Box display="flex" alignItems="baseline">
       <Text>Flow1</Text>
       <Spacer />
