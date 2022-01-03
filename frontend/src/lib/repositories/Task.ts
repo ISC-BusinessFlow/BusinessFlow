@@ -20,7 +20,7 @@ export class TaskRepo implements ITaskRepo {
   }
 
   public async getTasks(): ReturnType<ITaskRepo['getTasks']> {
-    return await this.api.get('/tasks').json();
+    return await this.api.get('tasks').json();
   }
 
   public async getTaskById({
@@ -28,7 +28,7 @@ export class TaskRepo implements ITaskRepo {
   }: FirstArgument<ITaskRepo['getTaskById']>): ReturnType<
     ITaskRepo['getTaskById']
   > {
-    return await this.api.get(`/tasks/${id}`).json();
+    return await this.api.get(`tasks/${id}`).json();
   }
 
   public async deleteTaskById({
@@ -36,7 +36,7 @@ export class TaskRepo implements ITaskRepo {
   }: FirstArgument<ITaskRepo['deleteTaskById']>): ReturnType<
     ITaskRepo['deleteTaskById']
   > {
-    return await this.api.delete(`/tasks/${id}`).json();
+    return await this.api.delete(`tasks/${id}`).json();
   }
 
   public async updateTaskById({
@@ -45,6 +45,6 @@ export class TaskRepo implements ITaskRepo {
   }: FirstArgument<ITaskRepo['updateTaskById']>): ReturnType<
     ITaskRepo['updateTaskById']
   > {
-    return await this.api.put(`/tasks/${id}`, { json: rest }).json();
+    return await this.api.put(`tasks/${id}`, { json: rest }).json();
   }
 }

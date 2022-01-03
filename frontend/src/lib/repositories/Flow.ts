@@ -25,7 +25,7 @@ export class FlowRepo implements IFlowRepo {
   }
 
   public async getFlows(): ReturnType<IFlowRepo['getFlows']> {
-    return await this.api.get('/flows').json();
+    return await this.api.get('flows').json();
   }
 
   public async createFlow({
@@ -33,7 +33,7 @@ export class FlowRepo implements IFlowRepo {
   }: FirstArgument<IFlowRepo['createFlow']>): ReturnType<
     IFlowRepo['createFlow']
   > {
-    return await this.api.post('/flows', { json: { name } }).json();
+    return await this.api.post('flows', { json: { name } }).json();
   }
 
   public async getFlowById({

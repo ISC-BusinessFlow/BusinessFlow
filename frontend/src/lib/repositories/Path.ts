@@ -20,7 +20,7 @@ export class PathRepo implements IPathRepo {
   }
 
   public async getPaths(): ReturnType<IPathRepo['getPaths']> {
-    return await this.api.get('/paths').json();
+    return await this.api.get('paths').json();
   }
 
   public async getPathById({
@@ -28,7 +28,7 @@ export class PathRepo implements IPathRepo {
   }: FirstArgument<IPathRepo['getPathById']>): ReturnType<
     IPathRepo['getPathById']
   > {
-    return await this.api.get(`/paths/${id}`).json();
+    return await this.api.get(`paths/${id}`).json();
   }
 
   public async deletePathById({
@@ -36,7 +36,7 @@ export class PathRepo implements IPathRepo {
   }: FirstArgument<IPathRepo['deletePathById']>): ReturnType<
     IPathRepo['deletePathById']
   > {
-    return await this.api.delete(`/paths/${id}`).json();
+    return await this.api.delete(`paths/${id}`).json();
   }
 
   public async updatePathById({
@@ -45,6 +45,6 @@ export class PathRepo implements IPathRepo {
   }: FirstArgument<IPathRepo['updatePathById']>): ReturnType<
     IPathRepo['updatePathById']
   > {
-    return await this.api.put(`/paths/${id}`, { json: rest }).json();
+    return await this.api.put(`paths/${id}`, { json: rest }).json();
   }
 }

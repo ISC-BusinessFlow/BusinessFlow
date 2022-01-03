@@ -20,7 +20,7 @@ export class ActorRepo implements IActorRepo {
   }
 
   public async getActors(): ReturnType<IActorRepo['getActors']> {
-    return await this.api.get('/actors').json();
+    return await this.api.get('actors').json();
   }
 
   public async getActorById({
@@ -28,7 +28,7 @@ export class ActorRepo implements IActorRepo {
   }: FirstArgument<IActorRepo['getActorById']>): ReturnType<
     IActorRepo['getActorById']
   > {
-    return await this.api.get(`/actors/${id}`).json();
+    return await this.api.get(`actors/${id}`).json();
   }
 
   public async deleteActorById({
@@ -36,7 +36,7 @@ export class ActorRepo implements IActorRepo {
   }: FirstArgument<IActorRepo['deleteActorById']>): ReturnType<
     IActorRepo['deleteActorById']
   > {
-    return await this.api.delete(`/actors/${id}`).json();
+    return await this.api.delete(`actors/${id}`).json();
   }
 
   public async updateActorById({
@@ -45,6 +45,6 @@ export class ActorRepo implements IActorRepo {
   }: FirstArgument<IActorRepo['updateActorById']>): ReturnType<
     IActorRepo['updateActorById']
   > {
-    return await this.api.put(`/actors/${id}`, { json: rest }).json();
+    return await this.api.put(`actors/${id}`, { json: rest }).json();
   }
 }
