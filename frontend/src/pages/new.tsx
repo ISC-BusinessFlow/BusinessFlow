@@ -11,11 +11,7 @@ const New = () => {
       </Box>
       <Toolbar></Toolbar>
       <Flex>
-        <div>
-          <div>
-            <FlowList />
-          </div>
-        </div>
+        <FlowList />
       </Flex>
     </>
   );
