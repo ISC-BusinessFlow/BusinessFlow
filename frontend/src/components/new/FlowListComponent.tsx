@@ -1,12 +1,12 @@
 import {
   Box,
-  Text,
-  SimpleGrid,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
+  MenuList,
+  SimpleGrid,
   Spacer,
+  Text,
 } from '@chakra-ui/react';
 
 const FlowList = () => (
