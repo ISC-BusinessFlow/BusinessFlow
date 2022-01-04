@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 
-import FlowList from '../components/new/FlowListComponent';
+import { FlowList } from '../components/new/FlowListComponent';
 import { Toolbar } from '../components/new/ToolbarComponent';
 
 const New = () => {

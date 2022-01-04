@@ -9,22 +9,34 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-const FlowList = () => (
-  <SimpleGrid columns={2} spacing={5} w="100%" m="0 50px">
-    <FlowCard />
-    <FlowCard />
-    <FlowCard />
-    <FlowCard />
-    <FlowCard />
-    <FlowCard />
-    <FlowCard />
-    <FlowCard />
-  </SimpleGrid>
-);
-const FlowCard = () => (
+type FLowListType = {
+  id?: number;
+  title: string;
+  createdAt: string;
+};
+const flows: FLowListType[] = [
+  { id: 1, title: 'Flow1', createdAt: '2022-01-01' },
+  { id: 2, title: 'Flow2', createdAt: '2022-01-02' },
+  { id: 3, title: 'Flow3', createdAt: '2022-01-03' },
+];
+
+export const FlowList = () => {
+  return (
+    <SimpleGrid columns={2} spacing={5} w="100%" m="0 50px">
+      {flows.map((flow: FLowListType) => {
+        return (
+          <div key={flow.id}>
+            <FlowCard title={flow.title} createdAt={flow.createdAt} />
+          </div>
+        );
+      })}
+    </SimpleGrid>
+  );
+};
+const FlowCard = ({ title, createdAt }: FLowListType) => (
   <Box borderWidth="1px" w="100%" h="100px" p="10px">
     <Box display="flex" alignItems="baseline">
-      <Text>Flow1</Text>
+      <Text>{title}</Text>
       <Spacer />
       <Menu>
         <MenuButton as="button">
@@ -48,8 +60,6 @@ const FlowCard = () => (
         </MenuList>
       </Menu>
     </Box>
-    <Text>createdAt</Text>
+    <Text>{createdAt}</Text>
   </Box>
 );
-
-export default FlowList;
