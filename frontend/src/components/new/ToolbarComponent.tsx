@@ -11,11 +11,9 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 
-import styles from '../../css/Toolbar.module.css';
-
-const Toolbar = () => {
+export const Toolbar = () => {
   return (
-    <div className={styles.toolbar}>
+    <Box mx={'50px'} py={'20px'} borderBottom={'1px'}>
       <Flex>
         <Box>
           <Button
@@ -50,8 +48,6 @@ const Toolbar = () => {
           </Select>
         </Box>
       </Flex>
-    </div>
+    </Box>
   );
 };
-
-export default Toolbar;

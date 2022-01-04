@@ -1,9 +1,20 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
-const Index = () => (
-  <Box bg="tomato" w="100%" p={4} color="white">
-    This is the Box^^
-  </Box>
-);
+import FlowList from '../components/new/FlowListComponent';
+import { Toolbar } from '../components/new/ToolbarComponent';
 
-export default Index;
+const New = () => {
+  return (
+    <>
+      <Box bg="tomato" w="100%" p={4} color="white">
+        Header
+      </Box>
+      <Toolbar></Toolbar>
+      <Flex>
+        <FlowList />
+      </Flex>
+    </>
+  );
+};
+
+export default New;
