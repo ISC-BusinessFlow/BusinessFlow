@@ -11,6 +11,7 @@ import {
 
 type FLowListType = {
   id?: number;
+  key?: number;
   title: string;
   createdAt: string;
 };
@@ -25,16 +26,18 @@ export const FlowList = () => {
     <SimpleGrid columns={2} spacing={5} w="100%" m="0 50px">
       {flows.map((flow: FLowListType) => {
         return (
-          <div key={flow.id}>
-            <FlowCard title={flow.title} createdAt={flow.createdAt} />
-          </div>
+          <FlowCard
+            key={flow.id}
+            title={flow.title}
+            createdAt={flow.createdAt}
+          />
         );
       })}
     </SimpleGrid>
   );
 };
-const FlowCard = ({ title, createdAt }: FLowListType) => (
-  <Box borderWidth="1px" w="100%" h="100px" p="10px">
+const FlowCard = ({ key, title, createdAt }: FLowListType) => (
+  <Box borderWidth="1px" w="100%" h="100px" p="10px" key={key}>
     <Box display="flex" alignItems="baseline">
       <Text>{title}</Text>
       <Spacer />
