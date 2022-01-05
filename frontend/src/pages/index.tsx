@@ -1,7 +1,13 @@
 import { Box, Flex } from '@chakra-ui/react';
 
-import { FlowList } from '../components/new/FlowListComponent';
+import { FlowList, FlowListType } from '../components/new/FlowListComponent';
 import { Toolbar } from '../components/new/ToolbarComponent';
+
+const dummyFlows: FlowListType[] = [
+  { id: 1, title: 'Flow1', createdAt: '2022-01-01' },
+  { id: 2, title: 'Flow2', createdAt: '2022-01-02' },
+  { id: 3, title: 'Flow3', createdAt: '2022-01-03' },
+];
 
 const New = () => {
   return (
@@ -11,7 +17,7 @@ const New = () => {
       </Box>
       <Toolbar></Toolbar>
       <Flex>
-        <FlowList />
+        <FlowList flows={dummyFlows} />
       </Flex>
     </>
   );

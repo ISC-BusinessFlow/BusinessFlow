@@ -9,22 +9,17 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-type FLowListType = {
+export type FlowListType = {
   id?: number;
   key?: number;
   title: string;
   createdAt: string;
 };
-const flows: FLowListType[] = [
-  { id: 1, title: 'Flow1', createdAt: '2022-01-01' },
-  { id: 2, title: 'Flow2', createdAt: '2022-01-02' },
-  { id: 3, title: 'Flow3', createdAt: '2022-01-03' },
-];
 
-export const FlowList = () => {
+export const FlowList = (flows: FlowListType[]) => {
   return (
     <SimpleGrid columns={2} spacing={5} w="100%" m="0 50px">
-      {flows.map((flow: FLowListType) => {
+      {flows.map((flow) => {
         return (
           <FlowCard
             key={flow.id}
@@ -36,7 +31,7 @@ export const FlowList = () => {
     </SimpleGrid>
   );
 };
-const FlowCard = ({ key, title, createdAt }: FLowListType) => (
+const FlowCard = ({ key, title, createdAt }: FlowListType) => (
   <Box borderWidth="1px" w="100%" h="100px" p="10px" key={key}>
     <Box display="flex" alignItems="baseline">
       <Text>{title}</Text>
