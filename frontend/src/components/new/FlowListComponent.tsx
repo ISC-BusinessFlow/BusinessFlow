@@ -8,7 +8,6 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react';
-
 import { VscKebabVertical } from 'react-icons/vsc';
 
 export type FlowListType = {
