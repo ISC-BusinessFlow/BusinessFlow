@@ -10,8 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 export type FlowListType = {
-  id?: number;
-  key?: number;
+  id: number;
   title: string;
   createdAt: string;
 };
@@ -22,6 +21,7 @@ export const FlowList: React.VFC<{ flows: FlowListType[] }> = ({ flows }) => {
       {flows.map((flow) => {
         return (
           <FlowCard
+            id={flow.id}
             key={flow.id}
             title={flow.title}
             createdAt={flow.createdAt}
@@ -50,8 +50,8 @@ const KebabMenuIcon = () => (
   </MenuButton>
 );
 
-const FlowCard = ({ key, title, createdAt }: FlowListType) => (
-  <Box borderWidth="1px" w="100%" h="100px" p="10px" key={key}>
+const FlowCard = ({ id, title, createdAt }: FlowListType) => (
+  <Box borderWidth="1px" w="100%" h="100px" p="10px" key={id}>
     <Box display="flex" alignItems="baseline">
       <Text>{title}</Text>
       <Spacer />
