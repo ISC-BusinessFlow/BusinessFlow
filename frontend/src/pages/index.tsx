@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Spacer } from '@chakra-ui/react';
 
 import { FlowList, FlowListType } from '../components/new/FlowListComponent';
 import { Toolbar } from '../components/new/ToolbarComponent';
@@ -16,6 +16,7 @@ const New = () => {
         Header
       </Box>
       <Toolbar></Toolbar>
+      <Spacer />
       <Flex>
         <FlowList flows={dummyFlows} />
       </Flex>
