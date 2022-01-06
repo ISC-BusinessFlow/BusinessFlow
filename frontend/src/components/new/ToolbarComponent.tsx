@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { AddIcon, SearchIcon } from '@chakra-ui/icons';
 import {
   Box,
@@ -10,6 +9,13 @@ import {
   Select,
   Spacer,
 } from '@chakra-ui/react';
+
+const orderOptions = [
+  { label: '作成日時(昇順)', value: 'created-asc' },
+  { label: '作成日時(降順)', value: 'created-desc' },
+  { label: '更新日時(昇順)', value: 'updated-asc' },
+  { label: '更新日時(降順)', value: 'updated-desc' },
+];
 
 export const Toolbar = () => {
   return (
@@ -26,7 +32,9 @@ export const Toolbar = () => {
         </Box>
         <Box w="50%" ml="5px">
           <InputGroup>
-            <InputLeftElement children={<SearchIcon color={'gray'} />} />
+            <InputLeftElement>
+              <SearchIcon color={'gray'} />
+            </InputLeftElement>
             <Input
               placeholder="キーワードを入力"
               borderRadius="none"
@@ -41,10 +49,11 @@ export const Toolbar = () => {
             borderRadius="none"
             focusBorderColor="none"
           >
-            <option value="created-asc">作成日時(昇順)</option>
-            <option value="created-desc">作成日時(降順)</option>
-            <option value="updated-asc">更新日時(昇順)</option>
-            <option value="updated-desc">更新日時(降順)</option>
+            {orderOptions.map((order) => (
+              <option value={order.value} key={order.value}>
+                {order.label}
+              </option>
+            ))}
           </Select>
         </Box>
       </Flex>
