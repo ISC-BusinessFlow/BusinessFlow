@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { ICanvas, IDiagramContext, ISetDiagramContext } from './type';
 
@@ -30,7 +30,6 @@ export const SetDiagramContext = React.createContext<ISetDiagramContext>({
 });
 
 export const DiagramProvider: React.FC = ({ children }) => {
-  const canvasRef = useRef<HTMLDivElement>(null);
   const [nodes, setNodes] = useState<IDiagramContext['nodes']>({});
   const [paths, setPaths] = useState<IDiagramContext['paths']>({});
   const [canvas, setCanvas] = useState<ICanvas>({
@@ -59,32 +58,31 @@ export const DiagramProvider: React.FC = ({ children }) => {
     }));
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (canvasRef.current) {
-        const { top, left, width, height } =
-          canvasRef.current.getBoundingClientRect();
+  const canvasRef: React.RefCallback<HTMLDivElement> = useCallback((node) => {
+    const resizeObserver = new ResizeObserver((entries) => {
+      const target = entries[0].target;
+      const { top, left, width, height } = target.getBoundingClientRect();
 
-        setCanvas((cur) => ({
-          ...cur,
-          position: {
-            top,
-            left,
-          },
-          size: {
-            width,
-            height,
-          },
-          updated: true,
-        }));
-      }
-    };
+      setCanvas((cur) => ({
+        ...cur,
+        position: {
+          top,
+          left,
+        },
+        size: {
+          width,
+          height,
+        },
+        updated: true,
+      }));
+    });
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    if (node) {
+      resizeObserver.observe(node);
+    }
 
-    return () => window.removeEventListener('resize', handleResize);
-  }, [canvasRef.current]);
+    return () => resizeObserver.disconnect();
+  }, []);
 
   return (
     <div ref={canvasRef}>
