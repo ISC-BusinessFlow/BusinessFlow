@@ -54,7 +54,7 @@ export const useRegisterNode = (
 export const useRegisterPath = (
   ref: React.RefObject<Element>,
   id: number
-): void => {
+): ISetDiagramContext['registerNode'] => {
   const { registerPath } = useSetDiagram();
 
   useEffect(() => {
@@ -62,4 +62,6 @@ export const useRegisterPath = (
       registerPath(ref.current.getBoundingClientRect(), id);
     }
   }, []);
+
+  return registerPath;
 };
