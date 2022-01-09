@@ -23,6 +23,8 @@ export class TaskAggregate implements Aggregate<Task> {
 
 export type TaskType = {
   id: number;
+  actorId: number;
+  flowId: number;
   x: number;
   y: number;
   type: string;
@@ -34,6 +36,8 @@ export type TaskType = {
 
 export class Task {
   readonly id: TaskType['id'];
+  readonly actorId: TaskType['actorId'];
+  readonly flowId: TaskType['flowId'];
   readonly x: TaskType['x'];
   readonly y: TaskType['y'];
   readonly type: TaskType['type'];
@@ -44,6 +48,8 @@ export class Task {
 
   constructor({
     id,
+    actorId,
+    flowId,
     x,
     y,
     type,
@@ -53,6 +59,8 @@ export class Task {
     updatedAt,
   }: TaskType) {
     this.id = id;
+    this.actorId = actorId;
+    this.flowId = flowId;
     this.x = x;
     this.y = y;
     this.type = type;

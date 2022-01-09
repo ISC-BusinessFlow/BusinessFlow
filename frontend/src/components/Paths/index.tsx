@@ -11,14 +11,14 @@ export const Paths: React.VFC<{ paths: PathType[] }> = observer(({ paths }) => {
     <>
       {paths.map(
         (path) =>
-          path.to &&
-          nodes[path.from] &&
-          nodes[path.to] && (
+          path.toTaskId &&
+          nodes[path.fromTaskId] &&
+          nodes[path.toTaskId] && (
             <Path
               key={path.id}
               path={path}
-              from={nodes[path.from]}
-              to={nodes[path.to]}
+              from={nodes[path.fromTaskId]}
+              to={nodes[path.toTaskId]}
             />
           )
       )}

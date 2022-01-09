@@ -10,12 +10,14 @@ import { Task } from '@/lib/Task';
 const flow = new Flow({ id: 1, name: 'sample', createdAt: '', updatedAt: '' });
 const actor1 = new Actor({
   id: 1,
+  flowId: 1,
   name: 'test1',
   createdAt: '',
   updatedAt: '',
 });
 const actor2 = new Actor({
   id: 2,
+  flowId: 1,
   name: 'test2',
   createdAt: '',
   updatedAt: '',
@@ -23,6 +25,8 @@ const actor2 = new Actor({
 
 const task1 = new Task({
   id: 1,
+  actorId: 1,
+  flowId: 1,
   x: 100,
   y: 40,
   type: '',
@@ -33,6 +37,8 @@ const task1 = new Task({
 });
 const task2 = new Task({
   id: 2,
+  actorId: 2,
+  flowId: 1,
   x: 300,
   y: 40,
   type: '',
@@ -44,8 +50,9 @@ const task2 = new Task({
 
 const path1 = new Path({
   id: 1,
-  from: 1,
-  to: 2,
+  fromTaskId: 1,
+  toTaskId: 2,
+  flowId: 1,
   type: '',
   createdAt: '',
   updatedAt: '',

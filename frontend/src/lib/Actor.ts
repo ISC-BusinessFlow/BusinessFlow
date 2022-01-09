@@ -24,6 +24,7 @@ export class ActorAggregate implements Aggregate<Actor> {
 
 export type ActorType = {
   id: number;
+  flowId: number;
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -31,13 +32,15 @@ export type ActorType = {
 
 export class Actor {
   readonly id: ActorType['id'];
+  readonly flowId: ActorType['flowId'];
   readonly name: ActorType['name'];
   readonly taskAggregate: TaskAggregate;
   readonly createdAt: ActorType['createdAt'];
   readonly updatedAt: ActorType['updatedAt'];
 
-  constructor({ id, name, createdAt, updatedAt }: ActorType) {
+  constructor({ id, flowId, name, createdAt, updatedAt }: ActorType) {
     this.id = id;
+    this.flowId = flowId;
     this.name = name;
     this.taskAggregate = new TaskAggregate();
     this.createdAt = createdAt;

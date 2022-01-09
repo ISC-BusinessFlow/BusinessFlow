@@ -23,8 +23,9 @@ export class PathAggregate implements Aggregate<Path> {
 
 export type PathType = {
   id: number;
-  from: number;
-  to: number | null;
+  fromTaskId: number;
+  toTaskId: number | null;
+  flowId: number;
   type: string;
   createdAt: string;
   updatedAt: string;
@@ -32,16 +33,26 @@ export type PathType = {
 
 export class Path {
   readonly id: PathType['id'];
-  readonly from: PathType['from'];
-  readonly to: PathType['to'] = null;
+  readonly fromTaskId: PathType['fromTaskId'];
+  readonly toTaskId: PathType['toTaskId'] = null;
+  readonly flowId: PathType['flowId'];
   readonly type: PathType['type'];
   readonly createdAt: PathType['createdAt'];
   readonly updatedAt: PathType['updatedAt'];
 
-  constructor({ id, from, to = null, type, createdAt, updatedAt }: PathType) {
+  constructor({
+    id,
+    fromTaskId,
+    toTaskId = null,
+    flowId,
+    type,
+    createdAt,
+    updatedAt,
+  }: PathType) {
     this.id = id;
-    this.from = from;
-    this.to = to;
+    this.fromTaskId = fromTaskId;
+    this.toTaskId = toTaskId;
+    this.flowId = flowId;
     this.type = type;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
