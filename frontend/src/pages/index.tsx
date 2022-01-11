@@ -5,9 +5,10 @@ import { api } from '@/api';
 import { FlowList } from '@/components/new/FlowListComponent';
 import { Toolbar } from '@/components/new/ToolbarComponent';
 import { FlowRepo } from '@/lib/repositories/Flow';
+import { flowCacheKey } from '@/utils/cacheKey';
 
 const New = () => {
-  const { data } = useQuery('flows', () => {
+  const { data } = useQuery(flowCacheKey.getAll, () => {
     const repo = new FlowRepo(api);
     return repo.getFlows();
   });

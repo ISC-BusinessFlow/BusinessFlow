@@ -8,28 +8,29 @@ import { Flow } from '@/lib/models/Flow';
 import { Path } from '@/lib/models/Path';
 import { Task } from '@/lib/models/Task';
 import { FlowRepo } from '@/lib/repositories/Flow';
+import { flowCacheKey } from '@/utils/cacheKey';
 
 export const useBootstrapFlow = ({ id }: { id: number }) => {
   const flowRepo = new FlowRepo(api);
   const [flow, setFlow] = useState<Flow | null>(null);
   const [canCreateTask, setCanCreateTask] = useState(false);
 
-  useQuery(['flows', 'detail', id], () => flowRepo.getFlowById({ id }), {
+  useQuery(flowCacheKey.getById(id), () => flowRepo.getFlowById({ id }), {
     onSuccess: (data) => {
       setFlow(new Flow(data));
     },
   });
 
   const { data: actorsData, isLoading: isActorsLoading } = useQuery(
-    ['tasks', 'detail', id, 'actors'],
+    flowCacheKey.getActorsById(id),
     () => flowRepo.getFlowActors({ id })
   );
   const { data: tasksData, isLoading: isTasksLoading } = useQuery(
-    ['tasks', 'detail', id, 'tasks'],
+    flowCacheKey.getTasksById(id),
     () => flowRepo.getFlowTasks({ id })
   );
   const { data: pathsData, isLoading: isPathsLoading } = useQuery(
-    ['tasks', 'detail', id, 'paths'],
+    flowCacheKey.getPathsById(id),
     () => flowRepo.getFlowPaths({ id })
   );
 
