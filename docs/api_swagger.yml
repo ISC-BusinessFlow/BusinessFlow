@@ -150,6 +150,21 @@ paths:
           description: '新規taskのactorのid'
           required: true
           type: 'number'
+        - name: 'x'
+          in: 'formData'
+          description: '新規taskのx座標の値'
+          required: true
+          type: 'number'
+        - name: 'y'
+          in: 'formData'
+          description: '新規taskのy座標の値'
+          required: true
+          type: 'number'
+        - name: 'label'
+          in: 'formData'
+          description: '新規taskのlabel'
+          required: false
+          type: 'string'
       responses:
         '201':
           description: OK
@@ -207,6 +222,21 @@ paths:
           description: '更新後のtaskのactorのid'
           required: true
           type: 'number'
+        - name: 'x'
+          in: 'formData'
+          description: '更新後のtaskのx座標の値'
+          required: true
+          type: 'number'
+        - name: 'y'
+          in: 'formData'
+          description: '更新後のtaskのy座標の値'
+          required: true
+          type: 'number'
+        - name: 'label'
+          in: 'formData'
+          description: '更新後のtaskのlabel'
+          required: false
+          type: 'string'
       responses:
         '200':
           description: OK
@@ -239,6 +269,11 @@ paths:
           description: '新規pathの先になるtaskのid'
           required: true
           type: 'number'
+        - name: 'label'
+          in: 'formData'
+          description: '新規pathのlabel'
+          required: false
+          type: 'string'
       responses:
         '201':
           description: OK
@@ -296,6 +331,11 @@ paths:
           description: '更新後のpathの先になるtaskのid'
           required: true
           type: 'number'
+        - name: 'label'
+          in: 'formData'
+          description: '更新後のpathのlabel'
+          required: false
+          type: 'string'
       responses:
         '200':
           description: OK
@@ -429,6 +469,15 @@ definitions:
       actor_id:
         type: 'integer'
         format: 'int64'
+      x:
+        type: 'number'
+        format: 'float'
+      y:
+        type: 'number'
+        format: 'float'
+      label:
+        type: 'string'
+        format: 'vchar(30)'
       created_at:
         type: 'string'
         format: 'date'
@@ -455,6 +504,9 @@ definitions:
       to_task_id:
         type: 'integer'
         format: 'vchar(100)'
+      label:
+        type: 'string'
+        format: 'vchar(30)'
       created_at:
         type: 'string'
         format: 'date'
