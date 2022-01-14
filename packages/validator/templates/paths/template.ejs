@@ -1,0 +1,18 @@
+import { PathRule } from '../base.ts';
+
+export const path<%= id %> = new PathRule({
+  name: <%= name %>,
+  id: <%= id %>,
+  from: {
+    allowTasks: <%= from.allowTasks %>
+    allowPaths: <%= from.allowPaths %>
+    denyTasks: <%= from.denyTasks %>
+    denyPaths: <%= from.denyPaths %>
+  }
+  to: {
+    allowTasks: <%= to.allowTasks %>
+    allowPaths: <%= to.allowPaths %>
+    denyTasks: <%= to.denyTasks %>
+    denyPaths: <%= to.denyPaths %>
+  }
+})
