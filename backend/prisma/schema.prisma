@@ -23,7 +23,7 @@ model Task {
   actorId   Int
   fromTasks Path[]   @relation("FromTasks")
   toTasks   Path[]   @relation("ToTasks")
-  Label     String   @db.VarChar(30)
+  Label     String?   @db.VarChar(30)
   x         Float
   y         Float
 }
@@ -40,7 +40,7 @@ model Path {
   pathTypeId Int
   flow       Flow     @relation(fields: [flowId], references: [id])
   flowId     Int
-  Label      String   @db.VarChar(30)
+  Label      String?   @db.VarChar(30)
   }
 
 model Actor {
