@@ -9,5 +9,12 @@
     "@types/ejs": "^3.1.0",
     "@types/js-yaml": "^4.0.5",
     "ts-node": "^10.4.0"
+  },
+  "scripts": {
+    "generate": "rm -rf ./generate && ts-node src/index.ts",
+    "lint": "run-s lint:**",
+    "lint-fix": "run-s lint-fix:**",
+    "lint:eslint": "eslint 'src/**/*.ts' 'templates/**/*.ts' 'generate/**/*.ts'",
+    "lint-fix:eslint": "yarn run lint:eslint --fix"
   }
 }
