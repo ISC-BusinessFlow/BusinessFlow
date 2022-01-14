@@ -21,8 +21,11 @@ export function validateRelation({
   pathId: number;
   toId: number;
 }): Result {
+  // @ts-ignore
   const fromTask: TaskRule = tasks[`task${fromId}`];
+  // @ts-ignore
   const path: PathRule = paths[`path${pathId}`];
+  // @ts-ignore
   const toTask: TaskRule = tasks[`task${toId}`];
 
   const errors: Error[] = [];
@@ -43,12 +46,14 @@ export function validateRelation({
 }
 
 export function getTaskRule(id: number) {
+  // @ts-ignore
   const task = tasks[`task${id}`];
 
   return task.getRule();
 }
 
 export function getPathRule(id: number) {
+  // @ts-ignore
   const path = paths[`path${id}`];
 
   return path.getRule();

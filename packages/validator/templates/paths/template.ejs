@@ -1,18 +1,20 @@
-import { PathRule } from '../base.ts';
+<%- include('../header'); %>
+import { PathRule } from '../base';
 
+<% const formatArray = (array) => array.map(item => `'${item}'`).join(", ") %>
 export const path<%= id %> = new PathRule({
-  name: <%= name %>,
+  name: '<%= name %>',
   id: <%= id %>,
   from: {
-    allowTasks: <%= from.allowTasks %>
-    allowPaths: <%= from.allowPaths %>
-    denyTasks: <%= from.denyTasks %>
-    denyPaths: <%= from.denyPaths %>
-  }
+    allowTasks: [<%- formatArray(from.allowTasks) %>],
+    allowPaths: [<%- formatArray(from.allowPaths) %>],
+    denyTasks: [<%- formatArray(from.denyTasks) %>],
+    denyPaths: [<%- formatArray(from.denyPaths) %>],
+  },
   to: {
-    allowTasks: <%= to.allowTasks %>
-    allowPaths: <%= to.allowPaths %>
-    denyTasks: <%= to.denyTasks %>
-    denyPaths: <%= to.denyPaths %>
-  }
+    allowTasks: [<%- formatArray(to.allowTasks) %>],
+    allowPaths: [<%- formatArray(to.allowPaths) %>],
+    denyTasks: [<%- formatArray(to.denyTasks) %>],
+    denyPaths: [<%- formatArray(to.denyPaths) %>],
+  },
 })

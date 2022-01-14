@@ -1,3 +1,4 @@
+<%- include('../header'); %>
 <% taskIds.forEach((id) => { %>
-import * from './task<%= id %>';
+export * from './task<%= id %>';
 <% }) %>

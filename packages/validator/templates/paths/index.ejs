@@ -1,3 +1,4 @@
+<%- include('../header'); %>
 <% pathIds.forEach((id) => { %>
-import * from './path<%= id %>';
+export * from './path<%= id %>';
 <% }) %>
