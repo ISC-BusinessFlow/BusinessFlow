@@ -1,7 +1,7 @@
 <%- include('../header'); %>
 import { PathRule } from '../base';
 
-<% const formatArray = (array) => array.map(item => `'${item}'`).join(", ") %>
+<% const formatArray = (array) => array.map(item => `{name: '${item.name}', id: ${item.id}}`).join(", ") %>
 export const path<%= id %> = new PathRule({
   name: '<%= name %>',
   id: <%= id %>,
