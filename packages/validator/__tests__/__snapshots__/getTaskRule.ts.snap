@@ -1,0 +1,517 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getTaskRule システムからの入力 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "denyTasks": Array [],
+  },
+}
+`;
+
+exports[`getTaskRule システムからの出力 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+    ],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+}
+`;
+
+exports[`getTaskRule データストア 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+    ],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+}
+`;
+
+exports[`getTaskRule トリガ 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [],
+    "allowTasks": Array [],
+    "denyPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "denyTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+    ],
+    "denyPaths": Array [
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "denyTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+  },
+}
+`;
+
+exports[`getTaskRule 入出力 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+}
+`;
+
+exports[`getTaskRule 処理 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "処理",
+      },
+      Object {
+        "id": 6,
+        "name": "データストア",
+      },
+    ],
+    "denyPaths": Array [
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "denyTasks": Array [],
+  },
+}
+`;
