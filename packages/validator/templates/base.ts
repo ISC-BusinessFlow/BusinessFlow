@@ -35,6 +35,18 @@ export class Error implements IError {
     console.log({ to: this.to });
     console.groupEnd();
   }
+
+  public getError() {
+    return {
+      message: this.message,
+      relation: {
+        from: this.from,
+        to: this.to,
+        path: this.path,
+      },
+      level: this.level,
+    };
+  }
 }
 
 type Rule = {
@@ -121,7 +133,7 @@ abstract class BaseRule {
         new Error({
           from: { name: this.name, id: this.id },
           to: denyPath,
-          message: `${this.name}の前に${denyPath.name}が来ることはできません。`,
+          message: `${this.name}の次に${denyPath.name}が来ることはできません。`,
           level: 'ERROR',
         })
       );
