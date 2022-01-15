@@ -1,27 +1,24 @@
 export type RuleSymbol = '*';
 
-export type TaskRuleSet = string[] | RuleSymbol;
-export type PathRuleSet = string[] | RuleSymbol;
+export type RuleSet = string[] | RuleSymbol;
 
-export type RuleObject = {
-  allowTasks?: TaskRuleSet;
-  allowPaths?: PathRuleSet;
-  denyTasks?: TaskRuleSet;
-  denyPaths?: PathRuleSet;
+export type RuleObject<T = RuleSet> = {
+  allowTasks?: T;
+  allowPaths?: T;
+  denyTasks?: T;
+  denyPaths?: T;
 };
 
 export const ruleObjectKey = ['from', 'to'] as const;
 
-export type TaskRuleObject = {
+export type BaseObject = {
   name: string;
-  id: string;
-} & {
-  [key in typeof ruleObjectKey[number]]?: RuleObject;
+  id: number;
 };
 
-export type PathRuleObject = {
-  name: string;
-  id: string;
-} & {
-  [key in typeof ruleObjectKey[number]]?: RuleObject;
+export type RuleObjects<T = RuleObject> = {
+  [key in typeof ruleObjectKey[number]]?: T;
 };
+
+export type TaskRuleObject = BaseObject & RuleObjects;
+export type PathRuleObject = BaseObject & RuleObjects;

@@ -62,10 +62,10 @@ function main() {
     path.posix.join(GENERATE_DIR, 'type.ts')
   );
 
-  rule.tasks.forEach((task) => formatRuleObject(task, rule));
-  rule.paths.forEach((path) => formatRuleObject(path, rule));
+  const formattedTasks = rule.tasks.map((task) => formatRuleObject(task, rule));
+  const formattedPaths = rule.paths.map((path) => formatRuleObject(path, rule));
 
-  rule.tasks.forEach((item) => {
+  formattedTasks.forEach((item) => {
     ejs.renderFile(
       path.posix.join(TEMPLATE_DIR, 'tasks/template.ejs'),
       item,
@@ -97,7 +97,7 @@ function main() {
     }
   );
 
-  rule.paths.forEach((item) => {
+  formattedPaths.forEach((item) => {
     ejs.renderFile(
       path.posix.join(TEMPLATE_DIR, 'paths/template.ejs'),
       item,

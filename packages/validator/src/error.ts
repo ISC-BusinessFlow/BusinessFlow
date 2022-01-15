@@ -1,9 +1,4 @@
-import {
-  PathRuleObject,
-  PathRuleSet,
-  TaskRuleObject,
-  TaskRuleSet,
-} from './object';
+import { PathRuleObject, RuleSet, TaskRuleObject } from './object';
 
 export class Error {
   public message;
@@ -145,7 +140,7 @@ function checkUndefinedKeys(
 function checkUndefinedKey(
   findKeyFn: (key: string) => boolean,
   object: TaskRuleObject | PathRuleObject,
-  ruleSet: TaskRuleSet | PathRuleSet
+  ruleSet: RuleSet
 ) {
   const errors: Error[] = [];
   if (ruleSet && ruleSet !== '*') {
