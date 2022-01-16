@@ -140,3 +140,7 @@ const { from, to } = getPathRule(1);
 | Type:        | `number`              |
 
 </details>
+
+## Other
+
+- [DEVELOPMENT](./DEVELOPMENT.md)
