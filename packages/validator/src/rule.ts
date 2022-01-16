@@ -91,11 +91,8 @@ function fillRuleSet(
   if (!opposite || !opposite.length) return [];
 
   return allRuleObject
-    .map((object) => {
-      if (opposite.includes(object.name)) return;
-      return object.name;
-    })
-    .filter((key): key is string => typeof key == 'string');
+    .filter((object) => !opposite.includes(object.name))
+    .map((object) => object.name);
 }
 
 function replaceSymbol(
@@ -113,7 +110,7 @@ function convertToBaseObject(
 ) {
   if (!ruleSet) return [];
   return allRuleObject
-    .filter((item) => ruleSet?.includes(item.name))
+    .filter((item) => ruleSet.includes(item.name))
     .map((item) => ({
       name: item.name,
       id: item.id,
