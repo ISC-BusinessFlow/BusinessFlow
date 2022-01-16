@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { PathRule, TaskRule } from './base';
+import { PathRule, RelationRule, TaskRule } from './base';
 // @ts-ignore
 import * as paths from './paths';
 // @ts-ignore
@@ -45,16 +45,16 @@ export function validateRelation({
   };
 }
 
-export function getTaskRule(id: number) {
+export function getTaskRule(id: number): RelationRule {
   // @ts-ignore
-  const task = tasks[`task${id}`];
+  const task: TaskRule = tasks[`task${id}`];
 
   return task.getRule();
 }
 
-export function getPathRule(id: number) {
+export function getPathRule(id: number): RelationRule {
   // @ts-ignore
-  const path = paths[`path${id}`];
+  const path: PathRule = paths[`path${id}`];
 
   return path.getRule();
 }

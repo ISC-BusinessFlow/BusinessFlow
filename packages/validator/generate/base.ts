@@ -49,11 +49,16 @@ export class Error implements IError {
   }
 }
 
-type Rule = {
+export type Rule = {
   allowTasks: TaskObject[];
   allowPaths: PathObject[];
   denyTasks: TaskObject[];
   denyPaths: PathObject[];
+};
+
+export type RelationRule = {
+  from: Rule;
+  to: Rule;
 };
 
 abstract class BaseRule {
@@ -78,7 +83,7 @@ abstract class BaseRule {
     this.to = to;
   }
 
-  public getRule() {
+  public getRule(): RelationRule {
     return {
       from: this.from,
       to: this.to,
