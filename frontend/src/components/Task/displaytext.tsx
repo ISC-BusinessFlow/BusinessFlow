@@ -4,8 +4,8 @@ import { TaskType } from '@/lib/Task';
 
 export const DisplayText: React.VFC<{
   task: TaskType;
-  height: number;
   width: number;
+  height: number;
 }> = observer(({ task, width, height }) => {
   return (
     <foreignObject

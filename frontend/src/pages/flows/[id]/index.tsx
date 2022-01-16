@@ -37,12 +37,77 @@ const task1 = new Task({
 });
 const task2 = new Task({
   id: 2,
-  actorId: 2,
+  actorId: 1,
   flowId: 1,
   x: 300,
   y: 40,
+  type: 'input',
+  label: 'input test',
+  description: '',
+  createdAt: '',
+  updatedAt: '',
+});
+
+const task3 = new Task({
+  id: 3,
+  actorId: 1,
+  flowId: 1,
+  x: 500,
+  y: 40,
+  type: 'receipt',
+  label: '',
+  description: '',
+  createdAt: '',
+  updatedAt: '',
+});
+
+const task4 = new Task({
+  id: 4,
+  actorId: 2,
+  flowId: 1,
+  x: 500,
+  y: 40,
+  type: 'output',
+  label: 'output test',
+  description: '',
+  createdAt: '',
+  updatedAt: '',
+});
+
+const task5 = new Task({
+  id: 5,
+  actorId: 1,
+  flowId: 1,
+  x: 700,
+  y: 40,
   type: 'process',
   label: 'process test',
+  description: '',
+  createdAt: '',
+  updatedAt: '',
+});
+
+const task6 = new Task({
+  id: 6,
+  actorId: 1,
+  flowId: 1,
+  x: 900,
+  y: 40,
+  type: 'systematizedOutput',
+  label: 's_output test',
+  description: '',
+  createdAt: '',
+  updatedAt: '',
+});
+
+const task7 = new Task({
+  id: 7,
+  actorId: 1,
+  flowId: 1,
+  x: 1100,
+  y: 40,
+  type: 'dataStore',
+  label: 'dataStore test',
   description: '',
   createdAt: '',
   updatedAt: '',
@@ -62,7 +127,12 @@ flow.createActor(actor1);
 flow.createActor(actor2);
 
 actor1.createTask(task1);
-actor2.createTask(task2);
+actor1.createTask(task2);
+actor1.createTask(task3);
+actor2.createTask(task4);
+actor1.createTask(task5);
+actor1.createTask(task6);
+actor1.createTask(task7);
 
 flow.createPath(path1);
 
