@@ -8,7 +8,7 @@ import { DisplayText } from './displaytext';
 
 const size = {
   width: 160,
-  height: 100,
+  height: 110,
 };
 
 export const Output: React.VFC<{ task: TaskType }> = observer(({ task }) => {

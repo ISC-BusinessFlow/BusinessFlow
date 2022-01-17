@@ -7,8 +7,8 @@ import { Task as TaskType } from '@/lib/Task';
 import { DisplayText } from './displaytext';
 
 const size = {
-  width: 100,
-  height: 50,
+  width: 160,
+  height: 100,
 };
 
 export const Process: React.VFC<{ task: TaskType }> = observer(({ task }) => {

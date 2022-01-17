@@ -8,7 +8,7 @@ import { DisplayText } from './displaytext';
 
 const size = {
   width: 100,
-  height: 50,
+  height: 100,
 };
 
 export const DataStore: React.VFC<{ task: TaskType }> = observer(({ task }) => {
