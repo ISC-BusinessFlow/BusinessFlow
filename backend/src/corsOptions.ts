@@ -3,7 +3,7 @@ import { CorsOptions } from 'cors';
 const env =
   process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : 'development';
 
-const accessOrigin = (env: String) => {
+const accessOrigin = (env: string) => {
   switch (env) {
     case 'development':
       return process.env.DEVELOPMENT_URL;

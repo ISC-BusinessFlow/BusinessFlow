@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
+
 import actorController from './controller/actorController';
 import flowController from './controller/flowController';
 import pathController from './controller/pathController';
