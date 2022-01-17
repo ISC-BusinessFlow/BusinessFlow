@@ -9,7 +9,8 @@ export const path2 = new PathRule({
     allowTasks: [
       { name: '入出力', id: 2 },
       { name: 'システムからの出力', id: 4 },
-      { name: 'データストア', id: 6 },
+      { name: 'データストア', id: 5 },
+      { name: '受領', id: 7 },
     ],
     allowPaths: [
       { name: '遷移', id: 1 },
@@ -18,7 +19,7 @@ export const path2 = new PathRule({
     denyTasks: [
       { name: 'トリガ', id: 1 },
       { name: 'システムからの入力', id: 3 },
-      { name: '処理', id: 5 },
+      { name: '処理', id: 6 },
     ],
     denyPaths: [],
   },
@@ -28,8 +29,9 @@ export const path2 = new PathRule({
       { name: '入出力', id: 2 },
       { name: 'システムからの入力', id: 3 },
       { name: 'システムからの出力', id: 4 },
-      { name: '処理', id: 5 },
-      { name: 'データストア', id: 6 },
+      { name: 'データストア', id: 5 },
+      { name: '処理', id: 6 },
+      { name: '受領', id: 7 },
     ],
     allowPaths: [
       { name: '遷移', id: 1 },

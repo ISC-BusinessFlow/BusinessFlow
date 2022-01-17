@@ -32,11 +32,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -68,11 +72,11 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
       },
     ],
     "denyPaths": Array [
@@ -81,7 +85,12 @@ Object {
         "name": "通信",
       },
     ],
-    "denyTasks": Array [],
+    "denyTasks": Array [
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
   },
 }
 `;
@@ -114,11 +123,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -159,11 +172,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -200,11 +217,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -245,11 +266,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -292,11 +317,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
   },
@@ -317,7 +346,7 @@ Object {
         "name": "システムからの入力",
       },
       Object {
-        "id": 5,
+        "id": 6,
         "name": "処理",
       },
     ],
@@ -337,8 +366,12 @@ Object {
         "name": "システムからの出力",
       },
       Object {
-        "id": 6,
+        "id": 5,
         "name": "データストア",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
   },
@@ -377,11 +410,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -417,11 +454,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -462,11 +503,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -498,11 +543,11 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
       },
     ],
     "denyPaths": Array [
@@ -511,6 +556,105 @@ Object {
         "name": "通信",
       },
     ],
+    "denyTasks": Array [
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+  },
+}
+`;
+
+exports[`getTaskRule 受領 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "データストア",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 6,
+        "name": "処理",
+      },
+    ],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "データストア",
+      },
+      Object {
+        "id": 6,
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+    "denyPaths": Array [],
     "denyTasks": Array [],
   },
 }

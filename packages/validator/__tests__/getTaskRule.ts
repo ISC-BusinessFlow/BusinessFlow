@@ -21,13 +21,18 @@ describe('getTaskRule', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('処理', () => {
+  it('データストア', () => {
     const result = getTaskRule(5);
     expect(result).toMatchSnapshot();
   });
 
-  it('データストア', () => {
+  it('処理', () => {
     const result = getTaskRule(6);
+    expect(result).toMatchSnapshot();
+  });
+
+  it('受領', () => {
+    const result = getTaskRule(7);
     expect(result).toMatchSnapshot();
   });
 });

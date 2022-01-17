@@ -2,10 +2,28 @@
 
 import { TaskRule } from '../base';
 
-export const task6 = new TaskRule({
-  name: '処理',
-  id: 6,
+export const task7 = new TaskRule({
+  name: '受領',
+  id: 7,
   from: {
+    allowTasks: [
+      { name: '入出力', id: 2 },
+      { name: 'システムからの出力', id: 4 },
+      { name: 'データストア', id: 5 },
+      { name: '受領', id: 7 },
+    ],
+    allowPaths: [
+      { name: '遷移', id: 1 },
+      { name: '通信', id: 2 },
+    ],
+    denyTasks: [
+      { name: 'トリガ', id: 1 },
+      { name: 'システムからの入力', id: 3 },
+      { name: '処理', id: 6 },
+    ],
+    denyPaths: [],
+  },
+  to: {
     allowTasks: [
       { name: 'トリガ', id: 1 },
       { name: '入出力', id: 2 },
@@ -21,18 +39,5 @@ export const task6 = new TaskRule({
     ],
     denyTasks: [],
     denyPaths: [],
-  },
-  to: {
-    allowTasks: [
-      { name: 'トリガ', id: 1 },
-      { name: '入出力', id: 2 },
-      { name: 'システムからの入力', id: 3 },
-      { name: 'システムからの出力', id: 4 },
-      { name: 'データストア', id: 5 },
-      { name: '処理', id: 6 },
-    ],
-    allowPaths: [{ name: '遷移', id: 1 }],
-    denyTasks: [{ name: '受領', id: 7 }],
-    denyPaths: [{ name: '通信', id: 2 }],
   },
 });

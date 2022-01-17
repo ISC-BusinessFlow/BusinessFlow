@@ -5,7 +5,7 @@ tasks:
       denyTasks: '*'
       denyPaths: '*'
     to:
-      denyTasks: ['トリガ', 'システムからの出力', 'データストア']
+      denyTasks: ['トリガ', 'システムからの出力', 'データストア', '受領']
       denyPaths: ['通信']
 
   - name: '入出力'
@@ -15,21 +15,28 @@ tasks:
     id: 3
     to:
       denyPaths: ['通信']
+      denyTasks: ['受領']
 
   - name: 'システムからの出力'
     id: 4
     from:
       denyTasks: ['トリガ']
 
-  - name: '処理'
-    id: 5
-    to:
-      denyPaths: ['通信']
-
   - name: 'データストア'
-    id: 6
+    id: 5
     from:
       denyTasks: ['トリガ']
+
+  - name: '処理'
+    id: 6
+    to:
+      denyPaths: ['通信']
+      denyTasks: ['受領']
+
+  - name: '受領'
+    id: 7
+    from:
+      denyTasks: ['トリガ', 'システムからの入力', '処理']
 
 paths:
   - name: '遷移'

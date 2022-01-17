@@ -23,8 +23,12 @@ Object {
         "name": "システムからの出力",
       },
       Object {
-        "id": 6,
+        "id": 5,
         "name": "データストア",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -38,7 +42,7 @@ Object {
         "name": "システムからの入力",
       },
       Object {
-        "id": 5,
+        "id": 6,
         "name": "処理",
       },
     ],
@@ -73,11 +77,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -118,11 +126,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
@@ -158,11 +170,15 @@ Object {
       },
       Object {
         "id": 5,
-        "name": "処理",
+        "name": "データストア",
       },
       Object {
         "id": 6,
-        "name": "データストア",
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
       },
     ],
     "denyPaths": Array [],
