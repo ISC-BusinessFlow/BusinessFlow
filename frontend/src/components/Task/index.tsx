@@ -1,7 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useRef } from 'react';
 
-import { useRegisterNode } from '@/diagrams';
 import { Task as TaskType } from '@/lib/Task';
 
 import { DataStore } from './dataStore';
@@ -13,9 +11,6 @@ import { SystematizedOutput } from './systematizedOutput';
 import { Trigger } from './trigger';
 
 export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  const taskRef = useRef<SVGRectElement>(null);
-  useRegisterNode(taskRef, task.id);
-
   //toriaezu
   switch (task.type) {
     case 'trigger':
@@ -33,8 +28,6 @@ export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
     case 'dataStore':
       return <DataStore task={task} />;
     default:
-      return (
-        <rect ref={taskRef} x={task.x} y={task.y} width="40" height="40" />
-      );
+      return <rect x={task.x} y={task.y} width="40" height="40" />;
   }
 });

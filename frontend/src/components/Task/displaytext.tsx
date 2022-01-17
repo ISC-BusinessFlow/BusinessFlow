@@ -8,13 +8,7 @@ export const DisplayText: React.VFC<{
   height: number;
 }> = observer(({ task, width, height }) => {
   return (
-    <foreignObject
-      x={task.x}
-      y={task.y}
-      width={width}
-      height={height}
-      fill="none"
-    >
+    <foreignObject x="0" y="0" width={width} height={height} fill="none">
       <div style={{ textAlign: 'center', padding: '4px' }}>
         <span>{task.label}</span>
       </div>
