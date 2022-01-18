@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 import { Diagram } from '@/components/Diagram';
 import { DiagramProvider } from '@/diagrams';
@@ -67,6 +68,9 @@ actor2.createTask(task2);
 flow.createPath(path1);
 
 const Index = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
   return (
     <Box>
       <Box bg="tomato" w="100%" p={4} color="white" as="nav">

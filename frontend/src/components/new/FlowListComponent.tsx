@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   Box,
   Menu,
@@ -10,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { VscKebabVertical } from 'react-icons/vsc';
 
-import { FlowType } from '@/lib/models/Flow';
+import { FlowType } from '@/lib/Flow';
 
 export const FlowList: React.VFC<{ flows: FlowType[] }> = ({ flows }) => {
   return (
@@ -28,7 +29,11 @@ const FlowCard: React.VFC<{ flow: FlowType }> = ({ flow }) => {
   return (
     <Box borderWidth="1px" w="100%" h="100px" p="10px" key={id}>
       <Box display="flex" alignItems="baseline">
-        <Text>{name}</Text>
+        <Link href="/flows/[id]" as={`/flows/${id}`}>
+          <a>
+            <Text>{name}</Text>
+          </a>
+        </Link>
         <Spacer />
         <Menu>
           <MenuButton as="button">
