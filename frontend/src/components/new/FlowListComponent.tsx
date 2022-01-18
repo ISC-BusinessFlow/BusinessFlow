@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   Box,
   Menu,
@@ -9,6 +8,7 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { VscKebabVertical } from 'react-icons/vsc';
 
 import { FlowType } from '@/lib/Flow';

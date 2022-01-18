@@ -1,12 +1,13 @@
 import { Box, Flex, Spacer } from '@chakra-ui/react';
 
-import { FlowList, FlowListType } from '@/components/new/FlowListComponent';
+import { FlowList } from '@/components/new/FlowListComponent';
 import { Toolbar } from '@/components/new/ToolbarComponent';
+import { FlowType } from '@/lib/Flow';
 
-const dummyFlows: FlowListType[] = [
-  { id: 1, title: 'Flow1', createdAt: '2022-01-01' },
-  { id: 2, title: 'Flow2', createdAt: '2022-01-02' },
-  { id: 3, title: 'Flow3', createdAt: '2022-01-03' },
+const dummyFlows: FlowType[] = [
+  { id: 1, name: 'Flow1', createdAt: '2022-01-01', updatedAt: '2022-01-01' },
+  { id: 2, name: 'Flow2', createdAt: '2022-01-02', updatedAt: '2022-01-01' },
+  { id: 3, name: 'Flow3', createdAt: '2022-01-03', updatedAt: '2022-01-01' },
 ];
 
 const New = () => {
