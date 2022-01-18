@@ -8,16 +8,14 @@ export const Transition: React.VFC<{
     <>
       <defs>
         <marker
-          id="allow-h"
-          viewBox="0 0 16 10"
-          refX="8"
-          refY="8.5"
-          markerUnits="userSpaceOnUse"
-          markerWidth="16"
-          markerHeight="10"
+          id="arrowh"
+          refX="0"
+          refY="2"
+          markerWidth="5"
+          markerHeight="4"
           orient="auto"
         >
-          <path d="M0 0L16 10H8L8 10Z" fill="#EE8C44" />
+          <polygon points="0 0, 5 2, 0 4" fill="#EE8C44" />
         </marker>
       </defs>
       <g>
@@ -28,7 +26,7 @@ export const Transition: React.VFC<{
           y2={toPos.y}
           stroke="#EE8C44"
           strokeWidth="3"
-          markerEnd="url(#allow-h)"
+          markerEnd="url(#arrowh)"
         />
       </g>
     </>
