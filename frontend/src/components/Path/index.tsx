@@ -27,7 +27,6 @@ export const Path: React.VFC<{
           y2={toPos.y}
           stroke="black"
           strokeWidth={3}
-          markerEnd="url(#arrowhead)"
         />
       );
   }
