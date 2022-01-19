@@ -1,0 +1,20 @@
+<%- include('../header'); %>
+import { TaskRule } from '../base';
+
+<% const formatArray = (array) => array.map(item => `{name: '${item.name}', id: ${item.id}}`).join(", ") %>
+export const task<%= id %> = new TaskRule({
+  name: '<%= name %>',
+  id: <%= id %>,
+  from: {
+    allowTasks: [<%- formatArray(from.allowTasks) %>],
+    allowPaths: [<%- formatArray(from.allowPaths) %>],
+    denyTasks: [<%- formatArray(from.denyTasks) %>],
+    denyPaths: [<%- formatArray(from.denyPaths) %>],
+  },
+  to: {
+    allowTasks: [<%- formatArray(to.allowTasks) %>],
+    allowPaths: [<%- formatArray(to.allowPaths) %>],
+    denyTasks: [<%- formatArray(to.denyTasks) %>],
+    denyPaths: [<%- formatArray(to.denyPaths) %>],
+  },
+})
