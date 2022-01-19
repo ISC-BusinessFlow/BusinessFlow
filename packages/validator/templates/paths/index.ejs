@@ -1,0 +1,4 @@
+<%- include('../header'); %>
+<% pathIds.forEach((id) => { %>
+export * from './path<%= id %>';
+<% }) %>

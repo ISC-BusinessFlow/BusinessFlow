@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getPathRule 通信 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "データストア",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 6,
+        "name": "処理",
+      },
+    ],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "データストア",
+      },
+      Object {
+        "id": 6,
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+}
+`;
+
+exports[`getPathRule 遷移 1`] = `
+Object {
+  "from": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "データストア",
+      },
+      Object {
+        "id": 6,
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+  "to": Object {
+    "allowPaths": Array [
+      Object {
+        "id": 1,
+        "name": "遷移",
+      },
+      Object {
+        "id": 2,
+        "name": "通信",
+      },
+    ],
+    "allowTasks": Array [
+      Object {
+        "id": 1,
+        "name": "トリガ",
+      },
+      Object {
+        "id": 2,
+        "name": "入出力",
+      },
+      Object {
+        "id": 3,
+        "name": "システムからの入力",
+      },
+      Object {
+        "id": 4,
+        "name": "システムからの出力",
+      },
+      Object {
+        "id": 5,
+        "name": "データストア",
+      },
+      Object {
+        "id": 6,
+        "name": "処理",
+      },
+      Object {
+        "id": 7,
+        "name": "受領",
+      },
+    ],
+    "denyPaths": Array [],
+    "denyTasks": Array [],
+  },
+}
+`;
