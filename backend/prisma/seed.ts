@@ -1,8 +1,27 @@
-import { PrismaClient } from '@prisma/client';
+import {
+  Actor,
+  Flow,
+  Path,
+  PathType,
+  PrismaClient,
+  Task,
+  TaskType,
+} from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const seedData = {
+type seedDataOmit<T> = Omit<T, 'createdAt' | 'updatedAt'>;
+
+type seedDataType = {
+  taskTypes: seedDataOmit<TaskType>[];
+  pathTypes: seedDataOmit<PathType>[];
+  flows: seedDataOmit<Flow>[];
+  actors: seedDataOmit<Actor>[];
+  tasks: seedDataOmit<Task>[];
+  paths: seedDataOmit<Path>[];
+};
+
+const seedData: seedDataType = {
   taskTypes: [
     {
       id: 1,
