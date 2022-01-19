@@ -1,16 +1,17 @@
 import { observer } from 'mobx-react-lite';
-import { useRef } from 'react';
 
-import { useRegisterNode } from '@/diagrams';
 import { Task as TaskType } from '@/lib/models/Task';
 
+import { useTask } from './useTask';
+
 export const Receipt: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  const taskRef = useRef<SVGRectElement>(null);
-  useRegisterNode(taskRef, task.id);
-  const trans = `translate(${task.x}, ${task.y})`;
+  const {
+    ref,
+    translate: { x, y },
+  } = useTask(task);
 
   return (
-    <g ref={taskRef} transform={trans}>
+    <g ref={ref} transform={`translate(${x}, ${y})`}>
       <circle
         cx="12.5"
         cy="12.5"
