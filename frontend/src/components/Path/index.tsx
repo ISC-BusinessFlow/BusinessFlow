@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 
 import { usePathPosition } from '@/hooks/usePathPosition';
-import { Path as PathType } from '@/lib/Path';
+import { Path as PathType } from '@/lib/models/Path';
 
 export const Path: React.VFC<{
   path: PathType;
