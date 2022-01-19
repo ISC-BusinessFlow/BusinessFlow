@@ -6,13 +6,12 @@ import {
   MenuItem,
   MenuList,
   SimpleGrid,
-  Spacer,
   Text,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { VscKebabVertical } from 'react-icons/vsc';
 
-import { FlowType } from '@/lib/Flow';
+import { FlowType } from '@/lib/models/Flow';
 
 export const FlowList: React.VFC<{ flows: FlowType[] }> = ({ flows }) => {
   return (
