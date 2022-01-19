@@ -46,24 +46,24 @@ const { isValid, errors } = validateRelation({ fromId: 1, pathId: 1, toId: 1 });
 
 ##### fromId
 
-| -            | -                     |
-| ------------ | --------------------- |
-| Description: | Task の id を指定する |
-| Type:        | `number`              |
+| -            | -                          |
+| ------------ | -------------------------- |
+| Description: | Task の type_id を指定する |
+| Type:        | `number`                   |
 
 ##### pathId
 
-| -            | -                     |
-| ------------ | --------------------- |
-| Description: | Path の id を指定する |
-| Type:        | `number`              |
+| -            | -                          |
+| ------------ | -------------------------- |
+| Description: | Path の type_id を指定する |
+| Type:        | `number`                   |
 
 ##### toId
 
-| -            | -                     |
-| ------------ | --------------------- |
-| Description: | Task の id を指定する |
-| Type:        | `number`              |
+| -            | -                          |
+| ------------ | -------------------------- |
+| Description: | Task の type_id を指定する |
+| Type:        | `number`                   |
 
 </details>
 
@@ -73,7 +73,7 @@ const { isValid, errors } = validateRelation({ fromId: 1, pathId: 1, toId: 1 });
 const { from, to } = getTaskRule(1);
 ```
 
-`getTaskRule`は 特定の id の Task に関するルールを返します。
+`getTaskRule`は 特定の type_id の Task に関するルールを返します。
 
 <details>
 
@@ -97,10 +97,10 @@ const { from, to } = getTaskRule(1);
 
 ##### id
 
-| -            | -                     |
-| ------------ | --------------------- |
-| Description: | Task の id を指定する |
-| Type:        | `number`              |
+| -            | -                          |
+| ------------ | -------------------------- |
+| Description: | Task の type_id を指定する |
+| Type:        | `number`                   |
 
 </details>
 
@@ -110,7 +110,7 @@ const { from, to } = getTaskRule(1);
 const { from, to } = getPathRule(1);
 ```
 
-`getPathRule`は 特定の id の Path に関するルールを返します。
+`getPathRule`は 特定の type_id の Path に関するルールを返します。
 
 <details>
 
@@ -134,10 +134,10 @@ const { from, to } = getPathRule(1);
 
 ##### id
 
-| -            | -                     |
-| ------------ | --------------------- |
-| Description: | Path の id を指定する |
-| Type:        | `number`              |
+| -            | -                          |
+| ------------ | -------------------------- |
+| Description: | Path の type_id を指定する |
+| Type:        | `number`                   |
 
 </details>
 
