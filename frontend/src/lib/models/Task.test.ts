@@ -38,7 +38,7 @@ const mockData: Mock = {
       id: 1,
       to: 2,
       from: 1,
-      type: 'sample path type',
+      pathTypeId: 'sample path type',
       createdAt: '',
       updatedAt: '',
     },
@@ -46,7 +46,7 @@ const mockData: Mock = {
       id: 2,
       to: 3,
       from: 2,
-      type: 'sample path type2',
+      pathTypeId: 'sample path type2',
       createdAt: '',
       updatedAt: '',
     },
@@ -54,7 +54,7 @@ const mockData: Mock = {
   tasks: [
     {
       id: 1,
-      type: 'sample type',
+      typeId: 'sample type',
       label: 'label',
       x: 0,
       y: 0,
@@ -64,7 +64,7 @@ const mockData: Mock = {
     },
     {
       id: 2,
-      type: 'sample type2',
+      typeId: 'sample type2',
       label: 'label2',
       x: 0,
       y: 0,

@@ -99,7 +99,7 @@ const seedData = {
     {
       id: 2,
       name: '契約一覧',
-      x: 150,
+      x: 350,
       y: 50,
       flowId: 1,
       typeId: 3,
@@ -108,7 +108,7 @@ const seedData = {
     {
       id: 3,
       name: '契約',
-      x: 150,
+      x: 350,
       y: 50,
       flowId: 1,
       typeId: 5,
@@ -117,7 +117,7 @@ const seedData = {
     {
       id: 4,
       name: '4ヶ月前通知作成',
-      x: 250,
+      x: 650,
       y: 50,
       flowId: 1,
       typeId: 6,
@@ -126,7 +126,7 @@ const seedData = {
     {
       id: 5,
       name: '6ヶ月前通知',
-      x: 350,
+      x: 950,
       y: 50,
       flowId: 1,
       typeId: 4,
@@ -135,7 +135,7 @@ const seedData = {
     {
       id: 6,
       name: '',
-      x: 350,
+      x: 950,
       y: 50,
       flowId: 1,
       typeId: 7,
@@ -144,7 +144,7 @@ const seedData = {
     {
       id: 7,
       name: '6ヶ月前通知確認',
-      x: 450,
+      x: 1250,
       y: 50,
       flowId: 1,
       typeId: 3,
@@ -153,7 +153,7 @@ const seedData = {
     {
       id: 8,
       name: '',
-      x: 450,
+      x: 1250,
       y: 50,
       flowId: 1,
       typeId: 7,
@@ -162,7 +162,7 @@ const seedData = {
     {
       id: 9,
       name: 'テナント確認更新',
-      x: 550,
+      x: 1550,
       y: 50,
       flowId: 1,
       typeId: 6,
@@ -171,7 +171,7 @@ const seedData = {
     {
       id: 10,
       name: '都度',
-      x: 650,
+      x: 1850,
       y: 50,
       flowId: 1,
       typeId: 1,
@@ -180,7 +180,7 @@ const seedData = {
     {
       id: 11,
       name: '契約',
-      x: 650,
+      x: 1850,
       y: 50,
       flowId: 1,
       typeId: 5,
@@ -189,7 +189,7 @@ const seedData = {
     {
       id: 12,
       name: '',
-      x: 750,
+      x: 2150,
       y: 50,
       flowId: 1,
       typeId: 7,
@@ -198,7 +198,7 @@ const seedData = {
     {
       id: 13,
       name: '契約一覧',
-      x: 750,
+      x: 2150,
       y: 50,
       flowId: 1,
       typeId: 3,
@@ -208,7 +208,7 @@ const seedData = {
       id: 14,
       name: '再契約誘導記録',
       label: '紙',
-      x: 950,
+      x: 2750,
       y: 50,
       flowId: 1,
       typeId: 4,
@@ -218,7 +218,7 @@ const seedData = {
       id: 15,
       name: '問合せ記録入力',
       label: 'RPA',
-      x: 1050,
+      x: 3050,
       y: 50,
       flowId: 1,
       typeId: 6,
@@ -227,7 +227,7 @@ const seedData = {
     {
       id: 16,
       name: '問合せ記録入力',
-      x: 1150,
+      x: 3350,
       y: 50,
       flowId: 1,
       typeId: 3,
@@ -236,7 +236,7 @@ const seedData = {
     {
       id: 17,
       name: '問合せ記録',
-      x: 1150,
+      x: 3350,
       y: 50,
       flowId: 1,
       typeId: 5,
@@ -245,7 +245,7 @@ const seedData = {
     {
       id: 18,
       name: '再契約誘導',
-      x: 850,
+      x: 2450,
       y: 50,
       flowId: 1,
       typeId: 2,
@@ -254,7 +254,7 @@ const seedData = {
     {
       id: 19,
       name: '再契約検討',
-      x: 850,
+      x: 2450,
       y: 50,
       flowId: 1,
       typeId: 2,

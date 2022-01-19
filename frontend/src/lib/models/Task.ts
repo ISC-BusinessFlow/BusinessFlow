@@ -27,7 +27,8 @@ export type TaskType = {
   flowId: number;
   x: number;
   y: number;
-  type: string;
+  typeId: number;
+  name: string;
   label: string;
   description: string;
   createdAt: string;
@@ -40,7 +41,8 @@ export class Task {
   readonly flowId: TaskType['flowId'];
   readonly x: TaskType['x'];
   readonly y: TaskType['y'];
-  readonly type: TaskType['type'];
+  readonly typeId: TaskType['typeId'];
+  readonly name: TaskType['name'];
   readonly label: TaskType['label'];
   readonly description: TaskType['description'];
   readonly createdAt: TaskType['createdAt'];
@@ -52,7 +54,8 @@ export class Task {
     flowId,
     x,
     y,
-    type,
+    typeId,
+    name,
     label,
     description,
     createdAt,
@@ -63,7 +66,8 @@ export class Task {
     this.flowId = flowId;
     this.x = x;
     this.y = y;
-    this.type = type;
+    this.typeId = typeId;
+    this.name = name;
     this.label = label;
     this.description = description;
     this.createdAt = createdAt;
