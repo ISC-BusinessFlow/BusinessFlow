@@ -19,15 +19,6 @@ export const Path: React.VFC<{
     case 'transmission':
       return <Transmission fromPos={fromPos} toPos={toPos} />;
     default:
-      return (
-        <line
-          x1={fromPos.x}
-          y1={fromPos.y}
-          x2={toPos.x}
-          y2={toPos.y}
-          stroke="black"
-          strokeWidth={3}
-        />
-      );
+      return null;
   }
 });

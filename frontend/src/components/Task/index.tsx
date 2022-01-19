@@ -11,7 +11,6 @@ import { SystematizedOutput } from './systematizedOutput';
 import { Trigger } from './trigger';
 
 export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  //toriaezu
   switch (task.type) {
     case 'trigger':
       return <Trigger task={task} />;
@@ -28,6 +27,6 @@ export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
     case 'dataStore':
       return <DataStore task={task} />;
     default:
-      return <rect x={task.x} y={task.y} width="40" height="40" />;
+      return null;
   }
 });

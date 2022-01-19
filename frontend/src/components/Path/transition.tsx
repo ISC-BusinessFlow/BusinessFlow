@@ -5,7 +5,7 @@ export const Transition: React.VFC<{
   toPos: { x: number; y: number };
 }> = observer(({ fromPos, toPos }) => {
   return (
-    <>
+    <g>
       <defs>
         <marker
           id="arrowh"
@@ -18,17 +18,15 @@ export const Transition: React.VFC<{
           <polygon points="0 0, 5 2, 0 4" fill="#EE8C44" />
         </marker>
       </defs>
-      <g>
-        <line
-          x1={fromPos.x}
-          y1={fromPos.y}
-          x2={toPos.x - 8}
-          y2={toPos.y}
-          stroke="#EE8C44"
-          strokeWidth="3"
-          markerEnd="url(#arrowh)"
-        />
-      </g>
-    </>
+      <line
+        x1={fromPos.x}
+        y1={fromPos.y}
+        x2={toPos.x - 8}
+        y2={toPos.y}
+        stroke="#EE8C44"
+        strokeWidth="3"
+        markerEnd="url(#arrowh)"
+      />
+    </g>
   );
 });
