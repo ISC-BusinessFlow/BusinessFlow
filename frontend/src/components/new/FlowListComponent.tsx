@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Menu,
   MenuButton,
   MenuItem,
@@ -8,9 +9,10 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { VscKebabVertical } from 'react-icons/vsc';
 
-import { FlowType } from '@/lib/models/Flow';
+import { FlowType } from '@/lib/Flow';
 
 export const FlowList: React.VFC<{ flows: FlowType[] }> = ({ flows }) => {
   return (
@@ -27,20 +29,32 @@ const FlowCard: React.VFC<{ flow: FlowType }> = ({ flow }) => {
 
   return (
     <Box borderWidth="1px" w="100%" h="100px" p="10px" key={id}>
-      <Box display="flex" alignItems="baseline">
-        <Text>{name}</Text>
-        <Spacer />
-        <Menu>
-          <MenuButton as="button">
-            <VscKebabVertical />
-          </MenuButton>
-          <MenuList>
-            <MenuItem>名前の変更</MenuItem>
-            <MenuItem>削除</MenuItem>
-          </MenuList>
-        </Menu>
-      </Box>
-      <Text>{createdAt}</Text>
+      <Flex>
+        <Box w="100%">
+          <Link
+            href={{
+              pathname: 'flows/[id]',
+              query: { id: id },
+            }}
+          >
+            <a>
+              <Text>{name}</Text>
+              <Text>{createdAt}</Text>
+            </a>
+          </Link>
+        </Box>
+        <Box>
+          <Menu>
+            <MenuButton as="button">
+              <VscKebabVertical />
+            </MenuButton>
+            <MenuList>
+              <MenuItem>名前の変更</MenuItem>
+              <MenuItem>削除</MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
+      </Flex>
     </Box>
   );
 };
