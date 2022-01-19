@@ -23,6 +23,9 @@ model Task {
   actorId   Int
   fromTasks Path[]   @relation("FromTasks")
   toTasks   Path[]   @relation("ToTasks")
+  label     String?   @db.VarChar(30)
+  x         Float
+  y         Float
 }
 
 model Path {
@@ -37,7 +40,8 @@ model Path {
   pathTypeId Int
   flow       Flow     @relation(fields: [flowId], references: [id])
   flowId     Int
-}
+  label      String?   @db.VarChar(30)
+  }
 
 model Actor {
   id        Int      @id @default(autoincrement())

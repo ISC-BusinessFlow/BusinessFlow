@@ -1,16 +1,18 @@
 import { Box, Flex, Spacer } from '@chakra-ui/react';
+import { useQuery } from 'react-query';
 
+import { api } from '@/api';
 import { FlowList } from '@/components/new/FlowListComponent';
 import { Toolbar } from '@/components/new/ToolbarComponent';
-import { FlowType } from '@/lib/Flow';
-
-const dummyFlows: FlowType[] = [
-  { id: 1, name: 'Flow1', createdAt: '2022-01-01', updatedAt: '2022-01-01' },
-  { id: 2, name: 'Flow2', createdAt: '2022-01-02', updatedAt: '2022-01-01' },
-  { id: 3, name: 'Flow3', createdAt: '2022-01-03', updatedAt: '2022-01-01' },
-];
+import { FlowRepo } from '@/lib/repositories/Flow';
+import { flowCacheKey } from '@/utils/cacheKey';
 
 const New = () => {
+  const { data } = useQuery(flowCacheKey.getAll, () => {
+    const repo = new FlowRepo(api);
+    return repo.getFlows();
+  });
+
   return (
     <>
       <Box bg="tomato" w="100%" p={4} color="white">
@@ -18,9 +20,7 @@ const New = () => {
       </Box>
       <Toolbar></Toolbar>
       <Spacer />
-      <Flex>
-        <FlowList flows={dummyFlows} />
-      </Flex>
+      <Flex>{data && <FlowList flows={data} />}</Flex>
     </>
   );
 };

@@ -12,6 +12,7 @@ router.post('/', async (req: Request, res: Response) => {
       type_id: pathTypeId,
       from_task_id: fromTaskId,
       to_task_id: toTaskId,
+      label,
     } = req.body;
 
     const path = await prisma.path.create({
@@ -20,6 +21,7 @@ router.post('/', async (req: Request, res: Response) => {
         pathTypeId,
         fromTaskId,
         toTaskId,
+        label,
       },
     });
     res.status(201).send(path);
@@ -69,6 +71,7 @@ router.put('/:id', async (req: Request, res: Response) => {
       type_id: pathTypeId,
       from_task_id: fromTaskId,
       to_task_id: toTaskId,
+      label,
     } = req.body;
     const path = await prisma.path.findUnique({
       where: { id: parseInt(req.params?.id) },
@@ -87,6 +90,7 @@ router.put('/:id', async (req: Request, res: Response) => {
         pathTypeId,
         fromTaskId,
         toTaskId,
+        label,
       },
     });
 

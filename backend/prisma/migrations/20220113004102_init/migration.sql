@@ -7,6 +7,9 @@ CREATE TABLE `Task` (
     `name` VARCHAR(30) NOT NULL,
     `typeId` INTEGER NOT NULL,
     `actorId` INTEGER NOT NULL,
+    `label` VARCHAR(30) NULL,
+    `x` DOUBLE NOT NULL,
+    `y` DOUBLE NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -20,6 +23,7 @@ CREATE TABLE `Path` (
     `toTaskId` INTEGER NOT NULL,
     `pathTypeId` INTEGER NOT NULL,
     `flowId` INTEGER NOT NULL,
+    `label` VARCHAR(30) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
