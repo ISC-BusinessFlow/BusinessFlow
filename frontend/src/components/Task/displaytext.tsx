@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 
-import { TaskType } from '@/lib/Task';
+import { TaskType } from '@/lib/models/Task';
 
 export const DisplayText: React.VFC<{
   task: TaskType;
@@ -10,7 +10,7 @@ export const DisplayText: React.VFC<{
   return (
     <foreignObject x="0" y="0" width={width} height={height} fill="none">
       <div style={{ textAlign: 'center', padding: '4px' }}>
-        <span>{task.label}</span>
+        <span>{task.name}</span>
       </div>
     </foreignObject>
   );

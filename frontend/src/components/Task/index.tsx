@@ -11,7 +11,7 @@ import { SystematizedOutput } from './systematizedOutput';
 import { Trigger } from './trigger';
 
 export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  switch (task.id) {
+  switch (task.typeId) {
     case 1:
       return <Trigger task={task} />;
     case 2:

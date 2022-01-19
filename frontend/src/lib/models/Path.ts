@@ -26,7 +26,7 @@ export type PathType = {
   fromTaskId: number;
   toTaskId: number | null;
   flowId: number;
-  type: string;
+  pathTypeId: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -36,7 +36,7 @@ export class Path {
   readonly fromTaskId: PathType['fromTaskId'];
   readonly toTaskId: PathType['toTaskId'] = null;
   readonly flowId: PathType['flowId'];
-  readonly type: PathType['type'];
+  readonly pathTypeId: PathType['pathTypeId'];
   readonly createdAt: PathType['createdAt'];
   readonly updatedAt: PathType['updatedAt'];
 
@@ -45,7 +45,7 @@ export class Path {
     fromTaskId,
     toTaskId = null,
     flowId,
-    type,
+    pathTypeId,
     createdAt,
     updatedAt,
   }: PathType) {
@@ -53,7 +53,7 @@ export class Path {
     this.fromTaskId = fromTaskId;
     this.toTaskId = toTaskId;
     this.flowId = flowId;
-    this.type = type;
+    this.pathTypeId = pathTypeId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     makeAutoObservable(this);

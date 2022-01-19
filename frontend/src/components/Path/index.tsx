@@ -13,7 +13,7 @@ export const Path: React.VFC<{
 }> = observer(({ path, from, to }) => {
   const { from: fromPos, to: toPos } = usePathPosition({ from, to });
 
-  switch (path.id) {
+  switch (path.pathTypeId) {
     case 1:
       return <Transition fromPos={fromPos} toPos={toPos} />;
     case 2:
