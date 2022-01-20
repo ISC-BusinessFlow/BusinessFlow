@@ -1,6 +1,6 @@
 import { Box, Center, HStack, StackDivider, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { maxBy } from 'lodash';
+import maxBy from 'lodash/maxBy';
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
 
