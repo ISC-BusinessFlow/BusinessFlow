@@ -1,34 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# frontend
 
-## Getting Started
+BusinessFlow のフロントエンド。
 
-First, run the development server:
+## Setup
+
+1. 依存関係のインストール
 
 ```bash
-npm run dev
-# or
-yarn dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. 環境変数の設定
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+cp .env.example .env
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. 開発サーバーの起動
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+yarn run dev
+```
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+└─ src/
+   ├─ components/
+   ├─ diagrams/
+   ├─ hooks/
+   ├─ lib/
+   │ ├─ models/
+   │ └─ repositories/
+   └─ pages/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `components`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+再利用可能なコンポーネントをここに入れます。
 
-## Deploy on Vercel
+原則として `components/<コンポーネント名(UpperCamel)>/index.tsx` という形式にします。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### `diagrams`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+このプロジェクトで一番重要になってくるフロー編集画面を描写するためのロジックをここに入れます。
+
+### `hooks`
+
+再利用可能な hook をここに入れます。
+
+原則として `hooks/<useから始まるhook名>.ts(x)` という形式にします。
+
+### `lib`
+
+ここには React に直接依存しないようなロジックを入れます。
+
+#### `models`
+
+フロー編集画面で登場するような Task や Path などの model をここに入れます。
+
+#### `repositories`
+
+外部の API とのやり取りに関するロジックをここに入れます。
+
+### `pages`
+
+- https://nextjs.org/docs/basic-features/pages
+
+## Test
+
+テストをする際には以下のコマンドを使用します。
+
+```bash
+yarn run test
+```

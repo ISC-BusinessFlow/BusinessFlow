@@ -1,20 +1,7 @@
 # BusinessFlow
 
-## 初期設定
+業務フローをフローチャートのように記述し、共有することができるサービス。
 
-```bash
-yarn install
-```
+## Document
 
-## 新規パッケージを追加
-
-```bash
-yarn run lerna create
-```
-
-## パッケージを依存関係に追加
-
-pkg2にpkg1の依存関係を追加
-```bash
-yarn run lerna add <pkg1> --scope=<pkg2>
-```
+- [開発](./docs/DEVELOPMENT.md)
