@@ -9,7 +9,7 @@ export const Transmission: React.VFC<{
       <defs>
         <marker
           id="arrowv"
-          refX="0"
+          refX="4"
           refY="2"
           markerWidth="5"
           markerHeight="4"
@@ -21,7 +21,7 @@ export const Transmission: React.VFC<{
       <line
         x1={fromPos.x}
         y1={fromPos.y}
-        x2={toPos.x - 8}
+        x2={toPos.x}
         y2={toPos.y}
         stroke="#598CD8"
         strokeWidth="3"

@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/layout';
 import React, { useCallback, useState } from 'react';
 
 import { ICanvas, IDiagramContext, ISetDiagramContext } from './type';
@@ -85,7 +86,7 @@ export const DiagramProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <div ref={canvasRef}>
+    <Box ref={canvasRef} display="inline-block">
       <DiagramContextNodes.Provider value={nodes}>
         <DiagramContextPaths.Provider value={paths}>
           <DiagramContextCanvas.Provider value={canvas}>
@@ -100,6 +101,6 @@ export const DiagramProvider: React.FC = ({ children }) => {
           </DiagramContextCanvas.Provider>
         </DiagramContextPaths.Provider>
       </DiagramContextNodes.Provider>
-    </div>
+    </Box>
   );
 };
