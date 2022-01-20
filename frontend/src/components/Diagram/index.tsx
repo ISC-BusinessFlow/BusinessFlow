@@ -1,6 +1,8 @@
-import { StackDivider, VStack } from '@chakra-ui/react';
+import { Box, StackDivider, VStack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import maxBy from 'lodash/maxBy';
 import { observer } from 'mobx-react-lite';
+import { useMemo } from 'react';
 
 import { Actor } from '@/components/Actor';
 import { Paths } from '@/components/Paths';
@@ -52,25 +54,35 @@ const DiagramPathsContainer: React.FC = ({ children }) => {
 };
 
 export const Diagram: React.VFC<{ flow: Flow }> = observer(({ flow }) => {
+  const tasksX = flow.actorAggregate.actors
+    .map((actor) => actor.taskAggregate.tasks.map((task) => task.x))
+    .flatMap((x) => x);
+
+  const maxX = useMemo(() => {
+    return maxBy(tasksX, (x) => x) ?? 0;
+  }, [tasksX]);
+
   return (
-    <>
+    <Box>
       <DiagramPathsContainer>
         <ArrowMarker />
         <Paths paths={flow.pathAggregate.paths} />
       </DiagramPathsContainer>
 
-      <VStack
-        spacing={0}
-        align="stretch"
-        divider={<StackDivider bg="gray.200" m="0" />}
-        borderWidth="1px"
-        borderStyle="solid"
-        borderColor="gray.200"
-      >
-        {flow.actorAggregate.actors.map((actor) => (
-          <Actor key={actor.id} actor={actor} />
-        ))}
-      </VStack>
-    </>
+      <Box display="inline-block">
+        <VStack
+          spacing={0}
+          align="stretch"
+          divider={<StackDivider bg="gray.200" m="0" />}
+          borderWidth="1px"
+          borderStyle="solid"
+          borderColor="gray.200"
+        >
+          {flow.actorAggregate.actors.map((actor) => (
+            <Actor key={actor.id} actor={actor} maxX={maxX} />
+          ))}
+        </VStack>
+      </Box>
+    </Box>
   );
 });
