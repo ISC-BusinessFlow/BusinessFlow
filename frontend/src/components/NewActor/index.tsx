@@ -10,6 +10,10 @@ export const NewActor: React.VFC<{ flow: Flow }> = observer(() => {
       <Center
         bg="white"
         minW="150px"
+        _hover={{
+          bg: 'rgba(0, 0, 0, 0.05)',
+          transition: '0.2s',
+        }}
         position="sticky"
         left={0}
         top={0}
