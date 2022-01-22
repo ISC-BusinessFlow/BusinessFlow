@@ -2,6 +2,7 @@ import {
   Box,
   Flex,
   Grid,
+  Icon,
   Menu,
   MenuButton,
   MenuItem,
@@ -9,7 +10,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { VscKebabVertical } from 'react-icons/vsc';
+import { FaEllipsisV } from 'react-icons/fa';
 
 import { FlowType } from '@/lib/models/Flow';
 
@@ -81,7 +82,7 @@ const FlowCard: React.VFC<{ flow: FlowType }> = ({ flow }) => {
         <Box>
           <Menu>
             <MenuButton as="button">
-              <VscKebabVertical />
+              <Icon as={FaEllipsisV} />
             </MenuButton>
             <MenuList>
               <MenuItem>名前の変更</MenuItem>
