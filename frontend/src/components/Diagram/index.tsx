@@ -1,10 +1,11 @@
-import { Box, StackDivider, VStack } from '@chakra-ui/react';
+import { Box, Flex, StackDivider, VStack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import maxBy from 'lodash/maxBy';
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
 
 import { Actor } from '@/components/Actor';
+import { NewActor } from '@/components/NewActor';
 import { Paths } from '@/components/Paths';
 import { useDiagramCanvas } from '@/diagrams';
 import { Flow } from '@/lib/models/Flow';
@@ -53,6 +54,24 @@ const DiagramPathsContainer: React.FC = ({ children }) => {
   );
 };
 
+const RestArea: React.VFC = () => {
+  return (
+    <Flex flex="1">
+      <Box
+        bg="white"
+        minW="150px"
+        position="sticky"
+        left={0}
+        top={0}
+        borderBottomWidth="1px"
+        borderStyle="solid"
+        borderColor="rgba(0, 0, 0, 0.05)"
+      />
+      <Box flex="1" bg="gray.50" />
+    </Flex>
+  );
+};
+
 export const Diagram: React.VFC<{ flow: Flow }> = observer(({ flow }) => {
   const tasksX = flow.actorAggregate.actors
     .map((actor) => actor.taskAggregate.tasks.map((task) => task.x))
@@ -63,26 +82,31 @@ export const Diagram: React.VFC<{ flow: Flow }> = observer(({ flow }) => {
   }, [tasksX]);
 
   return (
-    <Box>
+    <>
       <DiagramPathsContainer>
         <ArrowMarker />
         <Paths paths={flow.pathAggregate.paths} />
       </DiagramPathsContainer>
 
-      <Box display="inline-block">
+      <Flex
+        direction="column"
+        borderWidth="1px"
+        borderStyle="solid"
+        borderColor="rgba(0, 0, 0, 0.1)"
+        minH="100%"
+      >
         <VStack
           spacing={0}
           align="stretch"
-          divider={<StackDivider bg="gray.200" m="0" />}
-          borderWidth="1px"
-          borderStyle="solid"
-          borderColor="gray.200"
+          divider={<StackDivider bg="rgba(0, 0, 0, 0.05)" h="2px" m="0" />}
         >
           {flow.actorAggregate.actors.map((actor) => (
             <Actor key={actor.id} actor={actor} maxX={maxX} />
           ))}
+          <NewActor flow={flow} />
         </VStack>
-      </Box>
-    </Box>
+        <RestArea />
+      </Flex>
+    </>
   );
 });

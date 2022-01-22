@@ -1,4 +1,4 @@
-import { Box, Center, HStack, StackDivider, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import maxBy from 'lodash/maxBy';
 import { observer } from 'mobx-react-lite';
@@ -38,13 +38,24 @@ export const Actor: React.VFC<
   const minW = maxX + PADDING.x * 2;
 
   return (
-    <HStack divider={<StackDivider bg="gray.200" m="0" />}>
-      <Center minW="150px">
-        <Text color="gray.700" fontWeight="bold">
+    <Flex>
+      <Center
+        bg="white"
+        maxH={`${minH + 2}px`}
+        minW="150px"
+        position="sticky"
+        left={0}
+        top={0}
+        marginBottom="-2px"
+        borderBottomWidth="2px"
+        borderStyle="solid"
+        borderColor="rgba(0, 0, 0, 0.05)"
+      >
+        <Text color="gray.600" fontWeight="bold">
           {actor.name}
         </Text>
       </Center>
-      <Box flex="1" minWidth={minW}>
+      <Box flex="1" bg="gray.50" minWidth={minW}>
         <StyledSvg
           width={minW}
           height={minH}
@@ -56,6 +67,6 @@ export const Actor: React.VFC<
           ))}
         </StyledSvg>
       </Box>
-    </HStack>
+    </Flex>
   );
 });

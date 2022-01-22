@@ -86,7 +86,7 @@ export const DiagramProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <Box ref={canvasRef} display="inline-block">
+    <Box ref={canvasRef} display="inline-block" h="full">
       <DiagramContextNodes.Provider value={nodes}>
         <DiagramContextPaths.Provider value={paths}>
           <DiagramContextCanvas.Provider value={canvas}>
