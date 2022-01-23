@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Task as TaskType } from '@/lib/models/Task';
 
 import { DisplayText } from './displaytext';
+import { Label } from './label';
 import { useTask } from './useTask';
 
 const size = {
@@ -25,6 +26,7 @@ export const Output: React.VFC<{ task: TaskType }> = observer(({ task }) => {
         strokeWidth="2"
       />
       <DisplayText task={task} width={size.width} height={size.height} />
+      <Label task={task} width={size.width} heigth={size.height} />
     </g>
   );
 });
