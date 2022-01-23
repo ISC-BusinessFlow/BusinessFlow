@@ -29,6 +29,7 @@ export type PathType = {
   pathTypeId: number;
   createdAt: string;
   updatedAt: string;
+  label: string;
 };
 
 export class Path {
@@ -39,6 +40,7 @@ export class Path {
   readonly pathTypeId: PathType['pathTypeId'];
   readonly createdAt: PathType['createdAt'];
   readonly updatedAt: PathType['updatedAt'];
+  readonly label: PathType['label'];
 
   constructor({
     id,
@@ -48,6 +50,7 @@ export class Path {
     pathTypeId,
     createdAt,
     updatedAt,
+    label,
   }: PathType) {
     this.id = id;
     this.fromTaskId = fromTaskId;
@@ -56,6 +59,7 @@ export class Path {
     this.pathTypeId = pathTypeId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
+    this.label = label;
     makeAutoObservable(this);
   }
 }

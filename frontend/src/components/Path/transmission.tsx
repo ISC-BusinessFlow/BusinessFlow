@@ -1,9 +1,14 @@
 import { observer } from 'mobx-react-lite';
 
+import { PathType } from '@/lib/models/Path';
+
+import { Label } from './label';
+
 export const Transmission: React.VFC<{
   fromPos: { x: number; y: number };
   toPos: { x: number; y: number };
-}> = observer(({ fromPos, toPos }) => {
+  path: PathType;
+}> = observer(({ fromPos, toPos, path }) => {
   return (
     <g>
       <defs>
@@ -27,6 +32,7 @@ export const Transmission: React.VFC<{
         strokeWidth="3"
         markerEnd="url(#arrowv)"
       />
+      {path.label && <Label fromPos={fromPos} toPos={toPos} path={path} />}
     </g>
   );
 });

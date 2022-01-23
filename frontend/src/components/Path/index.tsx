@@ -17,7 +17,7 @@ export const Path: React.VFC<{
     case 1:
       return <Transition fromPos={fromPos} toPos={toPos} />;
     case 2:
-      return <Transmission fromPos={fromPos} toPos={toPos} />;
+      return <Transmission fromPos={fromPos} toPos={toPos} path={path} />;
     default:
       return null;
   }
