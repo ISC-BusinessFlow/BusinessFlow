@@ -40,7 +40,15 @@ export const Label: React.VFC<{
         height={size.y}
         fill="none"
       >
-        <div style={{ textAlign: 'center', padding: '4px' }}>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <span>{path.label}</span>
         </div>
       </foreignObject>
