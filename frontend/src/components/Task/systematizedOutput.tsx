@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Task as TaskType } from '@/lib/models/Task';
 
 import { DisplayText } from './displaytext';
+import { Label } from './label';
 import { useTask } from './useTask';
 
 const size = {
@@ -38,6 +39,9 @@ export const SystematizedOutput: React.VFC<{ task: TaskType }> = observer(
           mask="url(#path-1-inside-1_6_89)"
         />
         <DisplayText task={task} width={size.width} height={size.height} />
+        {task.label && (
+          <Label task={task} width={size.width} height={size.height} />
+        )}
       </g>
     );
   }
