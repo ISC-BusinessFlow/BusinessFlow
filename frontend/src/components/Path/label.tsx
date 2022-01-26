@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { observer } from 'mobx-react-lite';
 
 import { PathType } from '@/lib/models/Path';
@@ -40,7 +41,7 @@ export const Label: React.VFC<{
         height={size.y}
         fill="none"
       >
-        <div
+        <Box
           style={{
             width: '100%',
             height: '100%',
@@ -50,7 +51,7 @@ export const Label: React.VFC<{
           }}
         >
           <span>{path.label}</span>
-        </div>
+        </Box>
       </foreignObject>
     </g>
   );

@@ -3,11 +3,11 @@ import { observer } from 'mobx-react-lite';
 import { Task as TaskType } from '@/lib/models/Task';
 
 import { DataStore } from './dataStore';
-import { Input } from './input';
-import { Output } from './output';
+import { SystematizedOutput } from './output';
 import { Process } from './process';
 import { Receipt } from './receipt';
-import { SystematizedOutput } from './systematizedOutput';
+import { Input } from './systematizedInput';
+import { Output } from './systematizedOutput';
 import { Trigger } from './trigger';
 
 export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
