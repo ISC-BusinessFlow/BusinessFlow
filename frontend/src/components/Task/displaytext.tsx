@@ -5,11 +5,13 @@ import { TaskType } from '@/lib/models/Task';
 
 export const DisplayText: React.VFC<{
   task: TaskType;
+  x?: number;
+  y?: number;
   width: number;
   height: number;
-}> = observer(({ task, width, height }) => {
+}> = observer(({ task, x = 0, y = 0, width, height }) => {
   return (
-    <foreignObject x="0" y="0" width={width} height={height} fill="none">
+    <foreignObject x={x} y={y} width={width} height={height} fill="none">
       <Box
         style={{
           width: '100%',

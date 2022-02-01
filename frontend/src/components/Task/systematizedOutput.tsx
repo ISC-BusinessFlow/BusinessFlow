@@ -25,7 +25,7 @@ export const Output: React.VFC<{ task: TaskType }> = observer(({ task }) => {
         stroke="#7F9AC2"
         strokeWidth="2"
       />
-      <DisplayText task={task} width={size.width} height={size.height} />
+      <DisplayText task={task} width={size.width} height={size.height - 17} />
       {task.label && (
         <Label
           task={task}
