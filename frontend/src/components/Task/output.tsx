@@ -40,7 +40,12 @@ export const SystematizedOutput: React.VFC<{ task: TaskType }> = observer(
         />
         <DisplayText task={task} width={size.width} height={size.height - 15} />
         {task.label && (
-          <Label task={task} width={size.width} height={size.height} />
+          <Label
+            task={task}
+            width={size.width}
+            height={size.height}
+            color="#FFE589"
+          />
         )}
       </g>
     );

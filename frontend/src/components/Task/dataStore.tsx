@@ -45,7 +45,12 @@ export const DataStore: React.VFC<{ task: TaskType }> = observer(({ task }) => {
       />
       <DisplayText task={task} width={size.width} height={size.height} />
       {task.label && (
-        <Label task={task} width={size.width} height={size.height} />
+        <Label
+          task={task}
+          width={size.width}
+          height={size.height}
+          color="#FFE589"
+        />
       )}
     </g>
   );
