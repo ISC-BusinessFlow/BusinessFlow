@@ -42,13 +42,11 @@ export const Label: React.VFC<{
         fill="none"
       >
         <Box
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          w="full"
+          h="full"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
           <span>{path.label}</span>
         </Box>
