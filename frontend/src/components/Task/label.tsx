@@ -31,7 +31,7 @@ export const Label: React.VFC<{
     if (typeof borderColor !== 'undefined') {
       return borderColor;
     } else {
-      return darkenColor(color);
+      return darkenColor(color, 30);
     }
   };
 
