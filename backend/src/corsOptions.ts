@@ -3,7 +3,12 @@ import { CorsOptions } from 'cors';
 const env =
   process.env.NODE_ENV !== undefined ? process.env.NODE_ENV : 'development';
 
-const accessOrigin = (env: string) => {
+export const accessPort = () => {
+  const port = accessOrigin()?.split(':').slice(-1)[0];
+  return parseInt(port!);
+};
+
+export const accessOrigin = () => {
   switch (env) {
     case 'development':
       return process.env.DEVELOPMENT_URL;
@@ -16,10 +21,8 @@ const accessOrigin = (env: string) => {
   }
 };
 
-const corsOptions: CorsOptions = {
-  origin: accessOrigin(env),
+export const corsOptions: CorsOptions = {
+  origin: accessOrigin(),
   optionsSuccessStatus: 200,
   allowedHeaders: ['Content-Type', 'application/json'],
 };
-
-export default corsOptions;

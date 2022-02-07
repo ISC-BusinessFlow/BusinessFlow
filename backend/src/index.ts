@@ -1,7 +1,8 @@
 import app from './app';
+import { accessOrigin, accessPort } from './corsOptions';
 
-const PORT = 3000;
+const PORT = accessPort();
 
 app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}...`);
+  console.log(`${accessOrigin()}...`);
 });
