@@ -6,7 +6,8 @@ import actorController from './controller/actorController';
 import flowController from './controller/flowController';
 import pathController from './controller/pathController';
 import taskController from './controller/taskController';
-import corsOptions from './corsOptions';
+import { corsOptions } from './corsOptions';
+import relation from './routes/relation';
 
 const app = express();
 export const prisma = new PrismaClient();
@@ -17,5 +18,6 @@ app.use('/flows', flowController);
 app.use('/actors', actorController);
 app.use('/tasks', taskController);
 app.use('/paths', pathController);
+app.use('/relations', relation);
 
 export default app;
