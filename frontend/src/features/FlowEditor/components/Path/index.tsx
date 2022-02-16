@@ -1,6 +1,6 @@
+import { usePathPosition } from '@FlowEditor/hooks/usePathPosition';
 import { observer } from 'mobx-react-lite';
 
-import { usePathPosition } from '@/hooks/usePathPosition';
 import { Path as PathType } from '@/lib/models/Path';
 
 import { Transition } from './transition';
