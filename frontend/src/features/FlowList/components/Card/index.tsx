@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Grid,
   Icon,
   Menu,
   MenuButton,
@@ -14,25 +13,6 @@ import { FaEllipsisV } from 'react-icons/fa';
 
 import { FlowType } from '@/lib/models/Flow';
 
-export const FlowList: React.VFC<{ flows: FlowType[] }> = ({ flows }) => {
-  return (
-    <Grid
-      templateColumns={{
-        lg: 'repeat(3, 1fr)',
-        md: 'repeat(2, 1fr)',
-        sm: 'repeat(1, 1fr)',
-      }}
-      gap={5}
-      w="100%"
-      p="50px"
-    >
-      {flows.map((flow) => (
-        <FlowCard key={flow.id} flow={flow} />
-      ))}
-    </Grid>
-  );
-};
-
 const formatDate = (d: string) => {
   const dd = new Date(d);
   const year = dd.getFullYear();
@@ -42,7 +22,7 @@ const formatDate = (d: string) => {
   return `${year}-${month}-${date}`;
 };
 
-const FlowCard: React.VFC<{ flow: FlowType }> = ({ flow }) => {
+export const FlowCard: React.VFC<{ flow: FlowType }> = ({ flow }) => {
   const { name, createdAt, id } = flow;
 
   const formattedCreatedAt = formatDate(createdAt);
