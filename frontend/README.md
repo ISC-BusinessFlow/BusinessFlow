@@ -27,7 +27,7 @@ yarn run dev
 ```
 └─ src/
    ├─ components/
-   ├─ diagrams/
+   ├─ features/
    ├─ hooks/
    ├─ lib/
    │ ├─ models/
@@ -41,9 +41,10 @@ yarn run dev
 
 原則として `components/<コンポーネント名(UpperCamel)>/index.tsx` という形式にします。
 
-### `diagrams`
+### `features`
 
-このプロジェクトで一番重要になってくるフロー編集画面を描写するためのロジックをここに入れます。
+独立した機能をこのディレクトリに入れます。
+例えば、フローを描写するためのロジックは一つの独立した機能のため、このディレクトリ以下に`Diagrams`という名前のディレクトリを作成し、そこにフローを描写するためのロジックを入れます。
 
 ### `hooks`
 
