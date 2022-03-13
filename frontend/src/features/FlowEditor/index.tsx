@@ -2,13 +2,19 @@ import { Box, Flex, Heading } from '@chakra-ui/react';
 import { DiagramProvider } from '@Diagrams';
 import { Diagram } from '@FlowEditor/components/Diagram';
 import { useBootstrapFlow } from '@FlowEditor/hooks/useBootstrapFlow';
+import { useRecoilValue } from 'recoil';
+
+import { flowState } from './store';
 
 type Props = {
   id: number;
 };
 
 export const FlowEditor: React.VFC<Props> = ({ id }) => {
-  const { flow } = useBootstrapFlow({ id });
+  const flow = useRecoilValue(flowState);
+  const { loading } = useBootstrapFlow({ id });
+
+  if (!flow || loading) return null;
 
   return (
     <Flex direction="column" h="100vh">
@@ -19,7 +25,7 @@ export const FlowEditor: React.VFC<Props> = ({ id }) => {
       </Box>
 
       <Box w="full" flex="1" maxW="full" position="relative" overflowX="auto">
-        <DiagramProvider>{flow && <Diagram flow={flow} />}</DiagramProvider>
+        <DiagramProvider>{flow && <Diagram />}</DiagramProvider>
       </Box>
     </Flex>
   );

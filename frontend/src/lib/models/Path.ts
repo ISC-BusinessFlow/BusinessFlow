@@ -29,7 +29,7 @@ export type PathType = {
   pathTypeId: number;
   createdAt: string;
   updatedAt: string;
-  label: string;
+  label?: string;
 };
 
 export class Path {

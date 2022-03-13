@@ -14,9 +14,9 @@ export type PathPosition = {
 export type Path = {
   id: number;
   label?: string;
-  typeId: number;
+  pathTypeId: number;
   fromTaskId: number;
-  toTaskId: number;
+  toTaskId: number | null;
   flowId: number;
   createdAt: string;
   updatedAt: string;
@@ -53,9 +53,16 @@ export const flowState = atom<Flow | null>({
   default: null,
 });
 
-const actorsState = atom<Actor[]>({
+export const actorsState = atom<Actor[]>({
   key: 'actors',
   default: [],
+});
+
+export const actorIdsState = selector<number[]>({
+  key: 'actorIds',
+  get: ({ get }) => {
+    return get(actorsState).map((actor) => actor.id);
+  },
 });
 
 export const actorState = selectorFamily<Actor | undefined, number>({
@@ -81,7 +88,7 @@ export const tasksHasActorState = selectorFamily<Task[], number>({
     },
 });
 
-const tasksState = atom<Task[]>({
+export const tasksState = atom<Task[]>({
   key: 'tasks',
   default: [],
 });
@@ -96,7 +103,7 @@ export const taskState = selectorFamily<Task | undefined, number>({
     },
 });
 
-const pathsState = atom<Path[]>({
+export const pathsState = atom<Path[]>({
   key: 'paths',
   default: [],
 });

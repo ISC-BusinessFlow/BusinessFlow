@@ -9,7 +9,7 @@ export const Path: React.VFC<{ id: number }> = ({ id }) => {
   const pathPosition = useRecoilValue(pathPositionState(id));
   if (!pathPosition || !path) return null;
 
-  switch (path.typeId) {
+  switch (path.pathTypeId) {
     case 1:
       return <Transition fromPos={pathPosition.from} toPos={pathPosition.to} />;
     case 2:

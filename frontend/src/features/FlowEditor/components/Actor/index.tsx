@@ -1,24 +1,10 @@
 import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { Task } from '@FlowEditor/components/Task';
+import { actorState, tasksHasActorState } from '@FlowEditor/store';
 import maxBy from 'lodash/maxBy';
 import { useMemo } from 'react';
-import { useQuery } from 'react-query';
-import {
-  atom,
-  atomFamily,
-  selector,
-  selectorFamily,
-  useRecoilCallback,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
-
-import { ActorType } from '@/lib/models/Actor';
-import { FlowType } from '@/lib/models/Flow';
-import { flowCacheKey } from '@/utils/cacheKey';
-
-import { actorState, tasksHasActor } from '../../store';
+import { useRecoilValue } from 'recoil';
 
 /**
  * xとyはTaskの真ん中になるようにするため、本来のsvgで使う左上の座標がマイナスになる可能性がある
@@ -34,67 +20,12 @@ const StyledSvg = styled.svg`
   height: 100%;
 `;
 
-// const flowState = atom<FlowType | null>({
-//   key: 'flow',
-//   default: null,
-// });
-
-// const actorsState = atom<ActorType[]>({
-//   key: 'actors',
-//   default: [],
-// });
-
-// const actorByIdState = selectorFamily<ActorType | undefined, number>({
-//   key: 'actorById',
-//   get:
-//     (id) =>
-//     ({ get }) => {
-//       const actors = get(actorsState);
-//       const actor = actors.find((a) => a.id == id);
-
-//       return actor;
-//     },
-// });
-
-// const pathsState = atom({
-//   key: 'paths',
-//   default: [],
-// });
-
-// const tasksState = atom({
-//   key: 'tasks',
-//   default: [],
-// });
-
-// const actorState = atomFamily<ActorType | null, number>({
-//   key: 'actor',
-//   default: null,
-// });
-
-// const useActor = ({ id }: { id: number }) => {
-//   const setDefaultValueCb = useRecoilCallback(
-//     ({ set }) =>
-//       (value: ActorType) => {
-//         set(actorState(id), value);
-//       },
-//     [id]
-//   );
-
-//   useQuery<ActorType | null>(flowCacheKey.getPathsById(id), () => null, {
-//     onSuccess: (data) => {
-//       if (!data) return;
-
-//       setDefaultValueCb(data);
-//     },
-//   });
-// };
-
 export const Actor: React.VFC<{ id: number; maxX: number }> = ({
   id,
   maxX,
 }) => {
   const actor = useRecoilValue(actorState(id));
-  const tasks = useRecoilValue(tasksHasActor(id));
+  const tasks = useRecoilValue(tasksHasActorState(id));
   const tasksY = tasks.map((task) => task.y);
 
   const maxY = useMemo(() => {
