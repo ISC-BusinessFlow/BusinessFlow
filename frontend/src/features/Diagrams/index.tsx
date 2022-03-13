@@ -61,9 +61,9 @@ export const useRegisterNode = (ref: React.RefObject<Element>, id?: number) => {
     };
 
     handleRegister();
-    window.addEventListener('resize', handleRegister);
+    // window.addEventListener('resize', handleRegister);
 
-    return () => window.removeEventListener('resize', handleRegister);
+    // return () => window.removeEventListener('resize', handleRegister);
   }, [canvas]);
 
   return registerNode;

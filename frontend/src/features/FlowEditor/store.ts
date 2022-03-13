@@ -139,6 +139,7 @@ export const pathPositionState = selectorFamily<
 
       const from = path.fromTaskId;
       const to = path.toTaskId;
+      if (!to) return null;
 
       const fromTask = get(diagramNode(from));
       const toTask = get(diagramNode(to));
