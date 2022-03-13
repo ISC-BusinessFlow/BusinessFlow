@@ -1,24 +1,26 @@
-import { usePathPosition } from '@FlowEditor/hooks/usePathPosition';
-import { observer } from 'mobx-react-lite';
-
-import { Path as PathType } from '@/lib/models/Path';
+import { pathPositionState, pathState } from '@FlowEditor/store';
+import { useRecoilValue } from 'recoil';
 
 import { Transition } from './transition';
 import { Transmission } from './transmission';
 
-export const Path: React.VFC<{
-  path: PathType;
-  from: DOMRect;
-  to: DOMRect;
-}> = observer(({ path, from, to }) => {
-  const { from: fromPos, to: toPos } = usePathPosition({ from, to });
+export const Path: React.VFC<{ id: number }> = ({ id }) => {
+  const path = useRecoilValue(pathState(id));
+  const pathPosition = useRecoilValue(pathPositionState(id));
+  if (!pathPosition || !path) return null;
 
-  switch (path.pathTypeId) {
+  switch (path.typeId) {
     case 1:
-      return <Transition fromPos={fromPos} toPos={toPos} />;
+      return <Transition fromPos={pathPosition.from} toPos={pathPosition.to} />;
     case 2:
-      return <Transmission fromPos={fromPos} toPos={toPos} path={path} />;
+      return (
+        <Transmission
+          fromPos={pathPosition.from}
+          toPos={pathPosition.to}
+          path={path}
+        />
+      );
     default:
       return null;
   }
-});
+};

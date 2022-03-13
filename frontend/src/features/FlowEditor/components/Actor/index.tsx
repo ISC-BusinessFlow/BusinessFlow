@@ -2,10 +2,23 @@ import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { Task } from '@FlowEditor/components/Task';
 import maxBy from 'lodash/maxBy';
-import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
+import { useQuery } from 'react-query';
+import {
+  atom,
+  atomFamily,
+  selector,
+  selectorFamily,
+  useRecoilCallback,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
-import { Actor as ActorType } from '@/lib/models/Actor';
+import { ActorType } from '@/lib/models/Actor';
+import { FlowType } from '@/lib/models/Flow';
+import { flowCacheKey } from '@/utils/cacheKey';
+
+import { actorState, tasksHasActor } from '../../store';
 
 /**
  * xとyはTaskの真ん中になるようにするため、本来のsvgで使う左上の座標がマイナスになる可能性がある
@@ -21,14 +34,68 @@ const StyledSvg = styled.svg`
   height: 100%;
 `;
 
-export const Actor: React.VFC<
-  {
-    actor: ActorType;
-  } & {
-    maxX: number;
-  }
-> = observer(({ actor, maxX }) => {
-  const tasksY = actor.taskAggregate.tasks.map((task) => task.y);
+// const flowState = atom<FlowType | null>({
+//   key: 'flow',
+//   default: null,
+// });
+
+// const actorsState = atom<ActorType[]>({
+//   key: 'actors',
+//   default: [],
+// });
+
+// const actorByIdState = selectorFamily<ActorType | undefined, number>({
+//   key: 'actorById',
+//   get:
+//     (id) =>
+//     ({ get }) => {
+//       const actors = get(actorsState);
+//       const actor = actors.find((a) => a.id == id);
+
+//       return actor;
+//     },
+// });
+
+// const pathsState = atom({
+//   key: 'paths',
+//   default: [],
+// });
+
+// const tasksState = atom({
+//   key: 'tasks',
+//   default: [],
+// });
+
+// const actorState = atomFamily<ActorType | null, number>({
+//   key: 'actor',
+//   default: null,
+// });
+
+// const useActor = ({ id }: { id: number }) => {
+//   const setDefaultValueCb = useRecoilCallback(
+//     ({ set }) =>
+//       (value: ActorType) => {
+//         set(actorState(id), value);
+//       },
+//     [id]
+//   );
+
+//   useQuery<ActorType | null>(flowCacheKey.getPathsById(id), () => null, {
+//     onSuccess: (data) => {
+//       if (!data) return;
+
+//       setDefaultValueCb(data);
+//     },
+//   });
+// };
+
+export const Actor: React.VFC<{ id: number; maxX: number }> = ({
+  id,
+  maxX,
+}) => {
+  const actor = useRecoilValue(actorState(id));
+  const tasks = useRecoilValue(tasksHasActor(id));
+  const tasksY = tasks.map((task) => task.y);
 
   const maxY = useMemo(() => {
     return maxBy(tasksY, (y) => y) ?? 0;
@@ -36,6 +103,8 @@ export const Actor: React.VFC<
 
   const minH = maxY === 0 ? PADDING.y : maxY + PADDING.y * 2;
   const minW = maxX + PADDING.x * 2;
+
+  if (!actor) return null;
 
   return (
     <Flex>
@@ -62,11 +131,11 @@ export const Actor: React.VFC<
           viewBox={`${-PADDING.x}, ${-PADDING.y}, ${minW} ${minH}`}
           xmlns="http://www.w3.org/2000/svg"
         >
-          {actor.taskAggregate.tasks.map((task) => (
-            <Task key={task.id} task={task} />
+          {tasks.map((task) => (
+            <Task key={task.id} id={task.id} />
           ))}
         </StyledSvg>
       </Box>
     </Flex>
   );
-});
+};

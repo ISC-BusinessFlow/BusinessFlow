@@ -1,27 +1,15 @@
-import { useDiagramNodes } from '@Diagrams';
 import { Path } from '@FlowEditor/components/Path';
-import { observer } from 'mobx-react-lite';
+import { pathIdsState } from '@FlowEditor/store';
+import { useRecoilValue } from 'recoil';
 
-import { Path as PathType } from '@/lib/models/Path';
-
-export const Paths: React.VFC<{ paths: PathType[] }> = observer(({ paths }) => {
-  const nodes = useDiagramNodes();
+export const Paths: React.VFC = () => {
+  const ids = useRecoilValue(pathIdsState);
 
   return (
     <>
-      {paths.map(
-        (path) =>
-          path.toTaskId &&
-          nodes[path.fromTaskId] &&
-          nodes[path.toTaskId] && (
-            <Path
-              key={path.id}
-              path={path}
-              from={nodes[path.fromTaskId]}
-              to={nodes[path.toTaskId]}
-            />
-          )
-      )}
+      {ids.map((id) => (
+        <Path key={id} id={id} />
+      ))}
     </>
   );
-});
+};

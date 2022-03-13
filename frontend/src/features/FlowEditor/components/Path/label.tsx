@@ -1,13 +1,9 @@
 import { Box } from '@chakra-ui/react';
-import { observer } from 'mobx-react-lite';
 
-import { PathType } from '@/lib/models/Path';
-
-export const Label: React.VFC<{
+export const Label: React.FC<{
   fromPos: { x: number; y: number };
   toPos: { x: number; y: number };
-  path: PathType;
-}> = observer(({ fromPos, toPos, path }) => {
+}> = ({ fromPos, toPos, children }) => {
   const size = {
     x: 100,
     y: 50,
@@ -48,9 +44,9 @@ export const Label: React.VFC<{
           alignItems="center"
           justifyContent="center"
         >
-          <span>{path.label}</span>
+          <span>{children}</span>
         </Box>
       </foreignObject>
     </g>
   );
-});
+};

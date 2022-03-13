@@ -1,17 +1,14 @@
 import { Box } from '@chakra-ui/react';
-import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
 
-import { TaskType } from '@/lib/models/Task';
 import { darkenColor } from '@/utils/darkenColor';
 
-export const Label: React.VFC<{
-  task: TaskType;
+export const Label: React.FC<{
   width: number;
   height: number;
   color?: string;
   borderColor?: string;
-}> = observer(({ task, width, height, color = '#FFFFFF', borderColor }) => {
+}> = ({ width, height, color = '#FFFFFF', borderColor, children }) => {
   const labelSize = {
     x: 160,
     y: 70,
@@ -54,9 +51,9 @@ export const Label: React.VFC<{
           alignItems="center"
           justifyContent="center"
         >
-          <span>{task.label}</span>
+          <span>{children}</span>
         </Box>
       </foreignObject>
     </g>
   );
-});
+};

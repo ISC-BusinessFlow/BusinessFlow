@@ -1,24 +1,22 @@
-import { observer } from 'mobx-react-lite';
+import { forwardRef } from 'react';
 
-import { Task as TaskType } from '@/lib/models/Task';
-
+import { BaseTaskProps } from '.';
 import { DisplayText } from './displaytext';
 import { Label } from './label';
-import { useTask } from './useTask';
 
 const size = {
   width: 125,
   height: 50,
 };
 
-export const Trigger: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  const {
-    ref,
-    translate: { x, y },
-  } = useTask(task);
+export const Trigger = forwardRef<SVGGElement, BaseTaskProps>(function Trigger(
+  { task, translate },
+  ref
+) {
+  if (!task || !translate) return null;
 
   return (
-    <g ref={ref} transform={`translate(${x}, ${y})`}>
+    <g ref={ref} transform={`translate(${translate.x}, ${translate.y})`}>
       <mask id="path-1-inside-1_6_60" fill="white">
         <path
           fillRule="evenodd"
@@ -37,19 +35,13 @@ export const Trigger: React.VFC<{ task: TaskType }> = observer(({ task }) => {
         fill="#40669E"
         mask="url(#path-1-inside-1_6_60)"
       />
-      <DisplayText
-        task={task}
-        x={12}
-        width={size.width - 24}
-        height={size.height}
-      />
+      <DisplayText x={12} width={size.width - 24} height={size.height}>
+        {task.name}
+      </DisplayText>
       {task.label && (
-        <Label
-          task={task}
-          width={size.width}
-          height={size.height}
-          color="#FFE589"
-        />
+        <Label width={size.width} height={size.height} color="#FFE589">
+          {task.label}
+        </Label>
       )}
     </g>
   );

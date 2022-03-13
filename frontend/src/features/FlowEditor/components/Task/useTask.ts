@@ -1,9 +1,14 @@
 import { useRegisterNode } from '@Diagrams';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { taskState } from '@FlowEditor/store';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
-import { Task } from '@/lib/models/Task';
+import { BaseTaskProps } from '.';
 
-export const useTask = (task: Task) => {
+export const useTask = (
+  id: number
+): BaseTaskProps & { ref: React.RefCallback<SVGGElement> } => {
+  const task = useRecoilValue(taskState(id));
   const ref = useRef<SVGGElement | null>(null);
   const [debounceElement, setDebounceElement] = useState<SVGGElement | null>(
     null
@@ -13,7 +18,7 @@ export const useTask = (task: Task) => {
     height: 0,
   });
 
-  useRegisterNode(ref, task.id);
+  useRegisterNode(ref, task?.id);
 
   const callbackRef: React.RefCallback<SVGGElement> = useCallback((el) => {
     if (!el) return;
@@ -29,15 +34,22 @@ export const useTask = (task: Task) => {
 
   useEffect(() => {
     if (!debounceElement) return;
-    // translateが更新されてからregisterNodeを実行させたいため処理を意図的に遅らせる
+    // NOTE: translateが更新されてからregisterNodeを実行させたいため処理を意図的に遅らせる
     ref.current = debounceElement;
   }, [debounceElement]);
 
-  return {
-    ref: callbackRef,
-    translate: {
+  const translate = useMemo(() => {
+    if (!task) return undefined;
+
+    return {
       x: task.x - size.width / 2,
       y: task.y - size.height / 2,
-    },
+    };
+  }, [task, size]);
+
+  return {
+    ref: callbackRef,
+    task,
+    translate,
   };
 };

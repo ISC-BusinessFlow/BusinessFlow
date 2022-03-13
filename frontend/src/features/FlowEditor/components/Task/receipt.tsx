@@ -1,17 +1,15 @@
-import { observer } from 'mobx-react-lite';
+import { forwardRef } from 'react';
 
-import { Task as TaskType } from '@/lib/models/Task';
+import { BaseTaskProps } from '.';
 
-import { useTask } from './useTask';
-
-export const Receipt: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  const {
-    ref,
-    translate: { x, y },
-  } = useTask(task);
+export const Receipt = forwardRef<SVGGElement, BaseTaskProps>(function Receipt(
+  { task, translate },
+  ref
+) {
+  if (!task || !translate) return null;
 
   return (
-    <g ref={ref} transform={`translate(${x}, ${y})`}>
+    <g ref={ref} transform={`translate(${translate.x}, ${translate.y})`}>
       <circle
         cx="12.5"
         cy="12.5"

@@ -1,9 +1,7 @@
-import { observer } from 'mobx-react-lite';
-
 export const Transition: React.VFC<{
   fromPos: { x: number; y: number };
   toPos: { x: number; y: number };
-}> = observer(({ fromPos, toPos }) => {
+}> = ({ fromPos, toPos }) => {
   return (
     <g>
       <defs>
@@ -29,4 +27,4 @@ export const Transition: React.VFC<{
       />
     </g>
   );
-});
+};
