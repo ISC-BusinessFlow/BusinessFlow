@@ -4,7 +4,6 @@ import {
   atom,
   selectorFamily,
   useRecoilCallback,
-  useRecoilState,
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
@@ -117,7 +116,7 @@ export const DiagramProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <Box ref={canvasRef} display="inline-block" h="full">
+    <Box ref={canvasRef} display="inline-block">
       {children}
     </Box>
   );
