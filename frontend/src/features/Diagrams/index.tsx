@@ -6,6 +6,7 @@ import {
   useRecoilCallback,
   useRecoilState,
   useRecoilValue,
+  useSetRecoilState,
 } from 'recoil';
 
 export type DiagramCanvas = {
@@ -85,7 +86,9 @@ export const diagramCanvasState = atom<DiagramCanvas>({
 });
 
 export const DiagramProvider: React.FC = ({ children }) => {
-  const [, setCanvas] = useRecoilState(diagramCanvasState);
+  const setCanvas = useSetRecoilState(diagramCanvasState);
+
+  console.log('DiagramProvider');
 
   const canvasRef: React.RefCallback<HTMLDivElement> = useCallback((node) => {
     const resizeObserver = new ResizeObserver((entries) => {

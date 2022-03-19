@@ -20,12 +20,14 @@ export const FlowEditor: React.VFC<Props> = ({ id }) => {
     <Flex direction="column" h="100vh">
       <Box w="100%" bg="gray.600" px={10} py={6} as="nav">
         <Heading size="md" color="white">
-          {flow?.name}
+          {flow.name}
         </Heading>
       </Box>
 
       <Box w="full" flex="1" maxW="full" position="relative" overflowX="auto">
-        <DiagramProvider>{flow && <Diagram />}</DiagramProvider>
+        <DiagramProvider>
+          <Diagram />
+        </DiagramProvider>
       </Box>
     </Flex>
   );

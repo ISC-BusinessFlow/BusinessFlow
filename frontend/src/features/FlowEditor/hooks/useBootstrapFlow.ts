@@ -1,8 +1,11 @@
 import {
-  actorsState,
+  Actor,
   flowState,
-  pathsState,
-  tasksState,
+  Path,
+  Task,
+  useSetActorsState,
+  useSetPathsState,
+  useSetTasksState,
 } from '@FlowEditor/store';
 import { useQuery } from 'react-query';
 import { useSetRecoilState } from 'recoil';
@@ -14,9 +17,9 @@ import { flowCacheKey } from '@/utils/cacheKey';
 export const useBootstrapFlow = ({ id }: { id: number }) => {
   const flowRepo = new FlowRepo(api);
   const setFlow = useSetRecoilState(flowState);
-  const setActors = useSetRecoilState(actorsState);
-  const setTasks = useSetRecoilState(tasksState);
-  const setPaths = useSetRecoilState(pathsState);
+  const setActors = useSetActorsState();
+  const setTasks = useSetTasksState();
+  const setPaths = useSetPathsState();
 
   const { isLoading: isFlowLoading } = useQuery(
     flowCacheKey.getById(id),
@@ -32,7 +35,13 @@ export const useBootstrapFlow = ({ id }: { id: number }) => {
     () => flowRepo.getFlowActors({ id }),
     {
       onSuccess: (data) => {
-        setActors(data);
+        const value: Record<number, Actor> = {};
+
+        data.forEach((actor) => {
+          value[actor.id] = actor;
+        });
+
+        setActors(value);
       },
     }
   );
@@ -41,7 +50,13 @@ export const useBootstrapFlow = ({ id }: { id: number }) => {
     () => flowRepo.getFlowTasks({ id }),
     {
       onSuccess: (data) => {
-        setTasks(data);
+        const value: Record<number, Task> = {};
+
+        data.forEach((task) => {
+          value[task.id] = task;
+        });
+
+        setTasks(value);
       },
     }
   );
@@ -50,7 +65,13 @@ export const useBootstrapFlow = ({ id }: { id: number }) => {
     () => flowRepo.getFlowPaths({ id }),
     {
       onSuccess: (data) => {
-        setPaths(data);
+        const value: Record<number, Path> = {};
+
+        data.forEach((path) => {
+          value[path.id] = path;
+        });
+
+        setPaths(value);
       },
     }
   );

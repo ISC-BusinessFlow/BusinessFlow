@@ -4,7 +4,7 @@ import { Task } from '@FlowEditor/components/Task';
 import { actorState, tasksHasActorState } from '@FlowEditor/store';
 import maxBy from 'lodash/maxBy';
 import { useMemo } from 'react';
-import { useRecoilValue } from 'recoil';
+import { selectorFamily, useRecoilValue } from 'recoil';
 
 /**
  * xとyはTaskの真ん中になるようにするため、本来のsvgで使う左上の座標がマイナスになる可能性がある
@@ -20,12 +20,24 @@ const StyledSvg = styled.svg`
   height: 100%;
 `;
 
+const tasksSelector = selectorFamily({
+  key: 'tasksSelector',
+  get:
+    (id: number) =>
+    ({ get }) => {
+      return get(tasksHasActorState(id)).map((task) => ({
+        id: task.id,
+        y: task.y,
+      }));
+    },
+});
+
 export const Actor: React.VFC<{ id: number; maxX: number }> = ({
   id,
   maxX,
 }) => {
   const actor = useRecoilValue(actorState(id));
-  const tasks = useRecoilValue(tasksHasActorState(id));
+  const tasks = useRecoilValue(tasksSelector(id));
   const tasksY = tasks.map((task) => task.y);
 
   const maxY = useMemo(() => {

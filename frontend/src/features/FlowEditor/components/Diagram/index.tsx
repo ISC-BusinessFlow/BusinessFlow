@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Actor } from '@FlowEditor/components/Actor';
 import { NewActor } from '@FlowEditor/components/Actor/new';
 import { Paths } from '@FlowEditor/components/Paths';
-import { actorIdsState, tasksState } from '@FlowEditor/store';
+import { actorIdsState, tasksPositionState } from '@FlowEditor/store';
 import maxBy from 'lodash/maxBy';
 import { useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
@@ -73,9 +73,9 @@ const RestArea: React.VFC = () => {
 };
 
 export const Diagram: React.VFC = () => {
-  const tasks = useRecoilValue(tasksState);
+  const tasksPosition = useRecoilValue(tasksPositionState);
   const actorIds = useRecoilValue(actorIdsState);
-  const tasksX = tasks.map((task) => task.x);
+  const tasksX = tasksPosition.map((task) => task.x);
 
   const maxX = useMemo(() => {
     return maxBy(tasksX, (x) => x) ?? 0;

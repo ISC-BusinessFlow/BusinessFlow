@@ -1,5 +1,6 @@
-import { Task as TaskType } from '@FlowEditor/store';
+import { Task as TaskType, taskState } from '@FlowEditor/store';
 import { ForwardRefExoticComponent, RefAttributes, useMemo } from 'react';
+import { useSetRecoilState } from 'recoil';
 
 import { DataStore } from './dataStore';
 import { SystematizedOutput } from './output';
@@ -57,6 +58,7 @@ const taskComponents: TaskComponent[] = [
 ];
 
 export const Task: React.VFC<{ id: number }> = ({ id }) => {
+  const setTask = useSetRecoilState(taskState(id));
   const { ref, task, translate } = useTask(id);
 
   const Component = useMemo(() => {
@@ -69,5 +71,13 @@ export const Task: React.VFC<{ id: number }> = ({ id }) => {
 
   if (!task || !Component) return null;
 
-  return <Component ref={ref} task={task} translate={translate} />;
+  return (
+    <g
+      onClick={() =>
+        setTask((cur) => (cur ? { ...cur, name: 'update' } : undefined))
+      }
+    >
+      <Component ref={ref} task={task} translate={translate} />
+    </g>
+  );
 };

@@ -1,5 +1,11 @@
 import { diagramNode } from '@Diagrams';
-import { atom, selector, selectorFamily } from 'recoil';
+import {
+  atom,
+  DefaultValue,
+  selector,
+  selectorFamily,
+  useSetRecoilState,
+} from 'recoil';
 
 export type Position = {
   x: number;
@@ -53,15 +59,20 @@ export const flowState = atom<Flow | null>({
   default: null,
 });
 
-export const actorsState = atom<Actor[]>({
+export const actorsState = atom<Record<number, Actor>>({
   key: 'actors',
-  default: [],
+  default: {},
 });
+
+export const useSetActorsState = () => {
+  return useSetRecoilState(actorsState);
+};
 
 export const actorIdsState = selector<number[]>({
   key: 'actorIds',
   get: ({ get }) => {
-    return get(actorsState).map((actor) => actor.id);
+    const actors = get(actorsState);
+    return Object.values(actors).map((actor) => actor.id);
   },
 });
 
@@ -71,7 +82,57 @@ export const actorState = selectorFamily<Actor | undefined, number>({
     (id) =>
     ({ get }) => {
       const actors = get(actorsState);
-      return actors.find((actor) => actor.id === id);
+      return actors[id];
+    },
+  set:
+    (id) =>
+    ({ set }, newState) => {
+      if (!newState || newState instanceof DefaultValue) return;
+
+      set(actorsState, (cur) => ({
+        ...cur,
+        [id]: newState,
+      }));
+    },
+});
+
+const tasksState = atom<Record<number, Task>>({
+  key: 'tasks',
+  default: {},
+});
+
+export const useSetTasksState = () => {
+  return useSetRecoilState(tasksState);
+};
+
+export const tasksPositionState = selector<Position[]>({
+  key: 'tasksPosition',
+  get: ({ get }) => {
+    const tasks = get(tasksState);
+    console.log({ tasks });
+    return Object.values(tasks).map((task) => ({
+      x: task.x,
+      y: task.y,
+    }));
+  },
+});
+
+export const taskState = selectorFamily<Task | undefined, number>({
+  key: 'task',
+  get:
+    (id) =>
+    ({ get }) => {
+      const tasks = get(tasksState);
+      return tasks[id];
+    },
+  set:
+    (id) =>
+    ({ set }, newValue) => {
+      set(tasksState, (cur) =>
+        !newValue || newValue instanceof DefaultValue
+          ? cur
+          : { ...cur, [id]: newValue }
+      );
     },
 });
 
@@ -84,34 +145,24 @@ export const tasksHasActorState = selectorFamily<Task[], number>({
       if (!actor) return [];
 
       const tasks = get(tasksState);
-      return tasks.filter((task) => task.actorId === id);
+      return Object.values(tasks).filter((task) => task.actorId === id);
     },
 });
 
-export const tasksState = atom<Task[]>({
-  key: 'tasks',
-  default: [],
-});
-
-export const taskState = selectorFamily<Task | undefined, number>({
-  key: 'task',
-  get:
-    (id) =>
-    ({ get }) => {
-      const tasks = get(tasksState);
-      return tasks.find((task) => task.id === id);
-    },
-});
-
-export const pathsState = atom<Path[]>({
+const pathsState = atom<Record<number, Path>>({
   key: 'paths',
   default: [],
 });
 
+export const useSetPathsState = () => {
+  return useSetRecoilState(pathsState);
+};
+
 export const pathIdsState = selector<number[]>({
   key: 'pathIds',
   get: ({ get }) => {
-    return get(pathsState).map((path) => path.id);
+    const paths = get(pathsState);
+    return Object.values(paths).map((path) => path.id);
   },
 });
 
@@ -121,7 +172,7 @@ export const pathState = selectorFamily<Path | undefined, number>({
     (id) =>
     ({ get }) => {
       const paths = get(pathsState);
-      return paths.find((path) => path.id === id);
+      return paths[id];
     },
 });
 
