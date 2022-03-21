@@ -22,7 +22,7 @@ export type DiagramCanvas = {
   updated: boolean;
 };
 
-export const diagramNodes = atom<Record<number, DOMRect>>({
+const diagramNodes = atom<Record<number, DOMRect>>({
   key: 'diagramNodes',
   default: [],
 });
@@ -49,24 +49,21 @@ export const useRegisterNode = (ref: React.RefObject<Element>, id?: number) => {
       }
   );
 
+  const handleRegister = useCallback(() => {
+    if (!canvas.updated) {
+      return;
+    }
+
+    if (id && ref && ref.current && 'getBoundingClientRect' in ref.current) {
+      registerNode(id, ref.current.getBoundingClientRect());
+    }
+  }, [id, registerNode]);
+
   useEffect(() => {
-    const handleRegister = () => {
-      if (!canvas.updated) {
-        return;
-      }
-
-      if (id && ref && ref.current && 'getBoundingClientRect' in ref.current) {
-        registerNode(id, ref.current.getBoundingClientRect());
-      }
-    };
-
     handleRegister();
-    // window.addEventListener('resize', handleRegister);
+  }, [canvas, handleRegister]);
 
-    // return () => window.removeEventListener('resize', handleRegister);
-  }, [canvas]);
-
-  return registerNode;
+  return handleRegister;
 };
 
 export const diagramCanvasState = atom<DiagramCanvas>({

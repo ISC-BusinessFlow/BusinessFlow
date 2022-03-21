@@ -7,51 +7,14 @@ import {
   useSetRecoilState,
 } from 'recoil';
 
+import { Actor } from '@/lib/models/Actor';
+import { Flow } from '@/lib/models/Flow';
+import { Path } from '@/lib/models/Path';
+import { Task } from '@/lib/models/Task';
+
 export type Position = {
   x: number;
   y: number;
-};
-
-export type PathPosition = {
-  from: Position;
-  to: Position;
-};
-
-export type Path = {
-  id: number;
-  label?: string;
-  pathTypeId: number;
-  fromTaskId: number;
-  toTaskId: number | null;
-  flowId: number;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type Task = {
-  id: number;
-  name: string;
-  label?: string;
-  typeId: number;
-  flowId: number;
-  actorId: number;
-  createdAt: string;
-  updatedAt: string;
-} & Position;
-
-export type Actor = {
-  id: number;
-  name: string;
-  flowId: number;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type Flow = {
-  id: number;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
 };
 
 export const flowState = atom<Flow | null>({

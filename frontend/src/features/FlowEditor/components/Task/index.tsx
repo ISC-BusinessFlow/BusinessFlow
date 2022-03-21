@@ -1,6 +1,8 @@
-import { Task as TaskType, taskState } from '@FlowEditor/store';
+import { taskState } from '@FlowEditor/store';
 import { ForwardRefExoticComponent, RefAttributes, useMemo } from 'react';
 import { useSetRecoilState } from 'recoil';
+
+import { Task as TaskType } from '@/lib/models/Task';
 
 import { DataStore } from './dataStore';
 import { SystematizedOutput } from './output';

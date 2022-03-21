@@ -1,8 +1,5 @@
 import {
-  Actor,
   flowState,
-  Path,
-  Task,
   useSetActorsState,
   useSetPathsState,
   useSetTasksState,
@@ -11,6 +8,9 @@ import { useQuery } from 'react-query';
 import { useSetRecoilState } from 'recoil';
 
 import { api } from '@/api';
+import { Actor } from '@/lib/models/Actor';
+import { Path } from '@/lib/models/Path';
+import { Task } from '@/lib/models/Task';
 import { FlowRepo } from '@/lib/repositories/Flow';
 import { flowCacheKey } from '@/utils/cacheKey';
 
