@@ -1,13 +1,13 @@
 import { Box, Flex, StackDivider, VStack } from '@chakra-ui/react';
+import { useDiagramCanvas } from '@Diagrams';
 import styled from '@emotion/styled';
+import { Actor } from '@FlowEditor/components/Actor';
+import { NewActor } from '@FlowEditor/components/Actor/new';
+import { Paths } from '@FlowEditor/components/Paths';
 import maxBy from 'lodash/maxBy';
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
 
-import { Actor } from '@/components/Actor';
-import { NewActor } from '@/components/NewActor';
-import { Paths } from '@/components/Paths';
-import { useDiagramCanvas } from '@/diagrams';
 import { Flow } from '@/lib/models/Flow';
 
 const ArrowMarker = () => {

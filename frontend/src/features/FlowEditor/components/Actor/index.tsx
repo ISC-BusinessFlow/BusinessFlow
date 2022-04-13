@@ -1,10 +1,10 @@
 import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import { Task } from '@FlowEditor/components/Task';
 import maxBy from 'lodash/maxBy';
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
 
-import { Task } from '@/components/Task';
 import { Actor as ActorType } from '@/lib/models/Actor';
 
 /**

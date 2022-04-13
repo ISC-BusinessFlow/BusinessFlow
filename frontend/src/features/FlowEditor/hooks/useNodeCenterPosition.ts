@@ -1,6 +1,5 @@
+import { useDiagramCanvas } from '@Diagrams';
 import { useMemo } from 'react';
-
-import { useDiagramCanvas } from '@/diagrams';
 
 export const useNodeCenterPosition = (position: DOMRect) => {
   const {

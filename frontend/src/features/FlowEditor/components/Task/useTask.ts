@@ -1,6 +1,6 @@
+import { useRegisterNode } from '@Diagrams';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useRegisterNode } from '@/diagrams';
 import { Task } from '@/lib/models/Task';
 
 export const useTask = (task: Task) => {
