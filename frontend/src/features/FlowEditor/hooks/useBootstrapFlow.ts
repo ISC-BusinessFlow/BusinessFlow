@@ -1,10 +1,14 @@
-import groupBy from 'lodash/groupBy';
-import { useEffect, useState } from 'react';
+import {
+  flowState,
+  useSetActorsState,
+  useSetPathsState,
+  useSetTasksState,
+} from '@FlowEditor/store';
 import { useQuery } from 'react-query';
+import { useSetRecoilState } from 'recoil';
 
 import { api } from '@/api';
 import { Actor } from '@/lib/models/Actor';
-import { Flow } from '@/lib/models/Flow';
 import { Path } from '@/lib/models/Path';
 import { Task } from '@/lib/models/Task';
 import { FlowRepo } from '@/lib/repositories/Flow';
@@ -12,65 +16,68 @@ import { flowCacheKey } from '@/utils/cacheKey';
 
 export const useBootstrapFlow = ({ id }: { id: number }) => {
   const flowRepo = new FlowRepo(api);
-  const [flow, setFlow] = useState<Flow | null>(null);
-  const [canCreateTask, setCanCreateTask] = useState(false);
+  const setFlow = useSetRecoilState(flowState);
+  const setActors = useSetActorsState();
+  const setTasks = useSetTasksState();
+  const setPaths = useSetPathsState();
 
-  useQuery(flowCacheKey.getById(id), () => flowRepo.getFlowById({ id }), {
-    onSuccess: (data) => {
-      setFlow(new Flow(data));
-    },
-  });
-
-  const { data: actorsData, isLoading: isActorsLoading } = useQuery(
+  const { isLoading: isFlowLoading } = useQuery(
+    flowCacheKey.getById(id),
+    () => flowRepo.getFlowById({ id }),
+    {
+      onSuccess: (data) => {
+        setFlow(data);
+      },
+    }
+  );
+  const { isLoading: isActorsLoading } = useQuery(
     flowCacheKey.getActorsById(id),
-    () => flowRepo.getFlowActors({ id })
+    () => flowRepo.getFlowActors({ id }),
+    {
+      onSuccess: (data) => {
+        const value: Record<number, Actor> = {};
+
+        data.forEach((actor) => {
+          value[actor.id] = actor;
+        });
+
+        setActors(value);
+      },
+    }
   );
-  const { data: tasksData, isLoading: isTasksLoading } = useQuery(
+  const { isLoading: isTasksLoading } = useQuery(
     flowCacheKey.getTasksById(id),
-    () => flowRepo.getFlowTasks({ id })
+    () => flowRepo.getFlowTasks({ id }),
+    {
+      onSuccess: (data) => {
+        const value: Record<number, Task> = {};
+
+        data.forEach((task) => {
+          value[task.id] = task;
+        });
+
+        setTasks(value);
+      },
+    }
   );
-  const { data: pathsData, isLoading: isPathsLoading } = useQuery(
+  const { isLoading: isPathsLoading } = useQuery(
     flowCacheKey.getPathsById(id),
-    () => flowRepo.getFlowPaths({ id })
+    () => flowRepo.getFlowPaths({ id }),
+    {
+      onSuccess: (data) => {
+        const value: Record<number, Path> = {};
+
+        data.forEach((path) => {
+          value[path.id] = path;
+        });
+
+        setPaths(value);
+      },
+    }
   );
-
-  useEffect(() => {
-    if (!flow || !actorsData) return;
-
-    actorsData.map((actor) => {
-      flow.createActor(new Actor(actor));
-    });
-    setCanCreateTask(true);
-  }, [flow, actorsData]);
-
-  useEffect(() => {
-    if (!flow || !tasksData || !canCreateTask) return;
-
-    const groupedTasks = groupBy(tasksData, (task) => task.actorId);
-
-    Object.keys(groupedTasks).map((actorId) => {
-      const parsedActorId = parseInt(actorId);
-      if (isNaN(parsedActorId)) return;
-
-      const actor = flow.actorAggregate.find(parsedActorId);
-      if (!actor) return;
-
-      groupedTasks[actorId].map((task) => {
-        actor.createTask(new Task(task));
-      });
-    });
-  }, [flow, tasksData, canCreateTask]);
-
-  useEffect(() => {
-    if (!flow || !pathsData) return;
-
-    pathsData.map((path) => {
-      flow.createPath(new Path(path));
-    });
-  }, [flow, pathsData]);
 
   return {
-    flow,
-    loading: isActorsLoading && isTasksLoading && isPathsLoading,
+    loading:
+      isFlowLoading && isActorsLoading && isTasksLoading && isPathsLoading,
   };
 };

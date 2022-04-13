@@ -1,10 +1,12 @@
-import { useDiagramCanvas } from '@Diagrams';
 import { useMemo } from 'react';
+import { useRecoilValue } from 'recoil';
+
+import { diagramCanvasState } from '@/features/Diagrams';
 
 export const useNodeCenterPosition = (position: DOMRect) => {
   const {
     position: { top, left },
-  } = useDiagramCanvas();
+  } = useRecoilValue(diagramCanvasState);
   const {
     left: nodeLeft,
     top: nodeTop,

@@ -1,4 +1,6 @@
-import { observer } from 'mobx-react-lite';
+import { taskState } from '@FlowEditor/store';
+import { ForwardRefExoticComponent, RefAttributes, useMemo } from 'react';
+import { useSetRecoilState } from 'recoil';
 
 import { Task as TaskType } from '@/lib/models/Task';
 
@@ -9,25 +11,75 @@ import { Receipt } from './receipt';
 import { Input } from './systematizedInput';
 import { Output } from './systematizedOutput';
 import { Trigger } from './trigger';
+import { useTask } from './useTask';
 
-export const Task: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  switch (task.typeId) {
-    case 1:
-      return <Trigger task={task} />;
-    case 2:
-      return <SystematizedOutput task={task} />;
-    case 3:
-      return <Input task={task} />;
-    case 4:
-      return <Output task={task} />;
-    case 5:
-      return <DataStore task={task} />;
-    case 6:
-      return <Process task={task} />;
-    case 7:
-      return <Receipt task={task} />;
+export type BaseTaskProps = {
+  task?: TaskType;
+  translate?: {
+    x: number;
+    y: number;
+  };
+};
 
-    default:
-      return null;
-  }
-});
+type TaskComponent = {
+  id: number;
+  Component: ForwardRefExoticComponent<
+    BaseTaskProps & RefAttributes<SVGGElement>
+  >;
+};
+
+const taskComponents: TaskComponent[] = [
+  {
+    id: 1,
+    Component: Trigger,
+  },
+  {
+    id: 2,
+    Component: SystematizedOutput,
+  },
+  {
+    id: 3,
+    Component: Input,
+  },
+  {
+    id: 4,
+    Component: Output,
+  },
+  {
+    id: 5,
+    Component: DataStore,
+  },
+  {
+    id: 6,
+    Component: Process,
+  },
+  {
+    id: 7,
+    Component: Receipt,
+  },
+];
+
+export const Task: React.VFC<{ id: number }> = ({ id }) => {
+  const setTask = useSetRecoilState(taskState(id));
+  const { ref, task, translate } = useTask(id);
+
+  const Component = useMemo(() => {
+    if (!task) return null;
+
+    return (
+      taskComponents.find((item) => item.id === task.typeId)?.Component ?? null
+    );
+  }, [id, task?.id]);
+
+  if (!task || !Component) return null;
+
+  return (
+    <g
+      onClick={() =>
+        setTask((cur) => (cur ? { ...cur, name: 'update' } : undefined))
+      }
+    >
+      <Component ref={ref} task={task} translate={translate} />
+    </g>
+  );
+};

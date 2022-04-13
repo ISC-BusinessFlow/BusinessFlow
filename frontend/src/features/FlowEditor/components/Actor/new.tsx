@@ -1,10 +1,7 @@
 import { Box, Center, Flex, Icon } from '@chakra-ui/react';
-import { observer } from 'mobx-react-lite';
 import { FaPlus } from 'react-icons/fa';
 
-import { Flow } from '@/lib/models/Flow';
-
-export const NewActor: React.VFC<{ flow: Flow }> = observer(() => {
+export const NewActor: React.VFC = () => {
   return (
     <Flex minH="80px">
       <Center
@@ -26,4 +23,4 @@ export const NewActor: React.VFC<{ flow: Flow }> = observer(() => {
       <Box flex="1" bg="gray.50" />
     </Flex>
   );
-});
+};

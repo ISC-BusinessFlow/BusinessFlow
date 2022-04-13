@@ -1,25 +1,20 @@
-import { observer } from 'mobx-react-lite';
+import { forwardRef } from 'react';
 
-import { Task as TaskType } from '@/lib/models/Task';
-
+import { BaseTaskProps } from '.';
 import { DisplayText } from './displaytext';
 import { Label } from './label';
-import { useTask } from './useTask';
 
 const size = {
   width: 160,
   height: 100,
 };
 
-export const SystematizedOutput: React.VFC<{ task: TaskType }> = observer(
-  ({ task }) => {
-    const {
-      ref,
-      translate: { x, y },
-    } = useTask(task);
+export const SystematizedOutput = forwardRef<SVGGElement, BaseTaskProps>(
+  function SystematizedOutput({ task, translate }, ref) {
+    if (!task || !translate) return null;
 
     return (
-      <g ref={ref} transform={`translate(${x}, ${y})`}>
+      <g ref={ref} transform={`translate(${translate.x}, ${translate.y})`}>
         <mask id="path-1-inside-1_6_89" fill="white">
           <path
             fillRule="evenodd"
@@ -38,19 +33,13 @@ export const SystematizedOutput: React.VFC<{ task: TaskType }> = observer(
           fill="#7F9AC2"
           mask="url(#path-1-inside-1_6_89)"
         />
-        <DisplayText
-          task={task}
-          x={10}
-          width={size.width - 20}
-          height={size.height - 15}
-        />
+        <DisplayText x={10} width={size.width - 20} height={size.height - 15}>
+          {task.name}
+        </DisplayText>
         {task.label && (
-          <Label
-            task={task}
-            width={size.width}
-            height={size.height}
-            color="#FFE589"
-          />
+          <Label width={size.width} height={size.height} color="#FFE589">
+            {task.label}
+          </Label>
         )}
       </g>
     );

@@ -1,17 +1,21 @@
 import { usePathPosition } from '@FlowEditor/hooks/usePathPosition';
-import { observer } from 'mobx-react-lite';
-
-import { Path as PathType } from '@/lib/models/Path';
+import { pathPositionState, pathState } from '@FlowEditor/store';
+import { useRecoilValue } from 'recoil';
 
 import { Transition } from './transition';
 import { Transmission } from './transmission';
 
-export const Path: React.VFC<{
-  path: PathType;
-  from: DOMRect;
-  to: DOMRect;
-}> = observer(({ path, from, to }) => {
-  const { from: fromPos, to: toPos } = usePathPosition({ from, to });
+const PathContainer: React.VFC<{ id: number; from: DOMRect; to: DOMRect }> = ({
+  id,
+  from,
+  to,
+}) => {
+  const path = useRecoilValue(pathState(id));
+  const { from: fromPos, to: toPos } = usePathPosition({
+    from,
+    to,
+  });
+  if (!path) return null;
 
   switch (path.pathTypeId) {
     case 1:
@@ -21,4 +25,14 @@ export const Path: React.VFC<{
     default:
       return null;
   }
-});
+};
+
+export const Path: React.VFC<{ id: number }> = ({ id }) => {
+  const path = useRecoilValue(pathState(id));
+  const pathPosition = useRecoilValue(pathPositionState(id));
+  if (!pathPosition || !path) return null;
+
+  return (
+    <PathContainer id={id} from={pathPosition.from} to={pathPosition.to} />
+  );
+};

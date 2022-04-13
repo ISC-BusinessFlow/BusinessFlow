@@ -1,24 +1,22 @@
-import { observer } from 'mobx-react-lite';
+import { forwardRef } from 'react';
 
-import { Task as TaskType } from '@/lib/models/Task';
-
+import { BaseTaskProps } from '.';
 import { DisplayText } from './displaytext';
 import { Label } from './label';
-import { useTask } from './useTask';
 
 const size = {
   width: 160,
   height: 100,
 };
 
-export const Process: React.VFC<{ task: TaskType }> = observer(({ task }) => {
-  const {
-    ref,
-    translate: { x, y },
-  } = useTask(task);
+export const Process = forwardRef<SVGGElement, BaseTaskProps>(function Process(
+  { task, translate },
+  ref
+) {
+  if (!task || !translate) return null;
 
   return (
-    <g ref={ref} transform={`translate(${x}, ${y})`}>
+    <g ref={ref} transform={`translate(${translate.x}, ${translate.y})`}>
       <rect
         width={size.width}
         height={size.height}
@@ -26,14 +24,13 @@ export const Process: React.VFC<{ task: TaskType }> = observer(({ task }) => {
         stroke="#B36A35"
         strokeWidth="2"
       />
-      <DisplayText task={task} width={size.width} height={size.height} />
+      <DisplayText width={size.width} height={size.height}>
+        {task.name}
+      </DisplayText>
       {task.label && (
-        <Label
-          task={task}
-          width={size.width}
-          height={size.height}
-          color="#7936CD"
-        />
+        <Label width={size.width} height={size.height} color="#7936CD">
+          {task.label}
+        </Label>
       )}
     </g>
   );

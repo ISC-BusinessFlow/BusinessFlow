@@ -1,11 +1,10 @@
 import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { Task } from '@FlowEditor/components/Task';
+import { actorState, tasksHasActorState } from '@FlowEditor/store';
 import maxBy from 'lodash/maxBy';
-import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
-
-import { Actor as ActorType } from '@/lib/models/Actor';
+import { selectorFamily, useRecoilValue } from 'recoil';
 
 /**
  * xとyはTaskの真ん中になるようにするため、本来のsvgで使う左上の座標がマイナスになる可能性がある
@@ -21,14 +20,25 @@ const StyledSvg = styled.svg`
   height: 100%;
 `;
 
-export const Actor: React.VFC<
-  {
-    actor: ActorType;
-  } & {
-    maxX: number;
-  }
-> = observer(({ actor, maxX }) => {
-  const tasksY = actor.taskAggregate.tasks.map((task) => task.y);
+const tasksSelector = selectorFamily({
+  key: 'tasksSelector',
+  get:
+    (id: number) =>
+    ({ get }) => {
+      return get(tasksHasActorState(id)).map((task) => ({
+        id: task.id,
+        y: task.y,
+      }));
+    },
+});
+
+export const Actor: React.VFC<{ id: number; maxX: number }> = ({
+  id,
+  maxX,
+}) => {
+  const actor = useRecoilValue(actorState(id));
+  const tasks = useRecoilValue(tasksSelector(id));
+  const tasksY = tasks.map((task) => task.y);
 
   const maxY = useMemo(() => {
     return maxBy(tasksY, (y) => y) ?? 0;
@@ -36,6 +46,8 @@ export const Actor: React.VFC<
 
   const minH = maxY === 0 ? PADDING.y : maxY + PADDING.y * 2;
   const minW = maxX + PADDING.x * 2;
+
+  if (!actor) return null;
 
   return (
     <Flex>
@@ -62,11 +74,11 @@ export const Actor: React.VFC<
           viewBox={`${-PADDING.x}, ${-PADDING.y}, ${minW} ${minH}`}
           xmlns="http://www.w3.org/2000/svg"
         >
-          {actor.taskAggregate.tasks.map((task) => (
-            <Task key={task.id} task={task} />
+          {tasks.map((task) => (
+            <Task key={task.id} id={task.id} />
           ))}
         </StyledSvg>
       </Box>
     </Flex>
   );
-});
+};

@@ -1,15 +1,11 @@
 import { Box } from '@chakra-ui/react';
-import { observer } from 'mobx-react-lite';
 
-import { TaskType } from '@/lib/models/Task';
-
-export const DisplayText: React.VFC<{
-  task: TaskType;
+export const DisplayText: React.FC<{
   x?: number;
   y?: number;
   width: number;
   height: number;
-}> = observer(({ task, x = 0, y = 0, width, height }) => {
+}> = ({ x = 0, y = 0, width, height, children }) => {
   return (
     <foreignObject x={x} y={y} width={width} height={height} fill="none">
       <Box
@@ -21,8 +17,8 @@ export const DisplayText: React.VFC<{
         alignItems="center"
         justifyContent="center"
       >
-        <span>{task.name}</span>
+        <span>{children}</span>
       </Box>
     </foreignObject>
   );
-});
+};

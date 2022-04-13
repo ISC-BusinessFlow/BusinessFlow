@@ -1,14 +1,14 @@
 import { Box, Flex, StackDivider, VStack } from '@chakra-ui/react';
-import { useDiagramCanvas } from '@Diagrams';
 import styled from '@emotion/styled';
 import { Actor } from '@FlowEditor/components/Actor';
 import { NewActor } from '@FlowEditor/components/Actor/new';
 import { Paths } from '@FlowEditor/components/Paths';
+import { actorIdsState, tasksPositionState } from '@FlowEditor/store';
 import maxBy from 'lodash/maxBy';
-import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
+import { useRecoilValue } from 'recoil';
 
-import { Flow } from '@/lib/models/Flow';
+import { diagramCanvasState } from '@/features/Diagrams';
 
 const ArrowMarker = () => {
   return (
@@ -41,7 +41,7 @@ const StyledG = styled.g`
 `;
 
 const DiagramPathsContainer: React.FC = ({ children }) => {
-  const canvas = useDiagramCanvas();
+  const canvas = useRecoilValue(diagramCanvasState);
 
   const {
     size: { width, height },
@@ -72,10 +72,10 @@ const RestArea: React.VFC = () => {
   );
 };
 
-export const Diagram: React.VFC<{ flow: Flow }> = observer(({ flow }) => {
-  const tasksX = flow.actorAggregate.actors
-    .map((actor) => actor.taskAggregate.tasks.map((task) => task.x))
-    .flatMap((x) => x);
+export const Diagram: React.VFC = () => {
+  const tasksPosition = useRecoilValue(tasksPositionState);
+  const actorIds = useRecoilValue(actorIdsState);
+  const tasksX = tasksPosition.map((task) => task.x);
 
   const maxX = useMemo(() => {
     return maxBy(tasksX, (x) => x) ?? 0;
@@ -85,7 +85,7 @@ export const Diagram: React.VFC<{ flow: Flow }> = observer(({ flow }) => {
     <>
       <DiagramPathsContainer>
         <ArrowMarker />
-        <Paths paths={flow.pathAggregate.paths} />
+        <Paths />
       </DiagramPathsContainer>
 
       <Flex
@@ -100,13 +100,13 @@ export const Diagram: React.VFC<{ flow: Flow }> = observer(({ flow }) => {
           align="stretch"
           divider={<StackDivider bg="rgba(0, 0, 0, 0.05)" h="2px" m="0" />}
         >
-          {flow.actorAggregate.actors.map((actor) => (
-            <Actor key={actor.id} actor={actor} maxX={maxX} />
+          {actorIds.map((id) => (
+            <Actor key={id} id={id} maxX={maxX} />
           ))}
-          <NewActor flow={flow} />
+          <NewActor />
         </VStack>
         <RestArea />
       </Flex>
     </>
   );
-});
+};
