@@ -1,9 +1,8 @@
-import { Box, Flex, Spacer } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import { FlowList } from '@FlowList';
 import { useQuery } from 'react-query';
 
 import { api } from '@/api';
-import { FlowList } from '@/components/FlowList';
-import { Toolbar } from '@/components/FlowListToolbar';
 import { FlowRepo } from '@/lib/repositories/Flow';
 import { flowCacheKey } from '@/utils/cacheKey';
 
@@ -16,11 +15,7 @@ const New = () => {
   return (
     <>
       <Box bg="gray.600" w="100%" h={16} color="white" as={'header'} />
-      <Box as={'main'}>
-        <Toolbar />
-        <Spacer />
-        <Flex>{data && <FlowList flows={data} />}</Flex>
-      </Box>
+      <FlowList flows={data} />
     </>
   );
 };

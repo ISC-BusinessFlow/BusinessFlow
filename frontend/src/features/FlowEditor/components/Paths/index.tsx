@@ -1,7 +1,7 @@
+import { useDiagramNodes } from '@Diagrams';
+import { Path } from '@FlowEditor/components/Path';
 import { observer } from 'mobx-react-lite';
 
-import { Path } from '@/components/Path';
-import { useDiagramNodes } from '@/diagrams';
 import { Path as PathType } from '@/lib/models/Path';
 
 export const Paths: React.VFC<{ paths: PathType[] }> = observer(({ paths }) => {
