@@ -88,6 +88,7 @@ export const DiagramProvider: React.FC = ({ children }) => {
 
   const canvasRef: React.RefCallback<HTMLDivElement> = useCallback((node) => {
     const resizeObserver = new ResizeObserver((entries) => {
+      console.log('resizeObserver');
       const target = entries[0].target;
       const { top, left, width, height } = target.getBoundingClientRect();
 

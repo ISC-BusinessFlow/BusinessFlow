@@ -11,7 +11,7 @@ import {
 import Link from 'next/link';
 import { FaEllipsisV } from 'react-icons/fa';
 
-import { FlowType } from '@/lib/models/Flow';
+import { Flow as FlowType } from '@/lib/models/Flow';
 
 const formatDate = (d: string) => {
   const dd = new Date(d);
